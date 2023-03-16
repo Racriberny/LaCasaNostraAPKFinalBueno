@@ -7,10 +7,12 @@
         <item
             android:id="@+id/home"
             android:checked="false"
+            android:icon="@drawable/ic_menu_home"
             android:title="Home"/>
 
         <item
             android:id="@+id/carta"
+            android:icon="@drawable/ic_menu_menu"
             android:checked="false"
             android:title="Carta"
            />
@@ -18,12 +20,8 @@
         <item
             android:id="@+id/acceder"
             android:checked="false"
+            android:icon="@drawable/ic_menu_people"
             android:title="Acceder"
-            />
-        <item
-            android:id="@+id/registrar"
-            android:checked="false"
-            android:title="Registrar"
             />
     </group>
 </menu>
