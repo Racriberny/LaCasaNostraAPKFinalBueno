@@ -40,7 +40,6 @@ public class SettingActivity extends AppCompatActivity {
                     setLocal(SettingActivity.this, "en");
                     finish();
                     startActivity(new Intent(SettingActivity.this, MainActivity.class));
-
                 } else if (posicion.equals("Castellano")) {
                     setLocal(SettingActivity.this, "es");
                     finish();

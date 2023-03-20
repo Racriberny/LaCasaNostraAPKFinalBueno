@@ -2,9 +2,11 @@ package com.cristobalbernal.lacasanostraapk;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,15 +22,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
 
 import com.cristobalbernal.lacasanostraapk.activitys.SettingActivity;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.ListFragment;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
+import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
+import com.cristobalbernal.lacasanostraapk.modelos.Producto;
+import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity
@@ -35,10 +47,12 @@ public class MainActivity extends AppCompatActivity
 
     private ListFragment.ListingType listingType;
     private ListFragment listFragment;
+    private IAPIService iapiService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.listFragment = null;
         super.onCreate(savedInstanceState);
+        iapiService = RestClient.getInstance();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,6 +69,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

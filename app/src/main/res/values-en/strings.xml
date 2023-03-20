@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LaCasaNostra</string>
-    <string name="bienvenido_a_la_casa_nostra">Wellcome A La Casa Nostra</string>
+    <string name="bienvenido_a_la_casa_nostra">Welcome A La Casa Nostra</string>
+    <string name="carta">Menu</string>
+    <string name="logo_de_la_aplicai_n">Application logo</string>
+    <string name="pulse_el_bot_n_para_ir_directo_a_la_carta">Press the button to go straight to the menu</string>
+    <string name="home">Home</string>
+    <string name="acceder">Login</string>
 </resources>
