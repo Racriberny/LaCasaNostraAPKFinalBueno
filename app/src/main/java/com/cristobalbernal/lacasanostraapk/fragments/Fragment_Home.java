@@ -52,7 +52,7 @@ public class Fragment_Home extends Fragment {
     private void getProductos(){
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
-            public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
+            public void onResponse(@NonNull Call<List<Producto>> call, @NonNull Response<List<Producto>> response) {
                 if(response.isSuccessful()) {
                     assert response.body() != null;
                     for(Producto producto: response.body()) {
@@ -62,7 +62,7 @@ public class Fragment_Home extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Producto>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Producto>> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -71,7 +71,7 @@ public class Fragment_Home extends Fragment {
     private void getTipos(){
         iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Tipo>> call, Response<List<Tipo>> response) {
+            public void onResponse(@NonNull Call<List<Tipo>> call, @NonNull Response<List<Tipo>> response) {
                 if(response.isSuccessful()) {
                     assert response.body() != null;
                     for(Tipo Tipo: response.body()) {
@@ -81,7 +81,7 @@ public class Fragment_Home extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Tipo>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Tipo>> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
