@@ -1,5 +1,6 @@
 package com.cristobalbernal.lacasanostraapk.interfaces;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
+import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 
 import java.util.List;
 
@@ -11,6 +12,9 @@ public interface IAPIService {
 
     @GET("producto/all")
     Call<List<Producto>> getProductos();
+
+    @GET("tipo/all")
+    Call<List<Tipo>> getTipo();
     /*
     @POST("frase/add")
     Call<Boolean> addFrase(@Body Frase frase);

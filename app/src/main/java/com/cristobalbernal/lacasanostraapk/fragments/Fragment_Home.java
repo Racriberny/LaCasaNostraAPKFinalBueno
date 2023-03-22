@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
+import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class Fragment_Home extends Fragment {
         iapiService = RestClient.getInstance();
         Button button = view.findViewById(R.id.btCartaHome);
         getProductos();
+        getTipos();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,8 +55,8 @@ public class Fragment_Home extends Fragment {
             public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
                 if(response.isSuccessful()) {
                     assert response.body() != null;
-                    for(Producto frase: response.body()) {
-                        Log.i("Hola", frase.toString());
+                    for(Producto producto: response.body()) {
+                        Log.i("Productos", producto.toString());
                     }
                 }
             }
@@ -65,4 +67,26 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
+
+    private void getTipos(){
+        iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Tipo>> call, Response<List<Tipo>> response) {
+                if(response.isSuccessful()) {
+                    assert response.body() != null;
+                    for(Tipo Tipo: response.body()) {
+                        Log.i("Productos", Tipo.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tipo>> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+
 }
