@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida {
+        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida,Fragment_Tipo_Producto.IOnAttachListener {
     private IAPIService iapiService;
     private List<Tipo> tipos;
     private Tipo tipoSeleccionado;
@@ -132,5 +132,10 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+    }
+
+    @Override
+    public Tipo getTipoSelecionado() {
+        return tipoSeleccionado;
     }
 }

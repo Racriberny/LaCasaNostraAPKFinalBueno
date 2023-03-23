@@ -4,11 +4,13 @@ public class Tipo {
     private int id;
     private String nombre;
     private String descripcion;
+    private String imagen;
 
-    public Tipo(int id, String nombre, String descripcion) {
+    public Tipo(int id, String nombre, String descripcion,String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.imagen = imagen;
     }
 
     public int getId() {
@@ -35,12 +37,21 @@ public class Tipo {
         this.descripcion = descripcion;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     @Override
     public String toString() {
         return "Tipo{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }
 }
