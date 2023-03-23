@@ -70,7 +70,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<Producto>> call, Throwable t) {
-                Toast.makeText(requireActivity().getApplicationContext(), "No se han podido obtener las frases", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireActivity().getApplicationContext(), "No se han podido obtener las productos", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -49,14 +49,14 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final ImageView imageView;
         private final TextView productoTv;
-        private final TextView ingredientesTv;
+        private final TextView precio;
         private final IProductoComida listener;
 
         public ViewHolder(@NonNull View itemView, IProductoComida listener) {
             super(itemView);
             this.imageView = itemView.findViewById(R.id.ivPhoto);
             this.productoTv = itemView.findViewById(R.id.nombreProducto);
-            this.ingredientesTv = itemView.findViewById(R.id.precio);
+            this.precio = itemView.findViewById(R.id.precio);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
@@ -64,7 +64,7 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
         public void bindProducto(Producto producto) {
             imageView.setImageBitmap(EncodingImg.decode(producto.getUrl_imagen()));
             productoTv.setText(producto.getNombre());
-            ingredientesTv.setText(producto.getPrecio());
+            precio.setText(producto.getPrecio());
         }
 
         @Override

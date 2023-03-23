@@ -1,24 +1,19 @@
 package com.cristobalbernal.lacasanostraapk.adaptadores;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 
-import java.util.List;
-
 public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ViewHolder> {
-    private final List<Producto> productos;
+    private final Producto productos;
 
-    public AdaptadorProducto(List<Producto> productos){
+    public AdaptadorProducto(Producto productos){
         this.productos = productos;
     }
 
@@ -31,13 +26,12 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Producto producto = productos.get(position);
-        holder.bindFrase(producto);
+        holder.bindFrase(productos);
     }
 
     @Override
     public int getItemCount() {
-        return productos.size();
+        return 1;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -3,6 +3,7 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,13 +38,11 @@ public class Fragment_Producto extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = view.findViewById(R.id.rvLista);
         IAPIService apiService = RestClient.getInstance();
-        List<Producto> productos = new ArrayList<>();
         apiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
-            public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
+            public void onResponse(@NonNull Call<List<Producto>> call, @NonNull Response<List<Producto>> response) {
                 assert response.body() != null;
-                productos.addAll(response.body());
-                AdaptadorProducto adaptadorProducto = new AdaptadorProducto(productos);
+                AdaptadorProducto adaptadorProducto = new AdaptadorProducto(producto);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(adaptadorProducto);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -51,8 +50,8 @@ public class Fragment_Producto extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Producto>> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<List<Producto>> call, @NonNull Throwable t) {
+                Toast.makeText(getContext(), "No se han podido obtener las productos!!", Toast.LENGTH_LONG).show();
             }
         });
     }

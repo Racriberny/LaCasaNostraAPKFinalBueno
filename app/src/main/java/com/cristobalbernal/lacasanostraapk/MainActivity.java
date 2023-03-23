@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity
                     productos.addAll(response.body());
                     productoSeleccionado = productos.get(id);
 
-
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)
