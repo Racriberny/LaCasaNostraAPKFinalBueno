@@ -35,7 +35,7 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, IProductoComida {
+        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, IProductoComida, Fragment_Producto.IOnAttachListener {
     private IAPIService iapiService;
     private List<Tipo> tipos;
     private List<Producto> productos;
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity
             }
 
             @Override
-            public void onFailure(Call<List<Tipo>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Tipo>> call, Throwable t) {
 
             }
         });
@@ -172,5 +172,10 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+    }
+
+    @Override
+    public Producto getProductoSeleccionado() {
+        return productoSeleccionado;
     }
 }
