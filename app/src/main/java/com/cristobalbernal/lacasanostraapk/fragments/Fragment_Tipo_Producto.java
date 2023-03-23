@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorTipoProducto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
+import com.cristobalbernal.lacasanostraapk.interfaces.IProductoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
@@ -32,6 +33,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
     }
 
     private Tipo tipo;
+    private IProductoComida listener;
 
     public Fragment_Tipo_Producto() {
         super(R.layout.lista);
@@ -59,7 +61,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
                         }
                     }
 
-                    AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto);
+                    AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto,listener);
                     rvLista.setHasFixedSize(true);
                     rvLista.setAdapter(adaptadorTipoProducto);
                     rvLista.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -78,5 +80,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
         super.onAttach(context);
         IOnAttachListener iOnAttachListener = (IOnAttachListener) context;
         tipo = iOnAttachListener.getTipoSelecionado();
+        listener = (IProductoComida) context;
     }
+
 }
