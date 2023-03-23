@@ -1,5 +1,6 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -51,7 +52,7 @@ public class Fragment_Carta extends Fragment {
                 if (response.isSuccessful()){
                     assert response.body() != null;
                     tipos.addAll(response.body());
-                    AdaptadorTipo adaptadorTipo = new AdaptadorTipo(tipos);
+                    AdaptadorTipo adaptadorTipo = new AdaptadorTipo(tipos, listener);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adaptadorTipo);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
@@ -64,5 +65,11 @@ public class Fragment_Carta extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        listener = (ITipoComida) context;
     }
 }

@@ -14,16 +14,32 @@ import com.cristobalbernal.lacasanostraapk.activitys.SettingActivity;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
+import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
+import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
+import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
+import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida {
+    private IAPIService iapiService;
+    private List<Tipo> tipos;
+    private Tipo tipoSeleccionado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        iapiService = RestClient.getInstance();
+        tipos = new ArrayList<>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -89,5 +105,32 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onTipoSeleccionada(int id) {
+        iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {
+            @Override
+            public void onResponse(Call<List<Tipo>> call, Response<List<Tipo>> response) {
+                if (response.isSuccessful()){
+                    assert response.body() != null;
+                    tipos.addAll(response.body());
+                    tipoSeleccionado = tipos.get(id);
+
+
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction()
+                            .setReorderingAllowed(true)
+                            .addToBackStack(null)
+                            .replace(R.id.content_frame, Fragment_Tipo_Producto.class, null)
+                            .commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tipo>> call, Throwable t) {
+
+            }
+        });
     }
 }
