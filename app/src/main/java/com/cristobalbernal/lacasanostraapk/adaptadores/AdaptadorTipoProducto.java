@@ -3,12 +3,14 @@ package com.cristobalbernal.lacasanostraapk.adaptadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cristobalbernal.lacasanostraapk.R;
+import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.interfaces.IProductoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 
@@ -45,24 +47,24 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        //private final ImageView imageView;
+        private final ImageView imageView;
         private final TextView productoTv;
         private final TextView ingredientesTv;
         private final IProductoComida listener;
 
         public ViewHolder(@NonNull View itemView, IProductoComida listener) {
             super(itemView);
-            //this.imageView = itemView.findViewById(R.id.ivPhoto);
+            this.imageView = itemView.findViewById(R.id.ivPhoto);
             this.productoTv = itemView.findViewById(R.id.nombreProducto);
-            this.ingredientesTv = itemView.findViewById(R.id.ingredientes);
+            this.ingredientesTv = itemView.findViewById(R.id.precio);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
 
         public void bindProducto(Producto producto) {
-            //imageView.setImageBitmap(EncodingImg.Decode(producto.getUrl_imagen()));
+            imageView.setImageBitmap(EncodingImg.decode(producto.getUrl_imagen()));
             productoTv.setText(producto.getNombre());
-            ingredientesTv.setText(producto.getIngredientes());
+            ingredientesTv.setText(producto.getPrecio());
         }
 
         @Override
