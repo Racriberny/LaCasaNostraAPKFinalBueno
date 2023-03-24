@@ -13,4 +13,5 @@
     <string name="nombre_de_usuario">Username</string>
     <string name="contrase_a">Password</string>
     <string name="iniciar_sesi_n">log in</string>
+    <string name="no_tienes_cuenta_reg_strate_aqu">You do not have an account? Sign up here!</string>
 </resources>
