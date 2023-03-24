@@ -5,14 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
-import com.cristobalbernal.lacasanostraapk.interfaces.IProductoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 
 import java.util.List;
@@ -20,8 +18,6 @@ import java.util.List;
 public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoProducto.ViewHolder> {
 
     private final List<Producto> productos;
-
-
 
     public AdaptadorTipoProducto(List<Producto> productos){
         this.productos = productos;

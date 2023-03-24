@@ -18,7 +18,6 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
-import com.cristobalbernal.lacasanostraapk.interfaces.IProductoComida;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;

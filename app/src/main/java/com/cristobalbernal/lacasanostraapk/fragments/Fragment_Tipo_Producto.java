@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorTipoProducto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
-import com.cristobalbernal.lacasanostraapk.interfaces.IProductoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
