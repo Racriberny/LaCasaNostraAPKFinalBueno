@@ -16,7 +16,6 @@ import com.cristobalbernal.lacasanostraapk.activitys.SettingActivity;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
-import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Producto;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.IProductoComida;
@@ -35,7 +34,7 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, IProductoComida, Fragment_Producto.IOnAttachListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ITipoComida,Fragment_Tipo_Producto.IOnAttachListener {
     private IAPIService iapiService;
     private List<Tipo> tipos;
     private List<Producto> productos;
@@ -147,34 +146,4 @@ public class MainActivity extends AppCompatActivity
         return tipoSeleccionado;
     }
 
-    @Override
-    public void onProductoSeleccionada(int id) {
-        iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<Producto>> call, @NonNull Response<List<Producto>> response) {
-                if (response.isSuccessful()){
-                    assert response.body() != null;
-                    productos.addAll(response.body());
-                    productoSeleccionado = productos.get(id);
-
-                    FragmentManager manager = getSupportFragmentManager();
-                    manager.beginTransaction()
-                            .setReorderingAllowed(true)
-                            .addToBackStack(null)
-                            .replace(R.id.content_frame, Fragment_Producto.class, null)
-                            .commit();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Producto>> call, Throwable t) {
-
-            }
-        });
-    }
-
-    @Override
-    public Producto getProductoSeleccionado() {
-        return productoSeleccionado;
-    }
 }

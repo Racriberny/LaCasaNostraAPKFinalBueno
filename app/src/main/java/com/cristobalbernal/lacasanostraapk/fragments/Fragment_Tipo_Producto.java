@@ -33,7 +33,6 @@ public class Fragment_Tipo_Producto  extends Fragment {
     }
 
     private Tipo tipo;
-    private IProductoComida listener;
 
     public Fragment_Tipo_Producto() {
         super(R.layout.lista);
@@ -61,7 +60,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
                         }
                     }
 
-                    AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto,listener);
+                    AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto);
                     rvLista.setHasFixedSize(true);
                     rvLista.setAdapter(adaptadorTipoProducto);
                     rvLista.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -80,7 +79,6 @@ public class Fragment_Tipo_Producto  extends Fragment {
         super.onAttach(context);
         IOnAttachListener iOnAttachListener = (IOnAttachListener) context;
         tipo = iOnAttachListener.getTipoSelecionado();
-        listener = (IProductoComida) context;
     }
 
 }
