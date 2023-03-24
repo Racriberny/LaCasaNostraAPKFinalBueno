@@ -1,5 +1,7 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +36,7 @@ public class Fragment_Home extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         iapiService = RestClient.getInstance();
         Button button = view.findViewById(R.id.btCartaHome);
+        Button button2= view.findViewById(R.id.btPaginaWeb);
         getProductos();
         getTipos();
         button.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +48,12 @@ public class Fragment_Home extends Fragment {
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Carta.class, null)
                         .commit();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirPaginaWeb("https://lacasanostra.000webhostapp.com/localhost_9000/home.html");
             }
         });
     }
@@ -86,7 +95,9 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
-
-
+    private void abrirPaginaWeb(String url){
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(webIntent);
+    }
 
 }
