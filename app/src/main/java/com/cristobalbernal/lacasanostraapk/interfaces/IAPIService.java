@@ -1,11 +1,14 @@
 package com.cristobalbernal.lacasanostraapk.interfaces;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
+import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 
 public interface IAPIService {
@@ -15,6 +18,18 @@ public interface IAPIService {
 
     @GET("tipo/all")
     Call<List<Tipo>> getTipo();
+
+    @GET("usuario/all")
+    Call<List<Usuario>> getUsuario();
+
+    @POST("usuario/add")
+    Call<Boolean> addUsuario(@Body Usuario usuario);
+
+
+    @POST("usuario/login")
+    Call<Boolean> logUsuario (
+            @Body Usuario user
+    );
     /*
     @POST("frase/add")
     Call<Boolean> addFrase(@Body Frase frase);
