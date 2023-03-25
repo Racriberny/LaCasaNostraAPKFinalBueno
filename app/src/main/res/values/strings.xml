@@ -15,4 +15,5 @@
     <string name="contrase_a">Contraseña</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
     <string name="no_tienes_cuenta_reg_strate_aqu">No tienes cuenta? Regístrate aquí!</string>
+    <string name="correo_electronico">Correo Electronico</string>
 </resources>

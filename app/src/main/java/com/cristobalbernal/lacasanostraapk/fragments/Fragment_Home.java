@@ -17,6 +17,7 @@ import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
+import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
 import java.util.List;
@@ -39,6 +40,7 @@ public class Fragment_Home extends Fragment {
         Button button2= view.findViewById(R.id.btPaginaWeb);
         getProductos();
         getTipos();
+        getUser();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +86,7 @@ public class Fragment_Home extends Fragment {
                 if(response.isSuccessful()) {
                     assert response.body() != null;
                     for(Tipo Tipo: response.body()) {
-                        Log.i("Productos", Tipo.toString());
+                        Log.i("Tipo", Tipo.toString());
                     }
                 }
             }
@@ -95,6 +97,28 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
+
+
+    private void getUser(){
+        iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if(response.isSuccessful()) {
+                    assert response.body() != null;
+                    for(Usuario usuario: response.body()) {
+                        Log.i("Usuarios", usuario.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
     private void abrirPaginaWeb(String url){
         Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(webIntent);
