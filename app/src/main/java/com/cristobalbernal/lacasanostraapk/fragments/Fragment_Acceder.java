@@ -60,7 +60,12 @@ public class Fragment_Acceder extends Fragment {
         view.findViewById(R.id.tvRegistrar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Registrar.class, null)
+                        .commit();
             }
         });
     }
