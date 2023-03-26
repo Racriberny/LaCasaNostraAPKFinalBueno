@@ -16,6 +16,7 @@ import com.cristobalbernal.lacasanostraapk.activitys.SettingActivity;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Registrar;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
@@ -106,6 +107,13 @@ public class MainActivity extends AppCompatActivity
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Acceder.class, null)
+                    .commit();
+        } else if (id == R.id.register) {
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
+                    .replace(R.id.content_frame, Fragment_Registrar.class, null)
                     .commit();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

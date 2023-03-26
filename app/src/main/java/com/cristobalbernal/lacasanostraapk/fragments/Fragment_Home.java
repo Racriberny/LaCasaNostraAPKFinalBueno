@@ -38,9 +38,11 @@ public class Fragment_Home extends Fragment {
         iapiService = RestClient.getInstance();
         Button button = view.findViewById(R.id.btCartaHome);
         Button button2= view.findViewById(R.id.btPaginaWeb);
+        /*
         getProductos();
         getTipos();
         getUser();
+         */
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +61,7 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
-
+    /*
     private void getProductos(){
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
@@ -117,6 +119,7 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
+     */
 
 
     private void abrirPaginaWeb(String url){

@@ -22,5 +22,11 @@
             android:icon="@drawable/ic_menu_people"
             android:title="@string/acceder"
             />
+        <item
+            android:id="@+id/register"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_people"
+            android:title="@string/Registrar"
+            />
     </group>
 </menu>

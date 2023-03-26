@@ -83,28 +83,31 @@ public class Fragment_Acceder extends Fragment {
             contrasena.requestFocus();
             return;
         }
-        Call<Boolean> booleanCall = iapiService.logUsuario(new Usuario(correoElectronico,password));
 
-        booleanCall.enqueue(new Callback<Boolean>() {
+        Usuario usuarioIniciado = new Usuario(correoElectronico,password);
+
+        Call<Usuario> booleanCall = iapiService.logUsuario(usuarioIniciado);
+
+        booleanCall.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
-                if (Boolean.TRUE.equals(response.body())) {
-                    Toast.makeText(getContext(), "Has inicion sesion ", Toast.LENGTH_SHORT).show();
+            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+                if (response.body() !=null) {
+                    Toast.makeText(getContext(), "Has inicion sesion!!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.putExtra(correoElectronico,"correoUsuario");
+                    intent.putExtra("activo",response.body());
                     FragmentManager manager = getParentFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)
                             .addToBackStack(null)
                             .replace(R.id.content_frame, Fragment_Home.class, null)
                             .commit();
-                } else if (Boolean.FALSE.equals(response.body())) {
+                } else {
                     Toast.makeText(getContext(), "No has inicion sesion", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<Boolean> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
