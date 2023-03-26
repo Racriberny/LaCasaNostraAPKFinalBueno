@@ -15,4 +15,7 @@
     <string name="iniciar_sesi_n">Log in</string>
     <string name="no_tienes_cuenta_reg_strate_aqu">You do not have an account? Sign up here!</string>
     <string name="correo_electronico">Email</string>
+    <string name="Registrar">Register</string>
+    <string name="nombre">Name</string>
+    <string name="apellidos">Surnames</string>
 </resources>

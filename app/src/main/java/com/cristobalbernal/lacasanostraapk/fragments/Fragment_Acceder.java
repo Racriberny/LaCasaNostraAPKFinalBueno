@@ -89,21 +89,23 @@ public class Fragment_Acceder extends Fragment {
             @Override
             public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
                 if (Boolean.TRUE.equals(response.body())) {
+                    Toast.makeText(getContext(), "Has inicion sesion ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra(correoElectronico,"correoUsuario");
                     FragmentManager manager = getParentFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)
                             .addToBackStack(null)
                             .replace(R.id.content_frame, Fragment_Home.class, null)
                             .commit();
-                    Toast.makeText(getContext(), "Has inicion sesion", Toast.LENGTH_SHORT).show();
                 } else if (Boolean.FALSE.equals(response.body())) {
                     Toast.makeText(getContext(), "No has inicion sesion", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<Boolean> call, @NonNull Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

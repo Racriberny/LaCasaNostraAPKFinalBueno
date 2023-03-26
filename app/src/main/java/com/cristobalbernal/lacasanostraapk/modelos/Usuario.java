@@ -8,12 +8,11 @@ public class Usuario {
     private String contrasena;
     private Byte admin;
 
-    public Usuario(String nombre, String apellidos, String correoElectronico, String contrasena, Byte admin) {
+    public Usuario(String nombre, String apellidos, String correoElectronico, String contrasena) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
-        this.admin = admin;
     }
 
     public Usuario(String correoElectronico, String contrasena) {
