@@ -19,5 +19,6 @@
     <string name="Registrar">Registrar</string>
     <string name="nombre">Nombre</string>
     <string name="apellidos">Apellidos</string>
+    <string name="reservas">Reservas</string>
 
 </resources>

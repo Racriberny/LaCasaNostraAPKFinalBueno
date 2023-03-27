@@ -28,5 +28,11 @@
             android:icon="@drawable/ic_menu_people"
             android:title="@string/Registrar"
             />
+        <item
+            android:id="@+id/reservas"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_people"
+            android:title="@string/reservas"
+            />
     </group>
 </menu>

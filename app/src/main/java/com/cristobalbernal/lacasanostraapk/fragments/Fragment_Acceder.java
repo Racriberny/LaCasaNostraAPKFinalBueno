@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
+import com.cristobalbernal.lacasanostraapk.MainActivity;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.HashGenerator;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
@@ -93,14 +94,9 @@ public class Fragment_Acceder extends Fragment {
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.body() !=null) {
                     Toast.makeText(getContext(), "Has inicion sesion!!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
                     intent.putExtra("activo",response.body());
-                    FragmentManager manager = getParentFragmentManager();
-                    manager.beginTransaction()
-                            .setReorderingAllowed(true)
-                            .addToBackStack(null)
-                            .replace(R.id.content_frame, Fragment_Home.class, null)
-                            .commit();
+                    requireActivity().startActivity(intent);
                 } else {
                     Toast.makeText(getContext(), "No has inicion sesion", Toast.LENGTH_SHORT).show();
                 }
