@@ -45,19 +45,22 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private final ImageView imageView;
         private final TextView productoTv;
+        private final TextView ingredientes;
         private final TextView precio;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.imageView = itemView.findViewById(R.id.ivPhoto);
-            this.productoTv = itemView.findViewById(R.id.nombreProducto);
+            this.imageView = itemView.findViewById(R.id.imagen);
+            this.productoTv = itemView.findViewById(R.id.titulo);
             this.precio = itemView.findViewById(R.id.precio);
+            this.ingredientes = itemView.findViewById(R.id.ingredientes);
         }
 
         public void bindProducto(Producto producto) {
             imageView.setImageBitmap(EncodingImg.decode(producto.getUrl_imagen()));
             productoTv.setText(producto.getNombre());
             precio.setText(producto.getPrecio());
+            ingredientes.setText(producto.getIngredientes());
         }
 
     }
