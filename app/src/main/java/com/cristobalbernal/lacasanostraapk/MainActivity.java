@@ -70,21 +70,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = getIntent();
         usuarioActivo = (Usuario) intent.getSerializableExtra("activo");
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.action_settings){
-            startActivity(new Intent(MainActivity.this, SettingActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -110,17 +95,10 @@ public class MainActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Acceder.class, null)
                     .commit();
-        } else if (id == R.id.register) {
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .replace(R.id.content_frame, Fragment_Registrar.class, null)
-                    .commit();
         } else if (id == R.id.reservas) {
             cargarUsuarioActivo();
             if (usuarioActivo ==null){
-                Toast.makeText(getBaseContext(), "No puedes porque tienes que iniciar sesion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "No puedes porque tienes que iniciar sesion", Toast.LENGTH_LONG).show();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
@@ -136,6 +114,9 @@ public class MainActivity extends AppCompatActivity
                         .commit();
 
             }
+        } else if (id == R.id.setting) {
+            startActivity(new Intent(this,SettingActivity.class));
+
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

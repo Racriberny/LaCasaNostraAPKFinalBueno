@@ -23,16 +23,17 @@
             android:title="@string/acceder"
             />
         <item
-            android:id="@+id/register"
-            android:checked="false"
-            android:icon="@drawable/baseline_person_add_alt_1_24"
-            android:title="@string/Registrar"
-            />
-        <item
             android:id="@+id/reservas"
             android:checked="false"
             android:icon="@drawable/baseline_assignment_24"
             android:title="@string/reservas"
             />
+        <item
+            android:id="@+id/setting"
+            android:checked="false"
+            android:icon="@drawable/setting"
+            android:title="@string/configuracion"
+            />
+
     </group>
 </menu>
