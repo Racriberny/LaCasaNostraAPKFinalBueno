@@ -1,5 +1,6 @@
 package com.cristobalbernal.lacasanostraapk.interfaces;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
+import com.cristobalbernal.lacasanostraapk.modelos.Reservas;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 
@@ -22,8 +23,14 @@ public interface IAPIService {
     @GET("usuario/all")
     Call<List<Usuario>> getUsuario();
 
+    @GET("reserva/all")
+    Call<List<Reservas>> getReservas();
+
     @POST("usuario/add")
     Call<Boolean> addUsuario(@Body Usuario usuario);
+
+    @POST("reserva/add")
+    Call<Boolean> addReserva(@Body Reservas reservas);
 
 
     @POST("usuario/login")

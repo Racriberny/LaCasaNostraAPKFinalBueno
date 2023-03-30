@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cristobalbernal.lacasanostraapk.MainActivity;
 import com.cristobalbernal.lacasanostraapk.R;
 import java.util.Locale;
+import java.util.Objects;
 
 public class SettingActivity extends AppCompatActivity {
     private static final String[] lenguaje = {"Selecione idioma!!", "Castellano", "Ingles"};
@@ -30,7 +31,7 @@ public class SettingActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(SettingActivity.this, android.R.layout.simple_spinner_item, lenguaje);

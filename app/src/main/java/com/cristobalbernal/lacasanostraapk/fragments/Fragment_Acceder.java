@@ -1,5 +1,6 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import retrofit2.Response;
 
 
 public class Fragment_Acceder extends Fragment {
+    private Usuario usuarioActivo;
+
     private TextInputEditText correo;
     private TextInputEditText contrasena;
     private IAPIService iapiService;
