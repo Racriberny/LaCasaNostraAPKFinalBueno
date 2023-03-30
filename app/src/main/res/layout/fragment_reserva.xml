@@ -1,67 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
+    <!-- Título principal -->
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha"
-        android:id="@+id/bfecha"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="156dp" />
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Reserva"
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <!-- Título del primer apartado -->
+    <TextView
+        android:id="@+id/section_title_1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hora"
-        android:id="@+id/bhora"
-        android:layout_below="@+id/bfecha"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="46dp" />
+        android:layout_marginTop="16dp"
+        android:text="Escribe la cantidad de comersales"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/efecha"
-        android:layout_alignTop="@+id/bfecha"
-        android:layout_toRightOf="@+id/bfecha"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ehora"
-        android:layout_alignBottom="@+id/bhora"
-        android:layout_toRightOf="@+id/bhora"
-        android:layout_alignRight="@+id/efecha"
-        android:layout_alignEnd="@+id/efecha" />
-
+    <!-- EditText del primer apartado -->
     <EditText
         android:id="@+id/cantidad"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="185dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name" />
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:hint="Escriba aquí la cantidad de comersales" />
 
+    <!-- Botones del primer apartado -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Fecha"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/bfecha"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Fecha" />
+
+        <EditText
+            android:id="@+id/efecha"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:hint="Indique la fecha" />
+
+    </LinearLayout>
+
+    <!-- Título del segundo apartado -->
+    <TextView
+        android:id="@+id/section_title_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Hora"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- EditText del segundo apartado -->
+
+    <!-- Botones del segundo apartado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/bhora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Hora" />
+
+        <EditText
+            android:id="@+id/ehora"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:hint="Indique la hora" />
+
+
+
+    </LinearLayout>
+
+    <!-- Botón de Guardar -->
     <Button
         android:id="@+id/guardar"
-        android:layout_width="wrap_content"
+        android:text="Guardar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
 
-</RelativeLayout>
+</LinearLayout>
