@@ -18,4 +18,11 @@
     <string name="Registrar">Register</string>
     <string name="nombre">Name</string>
     <string name="apellidos">Surnames</string>
+    <string name="reserva">Book</string>
+    <string name="escribe_la_cantidad_de_comersales">Select the number of diners</string>
+    <string name="inicio_session">You can\'t because you have to log in</string>
+    <string name="fecha">Date</string>
+    <string name="hora">Hour</string>
+    <string name="guardar">Save</string>
+    <string name="lista_reservas">Reservation List</string>
 </resources>

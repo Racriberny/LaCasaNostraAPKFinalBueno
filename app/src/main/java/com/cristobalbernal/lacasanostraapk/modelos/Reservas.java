@@ -6,10 +6,10 @@ public class Reservas implements Serializable {
     private int id;
     private String cantidad;
     private String fecha;
-    private String usuarioId;
+    private int usuarioId;
     private String hora;
 
-    public Reservas(String cantidad, String fecha, String usuarioId, String hora) {
+    public Reservas(String cantidad, String fecha, int usuarioId, String hora) {
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.usuarioId = usuarioId;
@@ -40,11 +40,11 @@ public class Reservas implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getUsuarioId() {
+    public int getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(String usuarioId) {
+    public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
 

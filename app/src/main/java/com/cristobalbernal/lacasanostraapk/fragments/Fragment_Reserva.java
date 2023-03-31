@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -40,10 +43,11 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
     public interface IOnActivoUser{
         Usuario usuario();
     }
-    private List<Reservas> reservas;
-
-    private Button bfecha,bhora,guardar;
-    private EditText efecha,ehora,cantidad;
+    private Button bfecha,bhora,guardar,listaReservas;
+    private EditText efecha,ehora;
+    private Spinner cantidad;
+    private String numeroSeleccionado;
+    private  String seleccion;
     private  int dia,mes,ano,hora,minutos,segundos;
     private IAPIService iapiService;
     public Fragment_Reserva(){
@@ -54,8 +58,8 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         iapiService = RestClient.getInstance();
-        reservas = new ArrayList<>();
         bfecha= view.findViewById(R.id.bfecha);
+        listaReservas= view.findViewById(R.id.listaReservas);
         bhora= view.findViewById(R.id.bhora);
         efecha= view.findViewById(R.id.efecha);
         ehora= view.findViewById(R.id.ehora);
@@ -64,10 +68,21 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         bfecha.setOnClickListener(this);
         bhora.setOnClickListener(this);
         guardar.setOnClickListener(this);
+        listaReservas.setOnClickListener(this);
         Calendar calendar = Calendar.getInstance();
         ano = calendar.get(Calendar.YEAR);
         mes = calendar.get(Calendar.MONTH);
         dia = calendar.get(Calendar.DAY_OF_MONTH);
+
+        List<String> numeros =new ArrayList<>();
+        for (int i = 1; i <=15 ; i++) {
+            numeros.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapador = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,numeros);
+        adapador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cantidad.setAdapter(adapador);
+
+
     }
 
     @Override
@@ -84,8 +99,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     String formattedDate = dateFormat.format(calendar.getTime());
                     efecha.setText(formattedDate);
-                    System.out.println(efecha.getText().toString());
-                    // Usa la fecha formateada según sea necesario
+
 
                 }
             }, ano, mes, dia);
@@ -106,14 +120,37 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
             },hora,minutos,true);
             timePickerDialog.show();
         }
-        String canti= cantidad.getText().toString();
+
+
+        cantidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                numeroSeleccionado = (String) parent.getItemAtPosition(position);
+                seleccion = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         if (v == guardar){
-            registrar(efecha.getText().toString(),ehora.getText().toString(),canti,usuarioActivo);
+            int comensales = (cantidad.getSelectedItemPosition() +1);
+            registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),usuarioActivo);
+        }
+        if (v == listaReservas){
+            FragmentManager manager = getParentFragmentManager();
+            manager.beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
+                    .replace(R.id.content_frame, Fragment_Lista_Reservas.class, null)
+                    .commit();
         }
     }
 
     private void registrar(String fecha, String hora, String canti, Usuario usuario) {
-        Call<Boolean> booleanCall = iapiService.addReserva(new Reservas(canti,fecha,String.valueOf(usuario.getId()),hora));
+        Call<Boolean> booleanCall = iapiService.addReserva(new Reservas(canti,fecha,usuario.getId(),hora));
 
         booleanCall.enqueue(new Callback<Boolean>() {
             @Override

@@ -17,6 +17,7 @@ import com.cristobalbernal.lacasanostraapk.activitys.SettingActivity;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Lista_Reservas;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Registrar;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
@@ -37,7 +38,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, Fragment_Reserva.IOnActivoUser {
+        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, Fragment_Reserva.IOnActivoUser, Fragment_Lista_Reservas.IOnUsuarioListener {
     private IAPIService iapiService;
     private List<Tipo> tipos;
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.reservas) {
             cargarUsuarioActivo();
             if (usuarioActivo ==null){
-                Toast.makeText(getBaseContext(), "No puedes porque tienes que iniciar sesion", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
@@ -159,6 +160,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public Usuario usuario() {
+        if (usuarioActivo == null){
+            cargarUsuarioActivo();
+        }
+        return usuarioActivo;
+    }
+
+    @Override
+    public Usuario getUser() {
         if (usuarioActivo == null){
             cargarUsuarioActivo();
         }

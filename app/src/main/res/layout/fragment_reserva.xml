@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Reserva"
+        android:text="@string/reserva"
         android:textSize="34sp"
         android:textStyle="bold" />
 
@@ -22,26 +22,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Escribe la cantidad de comersales"
+        android:text="@string/escribe_la_cantidad_de_comersales"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <!-- EditText del primer apartado -->
-    <EditText
+    <Spinner
         android:id="@+id/cantidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textStyle="bold"
-        android:hint="Escriba aquí la cantidad de comersales" />
+        android:textAlignment="center"
+        android:textStyle="bold" />
 
     <!-- Botones del primer apartado -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Fecha"
+        android:text="@string/fecha"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -57,15 +57,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="Fecha" />
+            android:text="@string/fecha" />
 
         <EditText
             android:id="@+id/efecha"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
-            android:hint="Indique la fecha" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -75,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Hora"
+        android:text="@string/hora"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -95,15 +94,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="Hora" />
+            android:text="@string/hora" />
 
         <EditText
             android:id="@+id/ehora"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
-            android:hint="Indique la hora" />
+            android:textStyle="bold" />
 
 
 
@@ -112,10 +110,17 @@
     <!-- Botón de Guardar -->
     <Button
         android:id="@+id/guardar"
-        android:text="Guardar"
+        android:text="@string/reserva"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/listaReservas"
+        android:text="@string/lista_reservas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
 

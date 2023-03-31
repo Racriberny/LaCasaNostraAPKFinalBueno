@@ -26,7 +26,7 @@
             android:id="@+id/reservas"
             android:checked="false"
             android:icon="@drawable/baseline_assignment_24"
-            android:title="@string/reservas"
+            android:title="@string/reserva"
             />
         <item
             android:id="@+id/setting"

@@ -19,6 +19,12 @@
     <string name="Registrar">Registrar</string>
     <string name="nombre">Nombre</string>
     <string name="apellidos">Apellidos</string>
-    <string name="reservas">Reservas</string>
+    <string name="reserva">Reserva</string>
+    <string name="escribe_la_cantidad_de_comersales">Seleccione la cantidad de comensales</string>
+    <string name="inicio_session">No puedes porque tienes que iniciar sesion</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
+    <string name="guardar">Guardar</string>
+    <string name="lista_reservas">Lista Reservas</string>
 
 </resources>
