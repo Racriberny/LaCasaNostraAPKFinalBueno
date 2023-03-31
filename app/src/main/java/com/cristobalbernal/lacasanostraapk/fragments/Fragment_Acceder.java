@@ -96,7 +96,7 @@ public class Fragment_Acceder extends Fragment {
             @Override
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.body() !=null) {
-                    Toast.makeText(getContext(), "Has inicion sesion!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.login, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     intent.putExtra("activo",response.body());
                     requireActivity().startActivity(intent);

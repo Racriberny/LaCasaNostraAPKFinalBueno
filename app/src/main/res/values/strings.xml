@@ -26,5 +26,7 @@
     <string name="hora">Hora</string>
     <string name="guardar">Guardar</string>
     <string name="lista_reservas">Lista Reservas</string>
+    <string name="login">Has iniciado sesión!!</string>
+
 
 </resources>
