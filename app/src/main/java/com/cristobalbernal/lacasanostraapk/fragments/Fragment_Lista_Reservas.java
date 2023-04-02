@@ -2,6 +2,7 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -54,7 +55,6 @@ public class Fragment_Lista_Reservas extends Fragment {
                     for (Reservas reservas1:reservas){
                         if (reservas1.getUsuarioId() == usuario.getId()){
                             usuarioReservas.add(reservas1);
-                            System.out.println(usuarioReservas.toString());
                         }
                     }
                     AdaptadorListaUsuarios adaptadorListaUsuarios = new AdaptadorListaUsuarios(usuarioReservas);
@@ -65,8 +65,8 @@ public class Fragment_Lista_Reservas extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Reservas>> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<List<Reservas>> call, @NonNull Throwable t) {
+                Log.d("Error_Reserva", t.getMessage());
             }
         });
 

@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -154,7 +155,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
 
         booleanCall.enqueue(new Callback<Boolean>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+            public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
                 if (Boolean.TRUE.equals(response.body())){
                     Toast.makeText(getContext(), "Has realizado una reserva en La Casa Nostra a nombre de: "
                             +usuario.getNombre() , Toast.LENGTH_SHORT).show();
@@ -169,7 +170,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {
-                Log.d("Error", t.getMessage());
+                Log.d("Error_Reserva", t.getMessage());
             }
         });
     }

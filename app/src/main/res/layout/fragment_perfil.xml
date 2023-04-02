@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Vista de imagen para la foto de perfil -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_menu_people"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Vista de texto para el nombre -->
+    <TextView
+        android:id="@+id/name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:text="Nombre Apellido"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Vista de texto para el correo electrónico -->
+    <TextView
+        android:id="@+id/email_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_textview"
+        android:text="correo@example.com"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginTop="26dp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Vista de texto para la contraseña -->
+    <TextView
+        android:id="@+id/password_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_textview"
+        android:text="Contraseña"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginTop="26dp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Botón para editar la información del perfil -->
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_textview"
+        android:text="Editar perfil"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

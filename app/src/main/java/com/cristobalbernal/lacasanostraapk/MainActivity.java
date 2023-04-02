@@ -1,8 +1,9 @@
 package com.cristobalbernal.lacasanostraapk;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Lista_Reservas;
-import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Registrar;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Mi_Perfil;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
-
     }
 
     private void cargarUsuarioActivo(){
@@ -75,40 +75,50 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        FragmentManager manager = getSupportFragmentManager();
         int id = item.getItemId();
         if(id == R.id.home) {
-            FragmentManager manager = getSupportFragmentManager();
+            manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Home.class, null)
                     .commit();
         } else if(id == R.id.carta) {
-            FragmentManager manager = getSupportFragmentManager();
+            manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Carta.class, null)
                     .commit();
         } else if(id == R.id.acceder) {
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .replace(R.id.content_frame, Fragment_Acceder.class, null)
-                    .commit();
-        } else if (id == R.id.reservas) {
             cargarUsuarioActivo();
-            if (usuarioActivo ==null){
-                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
-                FragmentManager manager = getSupportFragmentManager();
+            if (usuarioActivo == null){
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                FragmentManager manager = getSupportFragmentManager();
+                Toast.makeText(getBaseContext(), "Has iniciado sesion con " + usuarioActivo.getNombre(), Toast.LENGTH_LONG).show();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Mi_Perfil.class, null)
+                        .commit();
+            }
+        } else if (id == R.id.reservas) {
+            cargarUsuarioActivo();
+            if (usuarioActivo ==null){
+                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Acceder.class, null)
+                        .commit();
+            }else {
+                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
