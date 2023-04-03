@@ -124,13 +124,6 @@ public class Fragment_Acceder extends Fragment {
             }
         });
     }
-
-    private void getLogin() throws NoSuchAlgorithmException {
-
-
-
-    }
-
     private void saveCredentials(String username, String password) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("username", username);

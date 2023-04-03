@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,7 +38,6 @@ public class Fragment_Mi_Perfil extends Fragment {
         String nombre = usuario.getNombre();
         String apellidos = usuario.getApellidos();
         String email = usuario.getCorreoElectronico();
-
         name.setText(nombre +" " + apellidos);
         correo.setText(email);
         button.setOnClickListener(new View.OnClickListener() {

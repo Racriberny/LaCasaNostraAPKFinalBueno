@@ -116,7 +116,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    ehora.setText((hourOfDay + 1) +":"+minute + ":" + segundos);
+                    ehora.setText(hourOfDay +":"+minute + ":" + segundos);
                 }
             },hora,minutos,true);
             timePickerDialog.show();
