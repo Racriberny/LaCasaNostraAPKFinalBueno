@@ -20,6 +20,7 @@ import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
+import com.cristobalbernal.lacasanostraapk.notificacion.DialogoSeleccion;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class Fragment_Home extends Fragment {
         //iapiService = RestClient.getInstance();
         Button button = view.findViewById(R.id.btCartaHome);
         Button button2= view.findViewById(R.id.btPaginaWeb);
+        Button button3= view.findViewById(R.id.btCambioIdioma);
         /*
         getProductos();
         getTipos();
@@ -60,6 +62,13 @@ public class Fragment_Home extends Fragment {
             @Override
             public void onClick(View v) {
                 abrirPaginaWeb("https://lacasanostra.000webhostapp.com/localhost_9000/home.html");
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogoSeleccion dialogoSeleccion = new DialogoSeleccion();
+                dialogoSeleccion.show(getParentFragmentManager(), "error_dialog_select");
             }
         });
     }

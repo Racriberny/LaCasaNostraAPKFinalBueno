@@ -1,8 +1,10 @@
 package com.cristobalbernal.lacasanostraapk;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,13 +16,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
-import com.cristobalbernal.lacasanostraapk.activitys.SettingActivity;
+
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Admin;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Lista_Reservas;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Mi_Perfil;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
@@ -30,6 +34,7 @@ import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -128,8 +133,17 @@ public class MainActivity extends AppCompatActivity
 
             }
         } else if (id == R.id.setting) {
-            startActivity(new Intent(this,SettingActivity.class));
-
+            cargarUsuarioActivo();
+            if (usuarioActivo.getAdmin() ==1 ){
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Admin.class, null)
+                        .commit();
+            }else {
+                Toast.makeText(getBaseContext(),"DEBES DE SER ADMIN PARA PODER ENTRAR EN SETTIING!!!",Toast.LENGTH_SHORT).show();
+            }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -145,8 +159,6 @@ public class MainActivity extends AppCompatActivity
                     assert response.body() != null;
                     tipos.addAll(response.body());
                     tipoSeleccionado = tipos.get(id);
-
-
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)
