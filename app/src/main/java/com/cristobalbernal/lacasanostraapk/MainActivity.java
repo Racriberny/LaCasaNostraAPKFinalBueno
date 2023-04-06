@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity
     private void cargarUsuarioActivo(){
         Intent intent = getIntent();
         usuarioActivo = (Usuario) intent.getSerializableExtra("activo");
+        System.out.println("Hola");
     }
 
     @Override
