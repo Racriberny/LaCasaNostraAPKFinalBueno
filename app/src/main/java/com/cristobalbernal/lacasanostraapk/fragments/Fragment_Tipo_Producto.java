@@ -52,10 +52,11 @@ public class Fragment_Tipo_Producto  extends Fragment {
                 if (response.isSuccessful()){
                     assert response.body() !=null;
                     productos.addAll(response.body());
-
                     for (Producto producto: productos){
+
                         if (producto.getTipoIdtipo() == tipo.getId()){
                             tiposProducto.add(producto);
+
                         }
                     }
 

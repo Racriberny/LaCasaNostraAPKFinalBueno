@@ -30,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Fragment_Home extends Fragment {
-    //private IAPIService iapiService;
+    private IAPIService iapiService;
     public Fragment_Home(){
         super(R.layout.fragment_home);
     }
@@ -38,15 +38,13 @@ public class Fragment_Home extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance();
         Button button = view.findViewById(R.id.btCartaHome);
         Button button2= view.findViewById(R.id.btPaginaWeb);
         Button button3= view.findViewById(R.id.btCambioIdioma);
-        /*
-        getProductos();
-        getTipos();
-        getUser();
-         */
+        //getProductos();
+        //getTipos();
+        //getUser();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +89,7 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
+    */
 
     private void getTipos(){
         iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {
@@ -111,7 +110,7 @@ public class Fragment_Home extends Fragment {
         });
     }
 
-
+/*
     private void getUser(){
         iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
             @Override
