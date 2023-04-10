@@ -27,4 +27,5 @@
     <string name="lista_reservas">Reservation List</string>
     <string name="login">You have logged in!!</string>
     <string name="comensales">Diners</string>
+    <string name="promociones">Promotions</string>
 </resources>

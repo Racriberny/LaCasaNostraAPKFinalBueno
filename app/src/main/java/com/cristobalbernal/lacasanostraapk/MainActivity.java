@@ -1,9 +1,5 @@
 package com.cristobalbernal.lacasanostraapk;
 
-import android.annotation.SuppressLint;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,8 +19,8 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Lista_Reservas;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Mi_Perfil;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Promociones;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
-import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
@@ -34,7 +30,6 @@ import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -133,6 +128,13 @@ public class MainActivity extends AppCompatActivity
                         .commit();
 
             }
+        } else if (id == R.id.promociones) {
+            manager = getSupportFragmentManager();
+            manager.beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
+                    .replace(R.id.content_frame, Fragment_Promociones.class, null)
+                    .commit();
         } else if (id == R.id.setting) {
             cargarUsuarioActivo();
             if (usuarioActivo == null){

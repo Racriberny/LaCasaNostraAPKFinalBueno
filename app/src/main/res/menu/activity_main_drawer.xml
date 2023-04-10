@@ -29,6 +29,12 @@
             android:title="@string/reserva"
             />
         <item
+            android:id="@+id/promociones"
+            android:checked="false"
+            android:icon="@drawable/baseline_assignment_24"
+            android:title="@string/promociones"
+            />
+        <item
             android:id="@+id/setting"
             android:checked="false"
             android:icon="@drawable/setting"
