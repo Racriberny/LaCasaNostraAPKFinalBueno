@@ -135,15 +135,20 @@ public class MainActivity extends AppCompatActivity
             }
         } else if (id == R.id.setting) {
             cargarUsuarioActivo();
-            if (usuarioActivo.getAdmin() ==1 ){
+            if (usuarioActivo == null){
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Acceder.class, null)
+                        .commit();
+            }else {
                 manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Admin.class, null)
                         .commit();
-            }else {
-                Toast.makeText(getBaseContext(),"DEBES DE SER ADMIN PARA PODER ENTRAR EN SETTIING!!!",Toast.LENGTH_SHORT).show();
             }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
