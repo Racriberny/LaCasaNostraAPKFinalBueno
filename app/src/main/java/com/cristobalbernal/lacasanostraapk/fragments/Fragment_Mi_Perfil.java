@@ -74,6 +74,7 @@ public class Fragment_Mi_Perfil extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedPreferences.edit().remove("nombreDeUsuario").apply();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)

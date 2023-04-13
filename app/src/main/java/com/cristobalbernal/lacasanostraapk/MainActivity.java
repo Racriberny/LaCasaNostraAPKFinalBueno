@@ -72,11 +72,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
-        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        userNombre = sharedPreferences.getString("nombreDeUsuario","");
-        if (!userNombre.equals("")) {
-            Toast.makeText(getApplicationContext(), "Bienvenido, " + userNombre + "!", Toast.LENGTH_SHORT).show();
-        }
+
+
     }
 
     private void cargarUsuarioActivo(){
@@ -85,7 +82,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        userNombre = sharedPreferences.getString("nombreDeUsuario","");
         FragmentManager manager = getSupportFragmentManager();
         int id = item.getItemId();
         if(id == R.id.home) {
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, Fragment_Carta.class, null)
                     .commit();
         } else if(id == R.id.acceder) {
-            if (userNombre == null){
+            if (userNombre.equals("")){
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity
                         .commit();
             }
         } else if (id == R.id.reservas) {
-            if (userNombre ==null){
+            if (userNombre.equals("")){
                 Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
                 manager = getSupportFragmentManager();
                 manager.beginTransaction()
