@@ -37,7 +37,8 @@ public class Fragment_Acceder extends Fragment {
     private TextInputEditText contrasena;
     private IAPIService iapiService;
 
-    private SharedPreferences sharedPref;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public Fragment_Acceder(){
         super(R.layout.fragment_acceder);
@@ -51,14 +52,15 @@ public class Fragment_Acceder extends Fragment {
         correo = view.findViewById(R.id.etEmailLogin);
         contrasena = view.findViewById(R.id.etContrasenyaLogin);
         Button login = view.findViewById(R.id.btnLogin);
-        sharedPref = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String correoElectronico = Objects.requireNonNull(correo.getText()).toString();
-                String password = null;
+                String password;
                 try {
                     password = Objects.requireNonNull(HashGenerator.getSHAString(String.valueOf(contrasena.getText())));
                 } catch (NoSuchAlgorithmException e) {
@@ -77,14 +79,13 @@ public class Fragment_Acceder extends Fragment {
 
                 Usuario usuarioIniciado = new Usuario(correoElectronico,password);
                 Call<Usuario> booleanCall = iapiService.logUsuario(usuarioIniciado);
-
-                String finalPassword = password;
                 booleanCall.enqueue(new Callback<Usuario>() {
                     @Override
                     public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                         if (response.body() !=null) {
                             Toast.makeText(getContext(), R.string.login, Toast.LENGTH_SHORT).show();
-                            saveCredentials(correoElectronico, finalPassword);
+                            editor.putString("nombreDeUsuario", usuarioIniciado.getCorreoElectronico());
+                            editor.apply();
                             Intent intent = new Intent(getActivity(), MainActivity.class);
                             intent.putExtra("activo",response.body());
                             requireActivity().startActivity(intent);
@@ -101,17 +102,6 @@ public class Fragment_Acceder extends Fragment {
             }
         });
 
-
-        String savedUsername = sharedPref.getString("username", "");
-        String savedPassword = sharedPref.getString("password", "");
-
-        if (!savedUsername.equals("") && !savedPassword.equals("")) {
-            correo.setText(savedUsername);
-            Toast.makeText(getContext(),"Introduce la contraeña!!!",Toast.LENGTH_SHORT).show();
-        }
-
-
-
         view.findViewById(R.id.tvRegistrar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,11 +114,4 @@ public class Fragment_Acceder extends Fragment {
             }
         });
     }
-    private void saveCredentials(String username, String password) {
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.apply();
-    }
-
 }
