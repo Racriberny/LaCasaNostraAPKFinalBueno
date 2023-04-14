@@ -1,6 +1,7 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,11 +28,12 @@ import retrofit2.Response;
 
 public class Fragment_Lista_Reservas extends Fragment {
 
-    public interface IOnUsuarioListener{
-        Usuario getUser();
-    }
 
-    private Usuario usuario;
+    private String user;
+    private SharedPreferences sharedPreferences;
+
+    private List<Usuario> usuarios;
+
 
     public Fragment_Lista_Reservas(){
         super(R.layout.lista_lista);
@@ -40,44 +42,60 @@ public class Fragment_Lista_Reservas extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        user = sharedPreferences.getString("nombreDeUsuario","");
+        usuarios = new ArrayList<>();
         RecyclerView recyclerView = view.findViewById(R.id.rvListaReservas);
         IAPIService iapiService = RestClient.getInstance();
         List<Reservas> reservas = new ArrayList<>();
         List<Reservas> usuarioReservas = new ArrayList<>();
 
-        iapiService.getReservas().enqueue(new Callback<List<Reservas>>() {
-            @Override
-            public void onResponse(Call<List<Reservas>> call, Response<List<Reservas>> response) {
-                if (response.isSuccessful()){
-                    assert response.body() !=null;
-                    reservas.addAll(response.body());
 
-                    for (Reservas reservas1:reservas){
-                        if (reservas1.getUsuarioId() == usuario.getId()){
-                            usuarioReservas.add(reservas1);
-                        }
+        iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                assert response.body() != null;
+                usuarios.addAll(response.body());
+                for (int i = 0; i <usuarios.size() ; i++) {
+                    if (user.equals(usuarios.get(i).getCorreoElectronico())){
+                        int finalI = i;
+                        iapiService.getReservas().enqueue(new Callback<List<Reservas>>() {
+                            @Override
+                            public void onResponse(Call<List<Reservas>> call, Response<List<Reservas>> response) {
+                                if (response.isSuccessful()){
+                                    assert response.body() !=null;
+                                    reservas.addAll(response.body());
+
+                                    for (Reservas reservas1:reservas){
+                                        if (reservas1.getUsuarioId() == usuarios.get(finalI).getId()){
+                                            usuarioReservas.add(reservas1);
+                                        }
+                                    }
+                                    AdaptadorListaUsuarios adaptadorListaUsuarios = new AdaptadorListaUsuarios(usuarioReservas);
+                                    recyclerView.setHasFixedSize(true);
+                                    recyclerView.setAdapter(adaptadorListaUsuarios);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(@NonNull Call<List<Reservas>> call, @NonNull Throwable t) {
+                                Log.d("Error_Reserva", t.getMessage());
+                            }
+                        });
                     }
-                    AdaptadorListaUsuarios adaptadorListaUsuarios = new AdaptadorListaUsuarios(usuarioReservas);
-                    recyclerView.setHasFixedSize(true);
-                    recyclerView.setAdapter(adaptadorListaUsuarios);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Reservas>> call, @NonNull Throwable t) {
-                Log.d("Error_Reserva", t.getMessage());
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+
             }
         });
 
 
 
-    }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        IOnUsuarioListener iOnUsuarioListener = (IOnUsuarioListener) context;
-        usuario = iOnUsuarioListener.getUser();
+
     }
 }

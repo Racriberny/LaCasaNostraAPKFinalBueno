@@ -34,30 +34,20 @@
         android:text="correo@example.com"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="35dp"
         android:layout_centerHorizontal="true" />
 
     <!-- Vista de texto para la contraseña -->
-    <TextView
-        android:id="@+id/password_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/email_textview"
-        android:text="Contraseña"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:layout_marginTop="26dp"
-        android:layout_centerHorizontal="true" />
 
     <!-- Botón para editar la información del perfil -->
     <Button
         android:id="@+id/cerrrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password_textview"
+        android:layout_below="@id/email_textview"
         android:text="Cerrar Sesion"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="35dp"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

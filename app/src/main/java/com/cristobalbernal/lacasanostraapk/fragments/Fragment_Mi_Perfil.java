@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,7 +48,6 @@ public class Fragment_Mi_Perfil extends Fragment {
         Button button = view.findViewById(R.id.cerrrarSesion);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");
-        System.out.println(user);
         iapiService = RestClient.getInstance();
         usuarios = new ArrayList<>();
 
@@ -84,5 +84,7 @@ public class Fragment_Mi_Perfil extends Fragment {
 
             }
         });
+
+
     }
 }

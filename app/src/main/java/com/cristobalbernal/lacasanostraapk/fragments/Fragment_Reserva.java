@@ -157,8 +157,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
                 if (Boolean.TRUE.equals(response.body())){
-                    Toast.makeText(getContext(), "Has realizado una reserva en La Casa Nostra a nombre de: "
-                            +usuario.getNombre() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),R.string.reservaFinal + usuario.getNombre() , Toast.LENGTH_SHORT).show();
                     FragmentManager manager = getParentFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)

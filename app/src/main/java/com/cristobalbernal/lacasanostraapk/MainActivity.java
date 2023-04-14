@@ -41,8 +41,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, Fragment_Reserva.IOnActivoUser,
-        Fragment_Lista_Reservas.IOnUsuarioListener {
+        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, Fragment_Reserva.IOnActivoUser{
     private IAPIService iapiService;
     private List<Tipo> tipos;
 
@@ -50,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     private Usuario usuario;
     private String userNombre;
     private SharedPreferences sharedPreferences;
+    private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         iapiService = RestClient.getInstance();
         tipos = new ArrayList<>();
+        usuarios = new ArrayList<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,8 +143,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, Fragment_Promociones.class, null)
                     .commit();
         } else if (id == R.id.setting) {
-            cargarUsuarioActivo();
-            if (usuario == null){
+            if (userNombre.equals("")){
                 manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
@@ -151,12 +151,40 @@ public class MainActivity extends AppCompatActivity
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                manager = getSupportFragmentManager();
-                manager.beginTransaction()
-                        .setReorderingAllowed(true)
-                        .addToBackStack(null)
-                        .replace(R.id.content_frame, Fragment_Admin.class, null)
-                        .commit();
+                iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
+                    @Override
+                    public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                        assert response.body() != null;
+                        usuarios.addAll(response.body());
+                        for (int i = 0; i <usuarios.size() ; i++) {
+                            if (userNombre.equals(usuarios.get(i).getCorreoElectronico())){
+                                if (usuarios.get(i).getAdmin() == 1){
+                                    FragmentManager manager = getSupportFragmentManager();
+                                    manager = getSupportFragmentManager();
+                                    manager.beginTransaction()
+                                            .setReorderingAllowed(true)
+                                            .addToBackStack(null)
+                                            .replace(R.id.content_frame, Fragment_Admin.class, null)
+                                            .commit();
+                                }else {
+                                    Toast.makeText(getBaseContext(),"Debes de ser admin para poder acceder a ajustes!!",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Usuario>> call, Throwable t) {
+
+                    }
+                });
+
+
+
+
+
+
+
             }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -203,11 +231,4 @@ public class MainActivity extends AppCompatActivity
         return usuario;
     }
 
-    @Override
-    public Usuario getUser() {
-        if (usuario == null){
-            cargarUsuarioActivo();
-        }
-        return usuario;
-    }
 }
