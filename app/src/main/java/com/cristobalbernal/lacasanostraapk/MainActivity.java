@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity
                         for (int i = 0; i <usuarios.size() ; i++) {
                             if (userNombre.equals(usuarios.get(i).getCorreoElectronico())){
                                 if (usuarios.get(i).getAdmin() == 1){
-                                    FragmentManager manager = getSupportFragmentManager();
+                                    FragmentManager manager;
                                     manager = getSupportFragmentManager();
                                     manager.beginTransaction()
                                             .setReorderingAllowed(true)

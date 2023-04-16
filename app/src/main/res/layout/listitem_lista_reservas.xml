@@ -17,17 +17,12 @@
             android:padding="16dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/comensales"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/tViCantidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Subtítulo 1" />
+                android:text="Subtítulo 1"
+                android:textAlignment="center"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -36,19 +31,13 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fecha"
-                android:textSize="17sp"
-                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tViFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Subtítulo 2" />
+                android:text="Subtítulo 2"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,17 +48,11 @@
             android:padding="16dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hora"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/tViHora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Subtítulo 3" />
+                android:text="Subtítulo 3"
+                android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
