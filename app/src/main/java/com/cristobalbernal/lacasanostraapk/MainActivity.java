@@ -135,13 +135,24 @@ public class MainActivity extends AppCompatActivity
                         .commit();
 
             }
+
         } else if (id == R.id.promociones) {
-            manager = getSupportFragmentManager();
-            manager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null)
-                    .replace(R.id.content_frame, Fragment_Promociones.class, null)
-                    .commit();
+            if (userNombre.equals("")){
+                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Acceder.class, null)
+                        .commit();
+            }else {
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Promociones.class, null)
+                        .commit();
+            }
         } else if (id == R.id.setting) {
             if (userNombre.equals("")){
                 manager = getSupportFragmentManager();

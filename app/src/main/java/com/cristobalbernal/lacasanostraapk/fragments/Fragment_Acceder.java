@@ -59,7 +59,7 @@ public class Fragment_Acceder extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String correoElectronico = Objects.requireNonNull(correo.getText()).toString();
+                String correoElectronico = Objects.requireNonNull(correo.getText()).toString().trim();
                 String password;
                 try {
                     password = Objects.requireNonNull(HashGenerator.getSHAString(String.valueOf(contrasena.getText())));
