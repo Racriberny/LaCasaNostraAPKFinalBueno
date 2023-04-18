@@ -30,6 +30,7 @@
     <string name="login">Has iniciado sesión!!</string>
     <string name="comensales">Comensales</string>
     <string name="promociones">Promociones</string>
+    <string name="seleccionar">Selección</string>
 
 
 </resources>

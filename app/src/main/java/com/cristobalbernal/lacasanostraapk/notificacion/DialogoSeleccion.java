@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.cristobalbernal.lacasanostraapk.MainActivity;
+import com.cristobalbernal.lacasanostraapk.R;
 
 import java.util.Locale;
 
@@ -32,7 +33,7 @@ public class DialogoSeleccion extends DialogFragment {
         final String[] items = {"Español", "Inglés"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Selección")
+        builder.setTitle(R.string.seleccionar)
                 .setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

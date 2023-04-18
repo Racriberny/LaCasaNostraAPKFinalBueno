@@ -82,8 +82,6 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         ArrayAdapter<String> adapador = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,numeros);
         adapador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cantidad.setAdapter(adapador);
-
-
     }
 
     @Override
