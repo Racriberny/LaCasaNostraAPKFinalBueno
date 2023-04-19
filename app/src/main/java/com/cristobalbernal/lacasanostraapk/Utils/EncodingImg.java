@@ -1,9 +1,16 @@
 package com.cristobalbernal.lacasanostraapk.Utils;
 
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Base64;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class EncodingImg {
     public static Bitmap decode(String sImage){
@@ -11,8 +18,8 @@ public class EncodingImg {
         return BitmapFactory.decodeByteArray(bytes,0,bytes.length);
     }
     //Pasar la imagen de Uri a Base64
-    private String getBase64FromUri(Uri uri) throws IOException {
-        @SuppressLint("Recycle") InputStream inputStream = getContentResolver().openInputStream(uri);
+    public static String getBase64FromUri(Context context, Uri uri) throws IOException {
+        @SuppressLint("Recycle") InputStream inputStream = context.getContentResolver().openInputStream(uri);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         byte[] buffer = new byte[100000];
