@@ -83,8 +83,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         for (int i = 1; i <=15 ; i++) {
             numeros.add(String.valueOf(i));
         }
-        ArrayAdapter<String> adapador = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,numeros);
-        adapador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapador = new ArrayAdapter<>(getContext(), R.layout.spinner_item_geekipedia,numeros);
         cantidad.setAdapter(adapador);
 
         iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
