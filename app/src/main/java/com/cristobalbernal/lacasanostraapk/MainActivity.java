@@ -41,7 +41,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener, Fragment_Reserva.IOnActivoUser{
+        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener{
     private IAPIService iapiService;
     private List<Tipo> tipos;
 
@@ -231,15 +231,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public Tipo getTipoSelecionado() {
         return tipoSeleccionado;
-    }
-
-
-    @Override
-    public Usuario usuario() {
-        if (usuario == null){
-            cargarUsuarioActivo();
-        }
-        return usuario;
     }
 
 }

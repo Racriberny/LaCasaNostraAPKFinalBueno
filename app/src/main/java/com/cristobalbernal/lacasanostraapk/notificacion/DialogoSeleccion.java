@@ -46,6 +46,7 @@ public class DialogoSeleccion extends DialogFragment {
                             startActivity(new Intent(getActivity(), MainActivity.class));
                         } else if (items[i].equalsIgnoreCase("Español")) {
                             Toast.makeText(getContext(),"Has seleccionado Castellano!!",Toast.LENGTH_LONG).show();
+                            System.out.println("Marica!!");
                             setLocal(DialogoSeleccion.this,"es");
                             requireActivity().finish();
                             startActivity(new Intent(getActivity(), MainActivity.class));

@@ -40,10 +40,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Fragment_Reserva extends Fragment implements View.OnClickListener {
-    private Usuario usuarioActivo;
-    public interface IOnActivoUser{
-        Usuario usuario();
-    }
     private Button bfecha,bhora,guardar,listaReservas;
     private EditText efecha,ehora;
     private Spinner cantidad;
@@ -51,6 +47,11 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
     private  String seleccion;
     private  int dia,mes,ano,hora,minutos,segundos;
     private IAPIService iapiService;
+
+    private List<Usuario> usuarios;
+    private String user;
+    private SharedPreferences sharedPreferences;
+    private int id;
     public Fragment_Reserva(){
         super(R.layout.fragment_reserva);
     }
@@ -59,6 +60,9 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         iapiService = RestClient.getInstance();
+        usuarios = new ArrayList<>();
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        user = sharedPreferences.getString("nombreDeUsuario","");
         bfecha= view.findViewById(R.id.bfecha);
         listaReservas= view.findViewById(R.id.listaReservas);
         bhora= view.findViewById(R.id.bhora);
@@ -82,6 +86,22 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         ArrayAdapter<String> adapador = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,numeros);
         adapador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cantidad.setAdapter(adapador);
+
+        iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                assert response.body() != null;
+                usuarios.addAll(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
 
     @Override
@@ -134,9 +154,15 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
             }
         });
 
+        for (int i = 0; i <usuarios.size() ; i++) {
+            if (usuarios.get(i).getCorreoElectronico().equals(user)){
+                id = usuarios.get(i).getId();
+            }
+        }
+
         if (v == guardar){
             int comensales = (cantidad.getSelectedItemPosition() +1);
-            registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),usuarioActivo);
+            registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),id);
         }
         if (v == listaReservas){
             FragmentManager manager = getParentFragmentManager();
@@ -148,20 +174,22 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void registrar(String fecha, String hora, String canti, Usuario usuario) {
-        Call<Boolean> booleanCall = iapiService.addReserva(new Reservas(canti,fecha,usuario.getId(),hora));
+    private void registrar(String fecha, String hora, String canti, int id) {
+        Call<Boolean> booleanCall = iapiService.addReserva(new Reservas(canti,fecha,id,hora));
 
         booleanCall.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
                 if (Boolean.TRUE.equals(response.body())){
-                    Toast.makeText(getContext(),R.string.reservaFinal + usuario.getNombre() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),R.string.reservaFinal , Toast.LENGTH_SHORT).show();
                     FragmentManager manager = getParentFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)
                             .addToBackStack(null)
                             .replace(R.id.content_frame, Fragment_Home.class, null)
                             .commit();
+                }else if (Boolean.FALSE.equals(response.body())){
+                    System.out.println("Error");
                 }
             }
 
@@ -172,13 +200,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         });
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        IOnActivoUser iOnActivoUser = (IOnActivoUser) context;
-        iOnActivoUser.usuario();
-        usuarioActivo = iOnActivoUser.usuario();
-    }
+
 
     /*
     Mostrar reservas;

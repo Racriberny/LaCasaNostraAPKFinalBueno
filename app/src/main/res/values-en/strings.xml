@@ -28,6 +28,6 @@
     <string name="login">You have logged in!!</string>
     <string name="comensales">Diners</string>
     <string name="promociones">Promotions</string>
-    <string name="reservaFinal">You have made a reservation at La Casa Nostra under the name of:</string>
+    <string name="reservaFinal">You have made a reservation at La Casa Nostra</string>
     <string name="seleccionar">Selection</string>
 </resources>
