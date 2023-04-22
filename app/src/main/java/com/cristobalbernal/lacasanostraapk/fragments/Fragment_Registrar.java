@@ -93,6 +93,7 @@ public class Fragment_Registrar extends Fragment {
                             .replace(R.id.content_frame, Fragment_Home.class, null)
                             .commit();
                 }
+
             }
 
             @Override

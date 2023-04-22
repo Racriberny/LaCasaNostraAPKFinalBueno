@@ -91,6 +91,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 assert response.body() != null;
                 usuarios.addAll(response.body());
+
             }
 
             @Override
@@ -190,6 +191,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
                 }else if (Boolean.FALSE.equals(response.body())){
                     System.out.println("Error");
                 }
+
             }
 
             @Override

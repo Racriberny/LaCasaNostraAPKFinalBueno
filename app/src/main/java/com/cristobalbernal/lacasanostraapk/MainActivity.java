@@ -23,6 +23,7 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Lista_Reservas;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Mi_Perfil;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Promociones;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
@@ -46,10 +47,7 @@ public class MainActivity extends AppCompatActivity
     private List<Tipo> tipos;
 
     private Tipo tipoSeleccionado;
-    private Usuario usuario;
-    private String userNombre;
     private SharedPreferences sharedPreferences;
-    private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         iapiService = RestClient.getInstance();
         tipos = new ArrayList<>();
-        usuarios = new ArrayList<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,15 +74,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void cargarUsuarioActivo(){
-        Intent intent = getIntent();
-        usuario = (Usuario) intent.getSerializableExtra("activo");
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        userNombre = sharedPreferences.getString("nombreDeUsuario","");
+        String userNombre = sharedPreferences.getString("nombreDeUsuario", "");
         FragmentManager manager = getSupportFragmentManager();
         int id = item.getItemId();
         if(id == R.id.home) {
@@ -110,12 +102,7 @@ public class MainActivity extends AppCompatActivity
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                Toast.makeText(getBaseContext(), "Has iniciado sesion con " + userNombre, Toast.LENGTH_LONG).show();
-                manager.beginTransaction()
-                        .setReorderingAllowed(true)
-                        .addToBackStack(null)
-                        .replace(R.id.content_frame, Fragment_Mi_Perfil.class, null)
-                        .commit();
+                Toast.makeText(getBaseContext(),"Ya estas con una sesion activa",Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.reservas) {
             if (userNombre.equals("")){
@@ -162,40 +149,12 @@ public class MainActivity extends AppCompatActivity
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
-                    @Override
-                    public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                        assert response.body() != null;
-                        usuarios.addAll(response.body());
-                        for (int i = 0; i <usuarios.size() ; i++) {
-                            if (userNombre.equals(usuarios.get(i).getCorreoElectronico())){
-                                if (usuarios.get(i).getAdmin() == 1){
-                                    FragmentManager manager;
-                                    manager = getSupportFragmentManager();
-                                    manager.beginTransaction()
-                                            .setReorderingAllowed(true)
-                                            .addToBackStack(null)
-                                            .replace(R.id.content_frame, Fragment_Admin.class, null)
-                                            .commit();
-                                }else {
-                                    Toast.makeText(getBaseContext(),"Debes de ser admin para poder acceder a ajustes!!",Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Usuario>> call, Throwable t) {
-
-                    }
-                });
-
-
-
-
-
-
-
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, Fragment_Setting.class,null)
+                        .commit();
             }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -219,6 +178,7 @@ public class MainActivity extends AppCompatActivity
                             .replace(R.id.content_frame, Fragment_Tipo_Producto.class, null)
                             .commit();
                 }
+
             }
 
             @Override

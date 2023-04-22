@@ -30,4 +30,8 @@
     <string name="promociones">Promotions</string>
     <string name="reservaFinal">You have made a reservation at La Casa Nostra</string>
     <string name="seleccionar">Selection</string>
+    <string name="admin">Admin</string>
+    <string name="perfil">Acount</string>
+    <string name="configuraci_n">Setting</string>
+    <string name="cerrar_sesion">Sign off</string>
 </resources>

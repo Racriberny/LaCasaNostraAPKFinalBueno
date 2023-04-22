@@ -65,6 +65,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
                     rvLista.setAdapter(adaptadorTipoProducto);
                     rvLista.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                 }
+
             }
 
             @Override
