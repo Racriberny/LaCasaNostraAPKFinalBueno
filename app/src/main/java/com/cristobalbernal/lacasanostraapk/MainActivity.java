@@ -96,13 +96,14 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if(id == R.id.acceder) {
             if (userNombre.equals("")){
+                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                Toast.makeText(getBaseContext(),"Ya estas con una sesion activa",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(),R.string.avisoInicio,Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.reservas) {
             if (userNombre.equals("")){
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity
             }
         } else if (id == R.id.setting) {
             if (userNombre.equals("")){
+                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
                 manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)

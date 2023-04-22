@@ -40,14 +40,5 @@
     <!-- Vista de texto para la contraseña -->
 
     <!-- Botón para editar la información del perfil -->
-    <Button
-        android:id="@+id/cerrrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/email_textview"
-        android:text="Cerrar Sesion"
-        android:textSize="16sp"
-        android:layout_marginTop="35dp"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

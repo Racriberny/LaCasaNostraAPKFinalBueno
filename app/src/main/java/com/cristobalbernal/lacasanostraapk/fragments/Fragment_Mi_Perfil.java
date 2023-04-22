@@ -45,7 +45,6 @@ public class Fragment_Mi_Perfil extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView name = view.findViewById(R.id.name_textview);
         TextView correo = view.findViewById(R.id.email_textview);
-        Button button = view.findViewById(R.id.cerrrarSesion);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");
         iapiService = RestClient.getInstance();
@@ -71,20 +70,5 @@ public class Fragment_Mi_Perfil extends Fragment {
 
             }
         });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sharedPreferences.edit().remove("nombreDeUsuario").apply();
-                FragmentManager manager = getParentFragmentManager();
-                manager.beginTransaction()
-                        .setReorderingAllowed(true)
-                        .addToBackStack(null)
-                        .replace(R.id.content_frame, Fragment_Acceder.class, null)
-                        .commit();
-
-            }
-        });
-
-
     }
 }

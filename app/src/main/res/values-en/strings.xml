@@ -20,7 +20,7 @@
     <string name="apellidos">Surnames</string>
     <string name="reserva">Book</string>
     <string name="escribe_la_cantidad_de_comersales">Select the number of diners</string>
-    <string name="inicio_session">You can\'t because you have to log in</string>
+    <string name="inicio_session">You must log in</string>
     <string name="fecha">Date</string>
     <string name="hora">Hour</string>
     <string name="guardar">Save</string>
@@ -34,4 +34,5 @@
     <string name="perfil">Acount</string>
     <string name="configuraci_n">Setting</string>
     <string name="cerrar_sesion">Sign off</string>
+    <string name="avisoInicio">" You are already with an active session."</string>
 </resources>
