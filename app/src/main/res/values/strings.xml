@@ -41,6 +41,7 @@
     <string name="editar">Editar</string>
     <string name="cambiado">Usuario actualizado</string>
     <string name="contraseñaNo">La contraseña actual no coincide con la anterior.</string>
+    <string name="noadmin">Debes de ser admin</string>
 
 
 </resources>

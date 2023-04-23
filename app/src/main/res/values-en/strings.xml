@@ -40,4 +40,5 @@
     <string name="editar">Edit</string>
     <string name="cambiado">Updated user</string>
     <string name="contraseñaNo">The current password does not match the previous one.</string>
+    <string name="noadmin">You must be admin</string>
 </resources>
