@@ -1,44 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Vista de imagen para la foto de perfil -->
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:src="@drawable/fotopredeterminada"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true" />
-
-    <!-- Vista de texto para el nombre -->
-    <TextView
-        android:id="@+id/name_textview"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_image"
-        android:text="Nombre Apellido"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="60dp"
-        android:layout_centerHorizontal="true" />
+        android:padding="10dp"
+        android:orientation="vertical">
 
-    <!-- Vista de texto para el correo electrónico -->
-    <TextView
-        android:id="@+id/email_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name_textview"
-        android:text="correo@example.com"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:layout_marginTop="35dp"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:text="@string/perfil"
+            android:layout_gravity="center"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <!-- Vista de texto para la contraseña -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/fotopredeterminada"/>
 
-    <!-- Botón para editar la información del perfil -->
+        <EditText
+            android:id="@+id/name_textview"
+            android:text="@string/nombre"
+            android:textSize="18sp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/email_textview"
+            android:text="@string/correo_electronico"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/password"
+            android:text="@string/contrase_a"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/editar"
+            android:background="@color/botones"
+            android:text="Editar"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/guardar"
+            android:background="@color/botones"
+            android:text="@string/guardar"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

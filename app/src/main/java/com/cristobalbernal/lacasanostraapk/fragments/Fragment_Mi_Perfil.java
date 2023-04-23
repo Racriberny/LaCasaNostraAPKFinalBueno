@@ -3,9 +3,11 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,9 @@ public class Fragment_Mi_Perfil extends Fragment {
     private IAPIService iapiService;
     private List<Usuario> usuarios;
     private String user;
+    private EditText name;
+    private EditText correo;
+    private EditText password;
     private SharedPreferences sharedPreferences;
 
 
@@ -38,13 +43,18 @@ public class Fragment_Mi_Perfil extends Fragment {
         super(R.layout.fragment_perfil);
     }
 
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView name = view.findViewById(R.id.name_textview);
-        TextView correo = view.findViewById(R.id.email_textview);
+        name = view.findViewById(R.id.name_textview);
+        name.setEnabled(false);
+        correo = view.findViewById(R.id.email_textview);
+        correo.setEnabled(false);
+        password = view.findViewById(R.id.password);
+        password.setEnabled(false);
+        Button edit = view.findViewById(R.id.editar);
+        Button guardar = view.findViewById(R.id.guardar);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");
         iapiService = RestClient.getInstance();
@@ -67,6 +77,21 @@ public class Fragment_Mi_Perfil extends Fragment {
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t) {
+
+            }
+        });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name.setEnabled(true);
+                correo.setEnabled(true);
+                password.setEnabled(true);
+            }
+        });
+
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });
