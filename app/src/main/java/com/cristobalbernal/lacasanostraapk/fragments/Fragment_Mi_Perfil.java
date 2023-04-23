@@ -3,13 +3,11 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,10 +16,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.cristobalbernal.lacasanostraapk.R;
+import com.cristobalbernal.lacasanostraapk.Utils.HashGenerator;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +35,12 @@ public class Fragment_Mi_Perfil extends Fragment {
     private String user;
     private EditText name;
     private EditText correo;
-    private EditText password;
+    private EditText passwordActual;
+    private EditText passwordNew;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private String contraseña;
+    private int id;
 
 
     public Fragment_Mi_Perfil() {
@@ -51,11 +55,14 @@ public class Fragment_Mi_Perfil extends Fragment {
         name.setEnabled(false);
         correo = view.findViewById(R.id.email_textview);
         correo.setEnabled(false);
-        password = view.findViewById(R.id.password);
-        password.setEnabled(false);
+        passwordActual = view.findViewById(R.id.passwordActual);
+        passwordActual.setEnabled(false);
+        passwordNew = view.findViewById(R.id.passwordNew);
+        passwordNew.setEnabled(false);
         Button edit = view.findViewById(R.id.editar);
         Button guardar = view.findViewById(R.id.guardar);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         user = sharedPreferences.getString("nombreDeUsuario","");
         iapiService = RestClient.getInstance();
         usuarios = new ArrayList<>();
@@ -69,8 +76,10 @@ public class Fragment_Mi_Perfil extends Fragment {
                     if (user.equals(usuarios.get(i).getCorreoElectronico())){
                         String nombre = usuarios.get(i).getNombre();
                         String apellidos = usuarios.get(i).getApellidos();
+                        contraseña = usuarios.get(i).getContrasena();
                         name.setText(nombre +" " + apellidos);
                         correo.setText(user);
+                        id = usuarios.get(i).getId();
                     }
                 }
             }
@@ -85,14 +94,87 @@ public class Fragment_Mi_Perfil extends Fragment {
             public void onClick(View v) {
                 name.setEnabled(true);
                 correo.setEnabled(true);
-                password.setEnabled(true);
+                passwordActual.setEnabled(true);
+                passwordNew.setEnabled(true);
             }
         });
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String nombre = name.getText().toString();
+                String email = correo.getText().toString();
+                String actual = null;
+                try {
+                    actual = HashGenerator.getSHAString(passwordActual.getText().toString());
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
+                String nueva = null;
+                try {
+                    nueva = HashGenerator.getSHAString(passwordNew.getText().toString());
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
 
+
+                if (nombre.isEmpty()){
+                    name.setError("Es necesario escribir en este campo.");
+                    name.requestFocus();
+                    return;
+                }
+                if (email.isEmpty()){
+                    correo.setError("Es necesario escribir en este campo.");
+                    correo.requestFocus();
+                    return;
+                }
+                if (actual.isEmpty()){
+                    passwordActual.setError("Es necesario escribir en este campo.");
+                    passwordActual.requestFocus();
+                    return;
+                }
+                if (nueva.isEmpty()){
+                    passwordNew.setError("Es necesario escribir en este campo.");
+                    passwordNew.requestFocus();
+                    return;
+                }
+
+                String[] partes = nombre.split(" ");
+
+                if (partes.length == 1){
+                    Toast.makeText(getContext(),"Debe de escribir el apellido detras del nombre",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String name = partes[0];
+                String apellido = partes[1];
+
+
+                if (actual.equals(contraseña)){
+                    Call<Usuario> booleanCall = iapiService.modificarUser(id,new Usuario(name,apellido,email,nueva));
+
+                    booleanCall.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            Log.i("Bien",response.toString());
+                            editor.putString("nombreDeUsuario", email);
+                            editor.apply();
+                            Toast.makeText(getContext(),R.string.cambiado,Toast.LENGTH_SHORT).show();
+                            FragmentManager manager = getParentFragmentManager();
+                            manager.beginTransaction()
+                                    .setReorderingAllowed(true)
+                                    .addToBackStack(null)
+                                    .replace(R.id.content_frame, Fragment_Home.class, null)
+                                    .commit();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            Log.i("Mal",t.toString());
+                        }
+                    });
+                }else {
+                    Toast.makeText(getContext(),R.string.contraseñaNo,Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

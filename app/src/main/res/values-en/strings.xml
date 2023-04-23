@@ -17,7 +17,7 @@
     <string name="correo_electronico">Email</string>
     <string name="Registrar">Register</string>
     <string name="nombre">Name</string>
-    <string name="apellidos">Surnames</string>
+    <string name="apellidos">Surname</string>
     <string name="reserva">Book</string>
     <string name="escribe_la_cantidad_de_comersales">Select the number of diners</string>
     <string name="inicio_session">You must log in</string>
@@ -30,9 +30,14 @@
     <string name="promociones">Promotions</string>
     <string name="reservaFinal">You have made a reservation at La Casa Nostra</string>
     <string name="seleccionar">Selection</string>
-    <string name="admin">Admin</string>
+    <string name="admin">Administrador</string>
     <string name="perfil">Acount</string>
     <string name="configuraci_n">Setting</string>
     <string name="cerrar_sesion">Sign off</string>
     <string name="avisoInicio">" You are already with an active session."</string>
+    <string name="contrase_a_actual">Current password</string>
+    <string name="contrase_a_nueva">New password</string>
+    <string name="editar">Edit</string>
+    <string name="cambiado">Updated user</string>
+    <string name="contraseñaNo">The current password does not match the previous one.</string>
 </resources>

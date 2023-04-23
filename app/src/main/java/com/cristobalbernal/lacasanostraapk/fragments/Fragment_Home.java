@@ -49,12 +49,10 @@ public class Fragment_Home extends Fragment {
         Button carta = view.findViewById(R.id.btCartaHome);
         Button paginaWeb= view.findViewById(R.id.btPaginaWeb);
         Button idioma= view.findViewById(R.id.btCambioIdioma);
-        admin= view.findViewById(R.id.btAdmin);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");
         //getProductos();
         //getTipos();
-        cargarUsuarios();
         carta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,45 +120,6 @@ public class Fragment_Home extends Fragment {
     }
 
      */
-
-
-    public void cargarUsuarios(){
-        iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
-            @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                assert response.body() != null;
-                usuarios.addAll(response.body());
-                System.out.println(user);
-                for (int i = 0; i <usuarios.size() ; i++) {
-                    if (user.equalsIgnoreCase(usuarios.get(i).getCorreoElectronico())){
-                        if (usuarios.get(i).getAdmin() == 0){
-                            admin.setVisibility(View.GONE);
-                        }else if(usuarios.get(i).getAdmin()== 1){
-                            admin.setVisibility(View.VISIBLE);
-
-                            admin.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    FragmentManager manager = getParentFragmentManager();
-                                    manager.beginTransaction()
-                                            .setReorderingAllowed(true)
-                                            .addToBackStack(null)
-                                            .replace(R.id.content_frame, Fragment_Admin.class, null)
-                                            .commit();
-                                }
-                            });
-
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-
-            }
-        });
-    }
-
 
     private void abrirPaginaWeb(String url){
         Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));

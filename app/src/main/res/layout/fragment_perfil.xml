@@ -31,7 +31,7 @@
             android:id="@+id/name_textview"
             android:text="@string/nombre"
             android:textSize="18sp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
@@ -42,8 +42,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/password"
-            android:text="@string/contrase_a"
+            android:id="@+id/passwordActual"
+            android:hint="@string/contrase_a_actual"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/passwordNew"
+            android:hint="@string/contrase_a_nueva"
             android:textSize="18sp"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
@@ -52,7 +59,7 @@
         <Button
             android:id="@+id/editar"
             android:background="@color/botones"
-            android:text="Editar"
+            android:text="@string/editar"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

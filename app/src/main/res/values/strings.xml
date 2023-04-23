@@ -18,7 +18,7 @@
     <string name="correo_electronico">Correo Electronico</string>
     <string name="Registrar">Registrar</string>
     <string name="nombre">Nombre</string>
-    <string name="apellidos">Apellidos</string>
+    <string name="apellidos">Apellido</string>
     <string name="reserva">Reserva</string>
     <string name="escribe_la_cantidad_de_comersales">Seleccione la cantidad de comensales</string>
     <string name="inicio_session">Debes de iniciar sesion</string>
@@ -31,11 +31,16 @@
     <string name="comensales">Comensales</string>
     <string name="promociones">Promociones</string>
     <string name="seleccionar">Selección</string>
-    <string name="admin">Admin</string>
+    <string name="admin">Administrado</string>
     <string name="perfil">Perfil</string>
     <string name="configuraci_n">Configuración</string>
     <string name="cerrar_sesion">Cerrar Sesion</string>
     <string name="avisoInicio">Ya estas con una sesion activa</string>
+    <string name="contrase_a_actual">Contraseña Actual</string>
+    <string name="contrase_a_nueva">Contraseña Nueva</string>
+    <string name="editar">Editar</string>
+    <string name="cambiado">Usuario actualizado</string>
+    <string name="contraseñaNo">La contraseña actual no coincide con la anterior.</string>
 
 
 </resources>

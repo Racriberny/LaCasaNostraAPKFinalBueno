@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 
@@ -42,6 +43,11 @@ public interface IAPIService {
 
     @DELETE("usuario/{id}")
     Call<Boolean> deleteUser(@Path("id") int id);
+
+    @PUT("usuario/update/{id}")
+    Call<Usuario> modificarUser(@Path("id") int id, @Body Usuario usuario
+    );
+
     /*
     @POST("frase/add")
     Call<Boolean> addFrase(@Body Frase frase);

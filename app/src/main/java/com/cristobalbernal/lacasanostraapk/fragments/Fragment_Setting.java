@@ -16,6 +16,7 @@ import com.cristobalbernal.lacasanostraapk.R;
 
 public class Fragment_Setting extends Fragment {
     private TextView perfil;
+    private TextView admin;
     private TextView cerrar_session;
     private SharedPreferences sharedPreferences;
 
@@ -28,6 +29,7 @@ public class Fragment_Setting extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         perfil = view.findViewById(R.id.tv_settings_option);
+        admin =view.findViewById(R.id.admin);
         cerrar_session = view.findViewById(R.id.cerrar);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         perfil.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,13 @@ public class Fragment_Setting extends Fragment {
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Mi_Perfil.class, null)
                         .commit();
+            }
+        });
+
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

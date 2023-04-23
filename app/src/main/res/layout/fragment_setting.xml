@@ -35,16 +35,35 @@
         app:drawableStartCompat="@drawable/ic_menu_people"
         tools:ignore="RtlSymmetry" />
 
+
+    <TextView
+        android:id="@+id/admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_settings_option"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:drawablePadding="8dp"
+        android:focusable="true"
+        android:padding="16dp"
+        android:paddingStart="15dp"
+        android:text="@string/admin"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:drawableEndCompat="@drawable/baseline_arrow_forward_ios_24"
+        app:drawableStartCompat="@drawable/baseline_manage_accounts_24"
+        tools:ignore="RtlSymmetry" />
+
     <TextView
         android:id="@+id/cerrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_settings_option"
+        android:layout_below="@+id/admin"
         android:layout_centerInParent="true"
         android:clickable="true"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="@string/cerrar_sesion"
+        android:focusable="true"
         android:padding="16dp"
-        android:focusable="true" />
+        android:text="@string/cerrar_sesion"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </RelativeLayout>
