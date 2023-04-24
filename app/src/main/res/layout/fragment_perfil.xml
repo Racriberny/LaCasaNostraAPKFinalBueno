@@ -31,6 +31,7 @@
             android:id="@+id/name_textview"
             android:text="@string/nombre"
             android:textSize="18sp"
+            android:textColor="@color/black"
             android:layout_marginTop="18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -39,12 +40,16 @@
             android:text="@string/correo_electronico"
             android:textSize="18sp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/passwordActual"
             android:hint="@string/contrase_a_actual"
             android:textSize="18sp"
+            android:textColor="@color/black"
+
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -52,6 +57,8 @@
             android:id="@+id/passwordNew"
             android:hint="@string/contrase_a_nueva"
             android:textSize="18sp"
+            android:textColor="@color/black"
+
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
