@@ -20,13 +20,13 @@
     <string name="nombre">Nombre</string>
     <string name="apellidos">Apellido</string>
     <string name="reserva">Reserva</string>
-    <string name="escribe_la_cantidad_de_comersales">Seleccione la cantidad de comensales</string>
+    <string name="escribe_la_cantidad_de_comersales">Introduce la cantidad de comensales</string>
     <string name="inicio_session">Debes de iniciar sesion</string>
     <string name="reservaFinal">Has realizado una reserva en La Casa Nostra</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Hora</string>
     <string name="guardar">Guardar</string>
-    <string name="lista_reservas">Lista Reservas</string>
+    <string name="lista_reservas">Reservas Activas</string>
     <string name="login">Has iniciado sesión!!</string>
     <string name="comensales">Comensales</string>
     <string name="promociones">Promociones</string>
@@ -44,6 +44,7 @@
     <string name="noadmin">Debes de ser admin</string>
     <string name="nombre_apellido">Escribe nombre y apellido</string>
     <string name="editar_perefil">Ya puedes editar tu perfil</string>
+    <string name="reservas_antiguas">Reservas Antiguas</string>
 
 
 </resources>

@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorListaUsuarios;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
-import com.cristobalbernal.lacasanostraapk.modelos.Reservas;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
+import com.cristobalbernal.lacasanostraapk.modelos.Vista;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment_Lista_Reservas extends Fragment {
+public class Fragment_Lista_Reservas_Activas extends Fragment {
 
 
     private String user;
@@ -35,7 +35,7 @@ public class Fragment_Lista_Reservas extends Fragment {
     private List<Usuario> usuarios;
 
 
-    public Fragment_Lista_Reservas(){
+    public Fragment_Lista_Reservas_Activas(){
         super(R.layout.lista_lista);
     }
 
@@ -47,8 +47,8 @@ public class Fragment_Lista_Reservas extends Fragment {
         usuarios = new ArrayList<>();
         RecyclerView recyclerView = view.findViewById(R.id.rvListaReservas);
         IAPIService iapiService = RestClient.getInstance();
-        List<Reservas> reservas = new ArrayList<>();
-        List<Reservas> usuarioReservas = new ArrayList<>();
+        List<Vista> vistas = new ArrayList<>();
+        List<Vista> vistaReservas = new ArrayList<>();
 
 
         iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
@@ -59,19 +59,18 @@ public class Fragment_Lista_Reservas extends Fragment {
                 for (int i = 0; i <usuarios.size() ; i++) {
                     if (user.equals(usuarios.get(i).getCorreoElectronico())){
                         int finalI = i;
-                        iapiService.getReservas().enqueue(new Callback<List<Reservas>>() {
+                        iapiService.getVista().enqueue(new Callback<List<Vista>>() {
                             @Override
-                            public void onResponse(Call<List<Reservas>> call, Response<List<Reservas>> response) {
+                            public void onResponse(Call<List<Vista>> call, Response<List<Vista>> response) {
                                 if (response.isSuccessful()){
                                     assert response.body() !=null;
-                                    reservas.addAll(response.body());
-
-                                    for (Reservas reservas1:reservas){
-                                        if (reservas1.getUsuarioId() == usuarios.get(finalI).getId()){
-                                            usuarioReservas.add(reservas1);
+                                    vistas.addAll(response.body());
+                                    for (Vista vista:vistas){
+                                        if (vista.getUsuarioId() == usuarios.get(finalI).getId()){
+                                            vistaReservas.add(vista);
                                         }
                                     }
-                                    AdaptadorListaUsuarios adaptadorListaUsuarios = new AdaptadorListaUsuarios(usuarioReservas);
+                                    AdaptadorListaUsuarios adaptadorListaUsuarios = new AdaptadorListaUsuarios(vistaReservas);
                                     recyclerView.setHasFixedSize(true);
                                     recyclerView.setAdapter(adaptadorListaUsuarios);
                                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -79,7 +78,7 @@ public class Fragment_Lista_Reservas extends Fragment {
                             }
 
                             @Override
-                            public void onFailure(@NonNull Call<List<Reservas>> call, @NonNull Throwable t) {
+                            public void onFailure(@NonNull Call<List<Vista>> call, @NonNull Throwable t) {
                                 Log.d("Error_Reserva", t.getMessage());
                             }
                         });

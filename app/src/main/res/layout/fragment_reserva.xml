@@ -119,11 +119,19 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
     <Button
-        android:id="@+id/listaReservas"
+        android:id="@+id/reservasActivas"
         android:text="@string/lista_reservas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/reservasAntiguas"
+        android:text="@string/reservas_antiguas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
 
 </LinearLayout>

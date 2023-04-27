@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.cristobalbernal.lacasanostraapk.R;
-import com.cristobalbernal.lacasanostraapk.Utils.Lib;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Reservas;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
@@ -40,7 +38,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Fragment_Reserva extends Fragment implements View.OnClickListener {
-    private Button bfecha,bhora,guardar,listaReservas;
+    private Button bfecha,bhora,guardar, reservasActuales,reservasAntiguas;
     private EditText efecha,ehora;
     private Spinner cantidad;
     private String numeroSeleccionado;
@@ -64,7 +62,8 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");
         bfecha= view.findViewById(R.id.bfecha);
-        listaReservas= view.findViewById(R.id.listaReservas);
+        reservasActuales = view.findViewById(R.id.reservasActivas);
+        reservasAntiguas = view.findViewById(R.id.reservasAntiguas);
         bhora= view.findViewById(R.id.bhora);
         efecha= view.findViewById(R.id.efecha);
         ehora= view.findViewById(R.id.ehora);
@@ -73,7 +72,8 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         bfecha.setOnClickListener(this);
         bhora.setOnClickListener(this);
         guardar.setOnClickListener(this);
-        listaReservas.setOnClickListener(this);
+        reservasActuales.setOnClickListener(this);
+        reservasAntiguas.setOnClickListener(this);
         Calendar calendar = Calendar.getInstance();
         ano = calendar.get(Calendar.YEAR);
         mes = calendar.get(Calendar.MONTH);
@@ -164,12 +164,20 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
             int comensales = (cantidad.getSelectedItemPosition() +1);
             registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),id);
         }
-        if (v == listaReservas){
+        if (v == reservasActuales){
             FragmentManager manager = getParentFragmentManager();
             manager.beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
-                    .replace(R.id.content_frame, Fragment_Lista_Reservas.class, null)
+                    .replace(R.id.content_frame, Fragment_Lista_Reservas_Activas.class, null)
+                    .commit();
+        }
+        if (v == reservasAntiguas){
+            FragmentManager manager = getParentFragmentManager();
+            manager.beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
+                    .replace(R.id.content_frame, Fragment_Lista_Reservas_Antiguas.class, null)
                     .commit();
         }
     }

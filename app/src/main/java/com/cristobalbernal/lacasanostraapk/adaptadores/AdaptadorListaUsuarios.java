@@ -10,15 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.modelos.Reservas;
+import com.cristobalbernal.lacasanostraapk.modelos.Vista;
 
 import java.util.List;
 
 public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaUsuarios.ViewHolder>{
 
-    private final List<Reservas> reservas;
+    private final List<Vista> vistas;
 
-    public AdaptadorListaUsuarios(List<Reservas> reservas){
-        this.reservas = reservas;
+    public AdaptadorListaUsuarios(List<Vista> vistaList){
+        this.vistas = vistaList;
     }
 
     @NonNull
@@ -30,13 +31,13 @@ public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaU
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Reservas reservas1 = reservas.get(position);
-        holder.bindProducto(reservas1);
+        Vista vista = vistas.get(position);
+        holder.bindProducto(vista);
     }
 
     @Override
     public int getItemCount() {
-        return reservas.size();
+        return vistas.size();
     }
 
 
@@ -54,10 +55,10 @@ public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaU
 
         }
 
-        public void bindProducto(Reservas reservas) {
-            cantidad.setText(reservas.getCantidad());
-            hora.setText(reservas.getHora());
-            fecha.setText(reservas.getFecha());
+        public void bindProducto(Vista vista) {
+            cantidad.setText(vista.getCantidad());
+            hora.setText(vista.getHora());
+            fecha.setText(vista.getFecha());
         }
 
     }

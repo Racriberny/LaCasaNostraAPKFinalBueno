@@ -60,7 +60,7 @@ public class Fragment_Mi_Perfil extends Fragment {
         passwordNew = view.findViewById(R.id.passwordNew);
         passwordNew.setEnabled(false);
         Button edit = view.findViewById(R.id.editar);
-        Button guardar = view.findViewById(R.id.guardar);
+        Button guardar = view.findViewById(R.id.save);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         user = sharedPreferences.getString("nombreDeUsuario","");
@@ -89,6 +89,7 @@ public class Fragment_Mi_Perfil extends Fragment {
 
             }
         });
+        System.out.println(usuarios);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,12 +147,12 @@ public class Fragment_Mi_Perfil extends Fragment {
                     Toast.makeText(getContext(),R.string.nombre_apellido,Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String name = partes[0];
+                String name_nam = partes[0];
                 String apellido = partes[1];
 
 
                 if (actual.equals(contraseña)){
-                    Call<Usuario> booleanCall = iapiService.modificarUser(id,new Usuario(name,apellido,email,nueva));
+                    Call<Usuario> booleanCall = iapiService.modificarUser(id,new Usuario(name_nam,apellido,email,nueva));
 
                     booleanCall.enqueue(new Callback<Usuario>() {
                         @Override
@@ -175,6 +176,10 @@ public class Fragment_Mi_Perfil extends Fragment {
                     });
                 }else {
                     Toast.makeText(getContext(),R.string.contraseñaNo,Toast.LENGTH_SHORT).show();
+                    name.setEnabled(false);
+                    correo.setEnabled(false);
+                    passwordActual.setEnabled(false);
+                    passwordNew.setEnabled(false);
                 }
             }
         });

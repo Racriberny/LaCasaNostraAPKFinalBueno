@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/guardar"
+            android:id="@+id/save"
             android:background="@color/botones"
             android:text="@string/guardar"
             android:layout_marginTop="5dp"

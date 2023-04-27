@@ -1,7 +1,6 @@
 package com.cristobalbernal.lacasanostraapk;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,12 +14,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
-import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Admin;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
-import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Lista_Reservas;
-import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Mi_Perfil;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Promociones;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
@@ -28,7 +24,6 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
-import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
 
