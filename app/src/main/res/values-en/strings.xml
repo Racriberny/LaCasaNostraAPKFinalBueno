@@ -7,7 +7,7 @@
     <string name="pulse_el_bot_n_para_ir_directo_a_la_carta">Press the button to go straight to the menu</string>
     <string name="home">Home</string>
     <string name="acceder">Login</string>
-    <string name="cambio_de_idioma">Change of language</string>
+    <string name="cambio_de_idioma">Language</string>
     <string name="configuracion">Settings</string>
     <string name="pagina_web">Web page</string>
     <string name="nombre_de_usuario">Username</string>
@@ -30,7 +30,7 @@
     <string name="promociones">Promotions</string>
     <string name="reservaFinal">You have made a reservation at La Casa Nostra</string>
     <string name="seleccionar">Selection</string>
-    <string name="admin">Administrador</string>
+    <string name="admin">Administrator</string>
     <string name="perfil">Acount</string>
     <string name="configuraci_n">Setting</string>
     <string name="cerrar_sesion">Sign off</string>
@@ -41,4 +41,6 @@
     <string name="cambiado">Updated user</string>
     <string name="contraseñaNo">The current password does not match the previous one.</string>
     <string name="noadmin">You must be admin</string>
+    <string name="nombre_apellido">Write first and last name</string>
+    <string name="editar_perefil">You can now edit your profile</string>
 </resources>

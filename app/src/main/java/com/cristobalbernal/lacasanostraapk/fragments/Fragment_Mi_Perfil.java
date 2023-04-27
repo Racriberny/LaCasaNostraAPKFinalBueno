@@ -96,6 +96,7 @@ public class Fragment_Mi_Perfil extends Fragment {
                 correo.setEnabled(true);
                 passwordActual.setEnabled(true);
                 passwordNew.setEnabled(true);
+                Toast.makeText(getContext(),R.string.editar_perefil,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -142,7 +143,7 @@ public class Fragment_Mi_Perfil extends Fragment {
                 String[] partes = nombre.split(" ");
 
                 if (partes.length == 1){
-                    Toast.makeText(getContext(),"Debe de escribir el apellido detras del nombre",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),R.string.nombre_apellido,Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String name = partes[0];

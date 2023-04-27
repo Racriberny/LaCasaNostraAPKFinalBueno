@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity
                     assert response.body() != null;
                     tipos.addAll(response.body());
                     tipoSeleccionado = tipos.get(id);
+                    System.out.println(tipoSeleccionado);
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)

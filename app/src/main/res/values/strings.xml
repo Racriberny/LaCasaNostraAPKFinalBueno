@@ -8,7 +8,7 @@
     <string name="pulse_el_bot_n_para_ir_directo_a_la_carta">Pulse el botón para ir directo a la carta</string>
     <string name="home">Home</string>
     <string name="acceder">Acceder</string>
-    <string name="cambio_de_idioma">Cambio de idioma</string>
+    <string name="cambio_de_idioma">Idioma</string>
     <string name="configuracion">Configuracion</string>
     <string name="pagina_web">Pagina web</string>
     <string name="nombre_de_usuario">Nombre de usuario</string>
@@ -31,7 +31,7 @@
     <string name="comensales">Comensales</string>
     <string name="promociones">Promociones</string>
     <string name="seleccionar">Selección</string>
-    <string name="admin">Administrado</string>
+    <string name="admin">Administrador</string>
     <string name="perfil">Perfil</string>
     <string name="configuraci_n">Configuración</string>
     <string name="cerrar_sesion">Cerrar Sesion</string>
@@ -42,6 +42,8 @@
     <string name="cambiado">Usuario actualizado</string>
     <string name="contraseñaNo">La contraseña actual no coincide con la anterior.</string>
     <string name="noadmin">Debes de ser admin</string>
+    <string name="nombre_apellido">Escribe nombre y apellido</string>
+    <string name="editar_perefil">Ya puedes editar tu perfil</string>
 
 
 </resources>

@@ -2,6 +2,7 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorTipo;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
+import com.cristobalbernal.lacasanostraapk.modelos.Vista;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import retrofit2.Response;
 public class Fragment_Carta extends Fragment {
 
     private List<Tipo> tipos;
+    private List<Vista> vistaList;
 
     private IAPIService iapiService;
     public Fragment_Carta(){
@@ -44,6 +47,7 @@ public class Fragment_Carta extends Fragment {
         iapiService = RestClient.getInstance();
         RecyclerView recyclerView = view.findViewById(R.id.rvLista);
         tipos = new ArrayList<>();
+        vistaList = new ArrayList<>();
 
 
         iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {

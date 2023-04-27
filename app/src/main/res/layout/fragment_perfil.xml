@@ -47,6 +47,9 @@
             android:id="@+id/passwordActual"
             android:hint="@string/contrase_a_actual"
             android:textSize="18sp"
+            android:textColorHint="@color/black"
+            android:inputType="textPassword"
+            
             android:layout_marginTop="15dp"
             android:textColor="@color/black"
             android:layout_width="match_parent"
@@ -57,6 +60,7 @@
             android:textSize="18sp"
             android:layout_marginTop="15dp"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

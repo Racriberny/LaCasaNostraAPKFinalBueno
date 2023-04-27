@@ -3,6 +3,7 @@ import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Reservas;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
+import com.cristobalbernal.lacasanostraapk.modelos.Vista;
 
 import java.util.List;
 
@@ -45,8 +46,10 @@ public interface IAPIService {
     Call<Boolean> deleteUser(@Path("id") int id);
 
     @PUT("usuario/update/{id}")
-    Call<Usuario> modificarUser(@Path("id") int id, @Body Usuario usuario
-    );
+    Call<Usuario> modificarUser(@Path("id") int id, @Body Usuario usuario);
+
+    @GET("vista/all")
+    Call<List<Vista>> getVista();
 
     /*
     @POST("frase/add")
