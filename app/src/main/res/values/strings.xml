@@ -46,7 +46,7 @@
     <string name="noadmin">Debes de ser admin</string>
     <string name="nombre_apellido">Escribe nombre y apellido</string>
     <string name="editar_perefil">Ya puedes editar tu perfil</string>
-    <string name="reservas_antiguas">Reservas Antiguas</string>
+    <string name="reservas_antiguas">Lista Reservas</string>
 
 
 </resources>

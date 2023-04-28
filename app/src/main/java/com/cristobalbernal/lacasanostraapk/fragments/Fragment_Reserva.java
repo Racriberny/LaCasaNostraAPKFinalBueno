@@ -40,7 +40,7 @@ import retrofit2.Response;
 public class Fragment_Reserva extends Fragment implements View.OnClickListener {
     private Button bfecha,bhora,guardar, reservasActuales,reservasAntiguas;
     private EditText efecha,ehora;
-    private Spinner cantidad;
+    private EditText cantidad;
     private String numeroSeleccionado;
     private  String seleccion;
     private  int dia,mes,ano,hora,minutos,segundos;
@@ -79,12 +79,6 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         mes = calendar.get(Calendar.MONTH);
         dia = calendar.get(Calendar.DAY_OF_MONTH);
 
-        List<String> numeros =new ArrayList<>();
-        for (int i = 1; i <=15 ; i++) {
-            numeros.add(String.valueOf(i));
-        }
-        ArrayAdapter<String> adapador = new ArrayAdapter<>(getContext(), R.layout.spinner_item_geekipedia,numeros);
-        cantidad.setAdapter(adapador);
 
         iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
             @Override
@@ -99,6 +93,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
 
             }
         });
+
 
 
 
@@ -141,18 +136,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         }
 
 
-        cantidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                numeroSeleccionado = (String) parent.getItemAtPosition(position);
-                seleccion = parent.getItemAtPosition(position).toString();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         for (int i = 0; i <usuarios.size() ; i++) {
             if (usuarios.get(i).getCorreoElectronico().equals(user)){
@@ -161,8 +145,31 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
         }
 
         if (v == guardar){
-            int comensales = (cantidad.getSelectedItemPosition() +1);
-            registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),id);
+            String cantidades = cantidad.getText().toString();
+            String fecha = efecha.getText().toString();
+            String hora = ehora.getText().toString();
+            if(cantidades.isEmpty()){
+                cantidad.setError("Es necesario escribir en este campo.");
+                cantidad.requestFocus();
+                return;
+            }
+            if(fecha.isEmpty()){
+                efecha.setError("Es necesario elegir una fecha.");
+                efecha.requestFocus();
+                return;
+            }
+            if(hora.isEmpty()){
+                ehora.setError("Es necesario elegir una hora.");
+                ehora.requestFocus();
+                return;
+            }
+            int comensales = Integer.parseInt(cantidad.getText().toString());
+            if (comensales >= 15){
+                Toast.makeText(getContext(),"Para reservar esa cantidad de comensales tienes que llamar por telefono",Toast.LENGTH_SHORT).show();
+                return;
+            }else {
+                registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),id);
+            }
         }
         if (v == reservasActuales){
             FragmentManager manager = getParentFragmentManager();

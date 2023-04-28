@@ -43,7 +43,7 @@
     <string name="noadmin">You must be admin</string>
     <string name="nombre_apellido">Write first and last name</string>
     <string name="editar_perefil">You can now edit your profile</string>
-    <string name="reservas_antiguas">Old Reservations</string>
+    <string name="reservas_antiguas">Reservation List</string>
     <string name="fechaBtn">Date</string>
     <string name="horaBtn">Hour</string>
 </resources>
