@@ -21,8 +21,8 @@
     <string name="reserva">Book</string>
     <string name="escribe_la_cantidad_de_comersales">Enter the number of diners</string>
     <string name="inicio_session">You must log in</string>
-    <string name="fecha">Date</string>
-    <string name="hora">Hour</string>
+    <string name="fecha">Select Date</string>
+    <string name="hora">Select Hour</string>
     <string name="guardar">Save</string>
     <string name="lista_reservas">Active Reserves</string>
     <string name="login">You have logged in!!</string>
@@ -44,4 +44,6 @@
     <string name="nombre_apellido">Write first and last name</string>
     <string name="editar_perefil">You can now edit your profile</string>
     <string name="reservas_antiguas">Old Reservations</string>
+    <string name="fechaBtn">Date</string>
+    <string name="horaBtn">Hour</string>
 </resources>

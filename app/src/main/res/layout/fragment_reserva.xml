@@ -49,7 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
 
         <Button
             android:id="@+id/bfecha"
@@ -57,13 +59,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="@string/fecha" />
+            android:text="@string/fechaBtn" />
 
         <EditText
             android:id="@+id/efecha"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -87,7 +90,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
 
         <Button
             android:id="@+id/bhora"
@@ -95,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:text="@string/hora" />
+            android:text="@string/horaBtn" />
 
         <EditText
             android:id="@+id/ehora"
@@ -113,21 +118,27 @@
     <Button
         android:id="@+id/guardar"
         android:text="@string/reserva"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="3dp"/>
     <Button
         android:id="@+id/reservasActivas"
         android:text="@string/lista_reservas"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="3dp"/>
     <Button
         android:id="@+id/reservasAntiguas"
         android:text="@string/reservas_antiguas"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"

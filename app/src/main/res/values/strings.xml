@@ -23,8 +23,10 @@
     <string name="escribe_la_cantidad_de_comersales">Introduce la cantidad de comensales</string>
     <string name="inicio_session">Debes de iniciar sesion</string>
     <string name="reservaFinal">Has realizado una reserva en La Casa Nostra</string>
-    <string name="fecha">Fecha</string>
-    <string name="hora">Hora</string>
+    <string name="fecha">Seleccione Fecha</string>
+    <string name="fechaBtn">Fecha</string>
+    <string name="hora">Seleccione Hora</string>
+    <string name="horaBtn">Hora</string>
     <string name="guardar">Guardar</string>
     <string name="lista_reservas">Reservas Activas</string>
     <string name="login">Has iniciado sesión!!</string>
