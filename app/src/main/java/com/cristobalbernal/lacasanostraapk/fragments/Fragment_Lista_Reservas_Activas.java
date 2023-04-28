@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cristobalbernal.lacasanostraapk.R;
-import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorListaUsuarios;
+import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorReservasActivas;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.modelos.Vista;
@@ -70,7 +70,7 @@ public class Fragment_Lista_Reservas_Activas extends Fragment {
                                             vistaReservas.add(vista);
                                         }
                                     }
-                                    AdaptadorListaUsuarios adaptadorListaUsuarios = new AdaptadorListaUsuarios(vistaReservas);
+                                    AdaptadorReservasActivas adaptadorListaUsuarios = new AdaptadorReservasActivas(vistaReservas);
                                     recyclerView.setHasFixedSize(true);
                                     recyclerView.setAdapter(adaptadorListaUsuarios);
                                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));

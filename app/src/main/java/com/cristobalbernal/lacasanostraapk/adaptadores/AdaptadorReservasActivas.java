@@ -9,16 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cristobalbernal.lacasanostraapk.R;
-import com.cristobalbernal.lacasanostraapk.modelos.Reservas;
 import com.cristobalbernal.lacasanostraapk.modelos.Vista;
 
 import java.util.List;
 
-public class AdaptadorListaUsuarios extends RecyclerView.Adapter<AdaptadorListaUsuarios.ViewHolder>{
+public class AdaptadorReservasActivas extends RecyclerView.Adapter<AdaptadorReservasActivas.ViewHolder>{
 
     private final List<Vista> vistas;
 
-    public AdaptadorListaUsuarios(List<Vista> vistaList){
+    public AdaptadorReservasActivas(List<Vista> vistaList){
         this.vistas = vistaList;
     }
 
