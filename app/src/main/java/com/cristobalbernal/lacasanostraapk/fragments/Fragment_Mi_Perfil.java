@@ -1,26 +1,35 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.cristobalbernal.lacasanostraapk.R;
+import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.Utils.HashGenerator;
+import com.cristobalbernal.lacasanostraapk.Utils.Lib;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +46,15 @@ public class Fragment_Mi_Perfil extends Fragment {
     private EditText correo;
     private EditText passwordActual;
     private EditText passwordNew;
+    private EditText confirmarPasswordNew;
+    private ImageView imageView;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String contraseña;
     private int id;
+
+    private ActivityResultLauncher<PickVisualMediaRequest> pickImage;
+    private String base64;
 
 
     public Fragment_Mi_Perfil() {
@@ -59,6 +73,10 @@ public class Fragment_Mi_Perfil extends Fragment {
         passwordActual.setEnabled(false);
         passwordNew = view.findViewById(R.id.passwordNew);
         passwordNew.setEnabled(false);
+        imageView = view.findViewById(R.id.imagenPerfil);
+        imageView.setEnabled(false);
+        confirmarPasswordNew = view.findViewById(R.id.confirmarContraseña);
+        confirmarPasswordNew.setEnabled(false);
         Button edit = view.findViewById(R.id.editar);
         Button guardar = view.findViewById(R.id.save);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -79,6 +97,8 @@ public class Fragment_Mi_Perfil extends Fragment {
                         contraseña = usuarios.get(i).getContrasena();
                         name.setText(nombre +" " + apellidos);
                         correo.setText(user);
+                        imageView.setImageBitmap(EncodingImg.decode(usuarios.get(i).getImagen()));
+                        base64 = usuarios.get(i).getImagen();
                         id = usuarios.get(i).getId();
                     }
                 }
@@ -89,7 +109,6 @@ public class Fragment_Mi_Perfil extends Fragment {
 
             }
         });
-        System.out.println(usuarios);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,13 +116,34 @@ public class Fragment_Mi_Perfil extends Fragment {
                 correo.setEnabled(true);
                 passwordActual.setEnabled(true);
                 passwordNew.setEnabled(true);
+                imageView.setEnabled(true);
+                confirmarPasswordNew.setEnabled(true);
                 Toast.makeText(getContext(),R.string.editar_perefil,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        pickImage = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
+            if (uri != null) {
+                try {
+                    base64 = EncodingImg.getBase64FromUri(requireContext(),uri);
+                    imageView.setImageBitmap(EncodingImg.decode(base64));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImage.launch(new PickVisualMediaRequest());
             }
         });
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("hola");
                 String nombre = name.getText().toString();
                 String email = correo.getText().toString();
                 String actual = null;
@@ -115,6 +155,12 @@ public class Fragment_Mi_Perfil extends Fragment {
                 String nueva = null;
                 try {
                     nueva = HashGenerator.getSHAString(passwordNew.getText().toString());
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
+                String nuevaConfirmacion = null;
+                try {
+                    nuevaConfirmacion = HashGenerator.getSHAString(confirmarPasswordNew.getText().toString());
                 } catch (NoSuchAlgorithmException e) {
                     throw new RuntimeException(e);
                 }
@@ -140,6 +186,11 @@ public class Fragment_Mi_Perfil extends Fragment {
                     passwordNew.requestFocus();
                     return;
                 }
+                if (nuevaConfirmacion.isEmpty()){
+                    confirmarPasswordNew.setError("Es necesario escribir en esta campo.");
+                    confirmarPasswordNew.requestFocus();
+                    return;
+                }
 
                 String[] partes = nombre.split(" ");
 
@@ -150,11 +201,14 @@ public class Fragment_Mi_Perfil extends Fragment {
                 String name_nam = partes[0];
                 String apellido = partes[1];
 
-
+                if (!nueva.equals(nuevaConfirmacion)){
+                    confirmarPasswordNew.setError("Las contraseñas deben de coincidir.");
+                    confirmarPasswordNew.requestFocus();
+                    return;
+                }
                 if (actual.equals(contraseña)){
-                    Call<Usuario> booleanCall = iapiService.modificarUser(id,new Usuario(name_nam,apellido,email,nueva));
-
-                    booleanCall.enqueue(new Callback<Usuario>() {
+                    Call<Usuario> booleanCallSi = iapiService.modificarUser(id,new Usuario(name_nam,apellido,email, nueva,base64));
+                    booleanCallSi.enqueue(new Callback<Usuario>() {
                         @Override
                         public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                             Log.i("Bien",response.toString());
@@ -180,6 +234,8 @@ public class Fragment_Mi_Perfil extends Fragment {
                     correo.setEnabled(false);
                     passwordActual.setEnabled(false);
                     passwordNew.setEnabled(false);
+                    imageView.setEnabled(false);
+                    confirmarPasswordNew.setEnabled(false);
                 }
             }
         });

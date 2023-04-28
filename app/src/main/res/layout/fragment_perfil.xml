@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="8dp"
         android:orientation="vertical">
 
         <TextView
@@ -20,26 +20,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imagenPerfil"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/fotopredeterminada"/>
+            android:padding="4dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/fotopredeterminada"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
 
         <EditText
             android:id="@+id/name_textview"
             android:text="@string/nombre"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/email_textview"
             android:text="@string/correo_electronico"
             android:textSize="18sp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -49,8 +53,7 @@
             android:textSize="18sp"
             android:textColorHint="@color/black"
             android:inputType="textPassword"
-            
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -58,7 +61,17 @@
             android:id="@+id/passwordNew"
             android:hint="@string/contrase_a_nueva"
             android:textSize="18sp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/confirmarContraseña"
+            android:hint="@string/contrase_a_nueva"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:inputType="textPassword"
@@ -69,9 +82,9 @@
             android:id="@+id/editar"
             android:background="@color/botones"
             android:text="@string/editar"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="18dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="40dp"/>
 
         <Button
             android:id="@+id/save"
@@ -79,7 +92,7 @@
             android:text="@string/guardar"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="40dp"/>
 
 
 

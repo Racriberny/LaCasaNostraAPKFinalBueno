@@ -9,12 +9,21 @@ public class Usuario implements Serializable {
     private String correoElectronico;
     private String contrasena;
     private Byte admin;
+    private String imagen;
 
     public Usuario(String nombre, String apellidos, String correoElectronico, String contrasena) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
+    }
+
+    public Usuario(String nombre, String apellidos, String correoElectronico, String contrasena, String imagen) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correoElectronico = correoElectronico;
+        this.contrasena = contrasena;
+        this.imagen = imagen;
     }
 
     public Usuario(String correoElectronico, String contrasena) {
@@ -50,6 +59,14 @@ public class Usuario implements Serializable {
         return correoElectronico;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
@@ -70,6 +87,7 @@ public class Usuario implements Serializable {
         this.admin = admin;
     }
 
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -79,6 +97,7 @@ public class Usuario implements Serializable {
                 ", correoElectronico='" + correoElectronico + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 ", admin=" + admin +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }
 }
