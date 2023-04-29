@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class Fragment_Carta extends Fragment {
     private List<Vista> vistaList;
 
     private IAPIService iapiService;
+    private TextView titulo;
     public Fragment_Carta(){
         super(R.layout.lista);
     }
@@ -48,6 +50,8 @@ public class Fragment_Carta extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.rvLista);
         tipos = new ArrayList<>();
         vistaList = new ArrayList<>();
+        titulo = view.findViewById(R.id.tvTitulo);
+        titulo.setText(R.string.carta);
 
 
         iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {

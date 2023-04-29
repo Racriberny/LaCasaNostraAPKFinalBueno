@@ -3,6 +3,7 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.adaptadores.AdaptadorTipoProducto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
+import com.cristobalbernal.lacasanostraapk.interfaces.IProductoSeleccionado;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
@@ -32,6 +34,8 @@ public class Fragment_Tipo_Producto  extends Fragment {
     }
 
     private Tipo tipo;
+    private TextView titulo;
+    private IProductoSeleccionado iProductoSeleccionado;
 
     public Fragment_Tipo_Producto() {
         super(R.layout.lista);
@@ -45,6 +49,8 @@ public class Fragment_Tipo_Producto  extends Fragment {
         IAPIService iapiService= RestClient.getInstance();
         List<Producto> productos = new ArrayList<>();
         List<Producto> tiposProducto = new ArrayList<>();
+        titulo = view.findViewById(R.id.tvTitulo);
+        titulo.setText(tipo.getNombre());
 
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
@@ -60,7 +66,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
                         }
                     }
 
-                    AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto);
+                    AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto,iProductoSeleccionado);
                     rvLista.setHasFixedSize(true);
                     rvLista.setAdapter(adaptadorTipoProducto);
                     rvLista.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -80,6 +86,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
         super.onAttach(context);
         IOnAttachListener iOnAttachListener = (IOnAttachListener) context;
         tipo = iOnAttachListener.getTipoSelecionado();
+        iProductoSeleccionado = (IProductoSeleccionado) context;
     }
 
 }

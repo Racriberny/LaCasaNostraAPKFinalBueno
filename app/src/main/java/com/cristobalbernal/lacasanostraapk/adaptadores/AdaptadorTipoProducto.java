@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
+import com.cristobalbernal.lacasanostraapk.interfaces.IProductoSeleccionado;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 
 import java.util.List;
@@ -18,9 +19,11 @@ import java.util.List;
 public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoProducto.ViewHolder> {
 
     private final List<Producto> productos;
+    private final IProductoSeleccionado iProductoSeleccionado;
 
-    public AdaptadorTipoProducto(List<Producto> productos){
+    public AdaptadorTipoProducto(List<Producto> productos, IProductoSeleccionado iProductoSeleccionado){
         this.productos = productos;
+        this.iProductoSeleccionado = iProductoSeleccionado;
     }
 
 
@@ -28,7 +31,7 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_tipo_producto, parent, false);
-        return new ViewHolder(itemView);
+        return new ViewHolder(itemView,iProductoSeleccionado);
     }
 
     @Override
@@ -42,13 +45,14 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
         return productos.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final ImageView imageView;
         private final TextView productoTv;
         private final TextView ingredientes;
         private final TextView precio;
 
-        public ViewHolder(@NonNull View itemView) {
+
+        public ViewHolder(@NonNull View itemView, IProductoSeleccionado iProductoSeleccionado) {
             super(itemView);
             this.imageView = itemView.findViewById(R.id.imagen);
             this.productoTv = itemView.findViewById(R.id.titulo);
@@ -63,5 +67,9 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
             ingredientes.setText(producto.getIngredientes());
         }
 
+        @Override
+        public void onClick(View v) {
+
+        }
     }
 }
