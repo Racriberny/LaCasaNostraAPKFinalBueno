@@ -46,4 +46,7 @@
     <string name="reservas_antiguas">Reservation List</string>
     <string name="fechaBtn">Date</string>
     <string name="horaBtn">Hour</string>
+    <string name="ingredientes">Ingredients</string>
+    <string name="calorias">Calories</string>
+    <string name="precio">Price</string>
 </resources>

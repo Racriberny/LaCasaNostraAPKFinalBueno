@@ -3,6 +3,7 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,12 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.cristobalbernal.lacasanostraapk.R;
+import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
-import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +28,13 @@ public class FragmentDetalle extends Fragment {
     private Tipo tipo;
     private int idProducto;
     private IAPIService iapiService;
-    private TextView textView9;
-    private TextView textView8;
+    private Producto producto;
     private List<Producto> productos;
+    private ImageView imagen;
+    private TextView nombre;
+    private TextView ingredientes;
+    private TextView calorias;
+    private TextView precio;
 
     public interface IOnAttachListenerDetalle{
         Tipo getTipoSelecionadoo();
@@ -38,17 +43,19 @@ public class FragmentDetalle extends Fragment {
 
 
     public FragmentDetalle(){
-        super(R.layout.pruebadetalle);
+        super(R.layout.fragmnet_detalle);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        imagen = view.findViewById(R.id.imgDetalle);
+        nombre = view.findViewById(R.id.detellaProducto);
+        ingredientes = view.findViewById(R.id.ingredientesDetalle);
+        calorias = view.findViewById(R.id.calorias);
+        precio = view.findViewById(R.id.precioDetalle);
         iapiService = RestClient.getInstance();
         productos = new ArrayList<>();
-        textView9 = view.findViewById(R.id.textView9);
-        textView8 = view.findViewById(R.id.textView8);
-        textView9.setText(String.valueOf(idProducto));
 
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
@@ -57,9 +64,11 @@ public class FragmentDetalle extends Fragment {
                 productos.addAll(response.body());
                 for (int i = 0; i <productos.size() ; i++) {
                     if (productos.get(i).getId() == idProducto){
-                        Producto producto = new Producto(productos.get(i).getId(),productos.get(i).getNombre(),productos.get(i).getPrecio(),productos.get(i).getIngredientes()
-                        ,productos.get(i).getCalorias(),productos.get(i).getTipoIdtipo(),productos.get(i).getUrl_imagen());
-                        //Solo falta el adaptador!!!!
+                        imagen.setImageBitmap(EncodingImg.decode(productos.get(i).getUrl_imagen()));
+                        nombre.setText(productos.get(i).getNombre());
+                        ingredientes.setText(productos.get(i).getIngredientes());
+                        calorias.setText(productos.get(i).getCalorias());
+                        precio.setText(productos.get(i).getPrecio());
                     }
                 }
             }
@@ -69,7 +78,6 @@ public class FragmentDetalle extends Fragment {
 
             }
         });
-
 
 
     }
