@@ -22,7 +22,7 @@ public class EncodingImg {
         @SuppressLint("Recycle") InputStream inputStream = context.getContentResolver().openInputStream(uri);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        byte[] buffer = new byte[100000];
+        byte[] buffer = new byte[10000000];
         int length;
         while ((length = inputStream.read(buffer)) != -1) {
             outputStream.write(buffer, 0, length);

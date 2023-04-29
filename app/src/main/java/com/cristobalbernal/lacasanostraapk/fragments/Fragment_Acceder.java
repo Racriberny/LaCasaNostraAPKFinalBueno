@@ -37,7 +37,6 @@ public class Fragment_Acceder extends Fragment {
     private TextInputEditText contrasena;
     private IAPIService iapiService;
 
-    private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
     public Fragment_Acceder(){
@@ -52,7 +51,7 @@ public class Fragment_Acceder extends Fragment {
         correo = view.findViewById(R.id.etEmailLogin);
         contrasena = view.findViewById(R.id.etContrasenyaLogin);
         Button login = view.findViewById(R.id.btnLogin);
-        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
 
@@ -87,7 +86,6 @@ public class Fragment_Acceder extends Fragment {
                             editor.putString("nombreDeUsuario", usuarioIniciado.getCorreoElectronico());
                             editor.apply();
                             Intent intent = new Intent(getActivity(), MainActivity.class);
-                            intent.putExtra("activo",response.body());
                             requireActivity().startActivity(intent);
                         } else {
                             Toast.makeText(getContext(), "No has inicion sesion", Toast.LENGTH_SHORT).show();
