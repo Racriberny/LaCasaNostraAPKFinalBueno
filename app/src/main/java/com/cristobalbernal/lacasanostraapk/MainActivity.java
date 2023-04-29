@@ -14,6 +14,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import com.cristobalbernal.lacasanostraapk.fragments.FragmentDetalle;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
@@ -22,7 +23,9 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
+import com.cristobalbernal.lacasanostraapk.interfaces.IProductoSeleccionado;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
+import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
@@ -37,11 +40,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ITipoComida,Fragment_Tipo_Producto.IOnAttachListener{
+        ITipoComida, IProductoSeleccionado,Fragment_Tipo_Producto.IOnAttachListener,FragmentDetalle.IOnAttachListenerDetalle{
     private IAPIService iapiService;
     private List<Tipo> tipos;
+    private List<Producto> productos;
 
     private Tipo tipoSeleccionado;
+    private Tipo tipoSeleccionadoProducto;
+    private int productoSeleccionado;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         iapiService = RestClient.getInstance();
         tipos = new ArrayList<>();
+        productos = new ArrayList<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -168,7 +175,6 @@ public class MainActivity extends AppCompatActivity
                     assert response.body() != null;
                     tipos.addAll(response.body());
                     tipoSeleccionado = tipos.get(id);
-                    System.out.println(tipoSeleccionado);
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)
@@ -191,4 +197,36 @@ public class MainActivity extends AppCompatActivity
         return tipoSeleccionado;
     }
 
+    @Override
+    public Tipo getTipoSelecionadoo() {
+        return tipoSeleccionadoProducto;
+    }
+
+    @Override
+    public int ipProducto() {
+        return productoSeleccionado;
+    }
+    @Override
+    public void IComidaSeleccionada(int idTipo, int idProducto) {
+        tipoSeleccionadoProducto = tipos.get(idTipo -1);
+        iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
+            @Override
+            public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
+                assert response.body() != null;
+                productos.addAll(response.body());
+                productoSeleccionado = idProducto;
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, FragmentDetalle.class, null)
+                        .commit();
+            }
+
+            @Override
+            public void onFailure(Call<List<Producto>> call, Throwable t) {
+
+            }
+        });
+    }
 }

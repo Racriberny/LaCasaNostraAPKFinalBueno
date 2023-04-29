@@ -50,7 +50,7 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
         private final TextView productoTv;
         private final TextView ingredientes;
         private final TextView precio;
-
+        private final IProductoSeleccionado iProductoSeleccionado;
 
         public ViewHolder(@NonNull View itemView, IProductoSeleccionado iProductoSeleccionado) {
             super(itemView);
@@ -58,6 +58,8 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
             this.productoTv = itemView.findViewById(R.id.titulo);
             this.precio = itemView.findViewById(R.id.precio);
             this.ingredientes = itemView.findViewById(R.id.ingredientes);
+            this.iProductoSeleccionado = iProductoSeleccionado;
+            itemView.setOnClickListener(this);
         }
 
         public void bindProducto(Producto producto) {
@@ -69,7 +71,7 @@ public class AdaptadorTipoProducto extends RecyclerView.Adapter<AdaptadorTipoPro
 
         @Override
         public void onClick(View v) {
-
+            iProductoSeleccionado.IComidaSeleccionada(productos.get(getAdapterPosition()).getTipoIdtipo(),productos.get(getAdapterPosition()).getId());
         }
     }
 }
