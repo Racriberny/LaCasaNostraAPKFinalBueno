@@ -3,7 +3,11 @@ package com.cristobalbernal.lacasanostraapk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -49,6 +53,9 @@ public class MainActivity extends AppCompatActivity
     private Tipo tipoSeleccionadoProducto;
     private int productoSeleccionado;
     private SharedPreferences sharedPreferences;
+    private NavigationView navigationView;
+    private View headerView;
+    private String userNombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,8 @@ public class MainActivity extends AppCompatActivity
         iapiService = RestClient.getInstance();
         tipos = new ArrayList<>();
         productos = new ArrayList<>();
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        userNombre = sharedPreferences.getString("nombreDeUsuario", "");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,13 +82,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
-
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        String userNombre = sharedPreferences.getString("nombreDeUsuario", "");
+        userNombre = sharedPreferences.getString("nombreDeUsuario", "");
         FragmentManager manager = getSupportFragmentManager();
         int id = item.getItemId();
         if(id == R.id.home) {

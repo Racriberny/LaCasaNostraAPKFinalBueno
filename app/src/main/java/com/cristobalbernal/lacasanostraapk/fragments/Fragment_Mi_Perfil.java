@@ -78,7 +78,9 @@ public class Fragment_Mi_Perfil extends Fragment {
         confirmarPasswordNew = view.findViewById(R.id.confirmarContraseña);
         confirmarPasswordNew.setEnabled(false);
         Button edit = view.findViewById(R.id.editar);
+
         Button guardar = view.findViewById(R.id.save);
+        guardar.setVisibility(View.GONE);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         user = sharedPreferences.getString("nombreDeUsuario","");
@@ -118,6 +120,8 @@ public class Fragment_Mi_Perfil extends Fragment {
                 passwordNew.setEnabled(true);
                 imageView.setEnabled(true);
                 confirmarPasswordNew.setEnabled(true);
+                edit.setVisibility(View.GONE);
+                guardar.setVisibility(View.VISIBLE);
                 Toast.makeText(getContext(),R.string.editar_perefil,Toast.LENGTH_SHORT).show();
             }
         });
@@ -143,7 +147,8 @@ public class Fragment_Mi_Perfil extends Fragment {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hola");
+                edit.setVisibility(View.VISIBLE);
+                guardar.setVisibility(View.GONE);
                 String nombre = name.getText().toString();
                 String email = correo.getText().toString();
                 String actual = null;
