@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.cristobalbernal.lacasanostraapk.MainActivity;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
@@ -84,6 +85,7 @@ public class Fragment_Setting extends Fragment {
         cerrar_session.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.cambiarAlNormal(getContext());
                 sharedPreferences.edit().remove("nombreDeUsuario").apply();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()

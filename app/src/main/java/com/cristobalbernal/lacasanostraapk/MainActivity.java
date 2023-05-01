@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +18,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.fragments.FragmentDetalle;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
@@ -31,6 +34,7 @@ import com.cristobalbernal.lacasanostraapk.interfaces.IProductoSeleccionado;
 import com.cristobalbernal.lacasanostraapk.interfaces.ITipoComida;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.modelos.Tipo;
+import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 import com.google.android.material.navigation.NavigationView;
 
@@ -48,13 +52,14 @@ public class MainActivity extends AppCompatActivity
     private IAPIService iapiService;
     private List<Tipo> tipos;
     private List<Producto> productos;
+    private List<Usuario> usuarios;
 
     private Tipo tipoSeleccionado;
     private Tipo tipoSeleccionadoProducto;
     private int productoSeleccionado;
     private SharedPreferences sharedPreferences;
-    private NavigationView navigationView;
-    private View headerView;
+    private static NavigationView navigationView;
+    private static View headerView;
     private String userNombre;
 
     @Override
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity
         iapiService = RestClient.getInstance();
         tipos = new ArrayList<>();
         productos = new ArrayList<>();
+        usuarios = new ArrayList<>();
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         userNombre = sharedPreferences.getString("nombreDeUsuario", "");
 
@@ -78,9 +84,94 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        if (userNombre.equals("")){
+            cambiarAlNormal(this);
+
+            Button iniciarSesionBtn = headerView.findViewById(R.id.iniciarSesionDra);
+            iniciarSesionBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction()
+                            .setReorderingAllowed(true)
+                            .addToBackStack(null)
+                            .replace(R.id.content_frame, Fragment_Acceder.class, null)
+                            .commit();
+                }
+            });
+
+        }else {
+            cambiarHeaderNavigationView();
+        }
+
+
+    }
+
+    private void cambiarHeaderNavigationView() {
+        // Inflar el nuevo layout del header de navegación
+        View nuevoHeaderView = LayoutInflater.from(this).inflate(R.layout.nav_header_main_login, null);
+        // Actualizar el header del NavigationView con el nuevo View de header
+        navigationView.removeHeaderView(headerView);
+        navigationView.addHeaderView(nuevoHeaderView);
+        headerView = nuevoHeaderView;
+        TextView headerTextView = nuevoHeaderView.findViewById(R.id.header_text);
+        ImageView headerImageview = nuevoHeaderView.findViewById(R.id.header_image);
+
+
+        iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                assert response.body() != null;
+                usuarios.addAll(response.body());
+                for (int i = 0; i <usuarios.size() ; i++) {
+                    if (usuarios.get(i).getCorreoElectronico().equals(userNombre)){
+                        headerTextView.setText("Bienvenido "  + usuarios.get(i).getNombre());
+                        headerImageview.setImageBitmap(EncodingImg.decode(usuarios.get(i).getImagen()));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+    }
+    public static void cambiarAlNormal(Context context){
+        View header = LayoutInflater.from(context).inflate(R.layout.nav_header_main,null);
+        navigationView.removeHeaderView(headerView);
+        navigationView.addHeaderView(header);
+        headerView = header;
+
+        Button iniciarSesionBtn = headerView.findViewById(R.id.iniciarSesionDra);
+        iniciarSesionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+
+                // Iniciar una transacción para reemplazar el fragment actual
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Crear una instancia del nuevo fragment y reemplazar el actual con el nuevo
+                Fragment_Acceder fragment_acceder = new Fragment_Acceder();
+                fragmentTransaction.replace(R.id.content_frame, fragment_acceder);
+
+                // Confirmar la transacción
+                fragmentTransaction.commit();
+
+            }
+        });
+
+
 
     }
 
