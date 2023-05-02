@@ -49,4 +49,6 @@
     <string name="ingredientes">Ingredients</string>
     <string name="calorias">Calories</string>
     <string name="precio">Price</string>
+    <string name="a_adir_plato">Add Plate</string>
+    <string name="descripcion">Description</string>
 </resources>

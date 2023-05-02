@@ -94,7 +94,7 @@ public class Fragment_Acceder extends Fragment {
 
                     @Override
                     public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
-                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"Contraseña o correo erroneo",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
