@@ -15,13 +15,6 @@
             android:checked="false"
             android:title="@string/carta"
            />
-
-        <item
-            android:id="@+id/acceder"
-            android:checked="false"
-            android:icon="@drawable/ic_menu_people"
-            android:title="@string/acceder"
-            />
         <item
             android:id="@+id/reservas"
             android:checked="false"

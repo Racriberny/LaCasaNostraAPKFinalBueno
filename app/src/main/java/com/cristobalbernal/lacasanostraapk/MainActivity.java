@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity
                             .addToBackStack(null)
                             .replace(R.id.content_frame, Fragment_Acceder.class, null)
                             .commit();
+
                 }
             });
-
         }else {
             cambiarHeaderNavigationView();
         }
@@ -195,17 +195,6 @@ public class MainActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Carta.class, null)
                     .commit();
-        } else if(id == R.id.acceder) {
-            if (userNombre.equals("")){
-                Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
-                manager.beginTransaction()
-                        .setReorderingAllowed(true)
-                        .addToBackStack(null)
-                        .replace(R.id.content_frame, Fragment_Acceder.class, null)
-                        .commit();
-            }else {
-                Toast.makeText(getBaseContext(),R.string.avisoInicio,Toast.LENGTH_SHORT).show();
-            }
         } else if (id == R.id.reservas) {
             if (userNombre.equals("")){
                 Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
