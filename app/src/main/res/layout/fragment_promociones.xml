@@ -37,3 +37,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+/*
+//Cambiarlo por esto.
+<GridLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:rowCount="2"
+    android:columnCount="1">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_row="0"
+        android:scaleType="fitXY"
+        android:src="@drawable/imagen1" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_row="1"
+        android:scaleType="fitXY"
+        android:src="@drawable/imagen2" />
+
+</GridLayout>
+*/
