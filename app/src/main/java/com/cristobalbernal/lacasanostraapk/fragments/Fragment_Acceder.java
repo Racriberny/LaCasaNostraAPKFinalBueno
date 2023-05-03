@@ -1,5 +1,7 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
+import static com.cristobalbernal.lacasanostraapk.R.string.necesario_escribir;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -65,7 +67,6 @@ public class Fragment_Acceder extends Fragment {
                 } catch (NoSuchAlgorithmException e) {
                     throw new RuntimeException(e);
                 }
-
                 if (correoElectronico.isEmpty()){
                     correo.setError("Se requiere un correo electronico");
                     correo.requestFocus();

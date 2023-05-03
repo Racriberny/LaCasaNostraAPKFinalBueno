@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Lista Reservas"
+        android:text="@string/lista_reservas_lista"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp" />

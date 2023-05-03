@@ -48,7 +48,7 @@ public class Fragment_Modificar_Plato extends Fragment {
         List<Tipo> tipoList = new ArrayList<>();
         apiService.getTipo().enqueue(new Callback<List<Tipo>>() {
             @Override
-            public void onResponse(Call<List<Tipo>> call, Response<List<Tipo>> response) {
+            public void onResponse(@NonNull Call<List<Tipo>> call, @NonNull Response<List<Tipo>> response) {
                 if (response.isSuccessful()){
                     assert response.body() != null;
                     tipoList.addAll(response.body());

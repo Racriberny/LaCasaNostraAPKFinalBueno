@@ -52,4 +52,15 @@
     <string name="a_adir_plato">Add Plate</string>
     <string name="descripcion">Description</string>
     <string name="modificar_plato">Modify Silver</string>
+    <string name="elige_el_plato">Choose the dish</string>
+    <string name="selecciona_imagen">Select Image</string>
+    <string name="indica_el_nuevo_nombre">Enter the new name</string>
+    <string name="indica_la_nueva_descripcion">Indicates the new description</string>
+    <string name="modificar">MODIFY</string>
+    <string name="productos">Products</string>
+    <string name="modificar_producto">Modify Product</string>
+    <string name="platos">Dishes</string>
+    <string name="a_adir_producto">Add Product</string>
+    <string name="lista_reservas_lista">Reservation List</string>
+    <string name="necesario_escribir">An email is required</string>
 </resources>

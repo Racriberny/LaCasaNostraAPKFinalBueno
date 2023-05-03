@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity
     private static NavigationView navigationView;
     private static View headerView;
     private String userNombre;
+    private static DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar,
                 R.string.navigation_drawer_open,
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity
                             .addToBackStack(null)
                             .replace(R.id.content_frame, Fragment_Acceder.class, null)
                             .commit();
+                    drawer.closeDrawer(GravityCompat.START);
 
                 }
             });
@@ -164,9 +166,9 @@ public class MainActivity extends AppCompatActivity
                 // Crear una instancia del nuevo fragment y reemplazar el actual con el nuevo
                 Fragment_Acceder fragment_acceder = new Fragment_Acceder();
                 fragmentTransaction.replace(R.id.content_frame, fragment_acceder);
-
                 // Confirmar la transacción
                 fragmentTransaction.commit();
+                drawer.closeDrawer(GravityCompat.START);
 
             }
         });
@@ -182,14 +184,12 @@ public class MainActivity extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         int id = item.getItemId();
         if(id == R.id.home) {
-            manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Home.class, null)
                     .commit();
         } else if(id == R.id.carta) {
-            manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
@@ -198,14 +198,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.reservas) {
             if (userNombre.equals("")){
                 Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
-                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
@@ -217,14 +215,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.promociones) {
             if (userNombre.equals("")){
                 Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
-                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
@@ -234,14 +230,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.setting) {
             if (userNombre.equals("")){
                 Toast.makeText(getBaseContext(), R.string.inicio_session, Toast.LENGTH_LONG).show();
-                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame, Fragment_Acceder.class, null)
                         .commit();
             }else {
-                manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
