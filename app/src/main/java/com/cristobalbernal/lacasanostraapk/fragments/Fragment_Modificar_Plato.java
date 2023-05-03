@@ -52,18 +52,14 @@ public class Fragment_Modificar_Plato extends Fragment {
                 if (response.isSuccessful()){
                     assert response.body() != null;
                     tipoList.addAll(response.body());
-
-
-
                     String [] tipos = new String[tipoList.size()];
-
                     for (int i = 0; i <tipos.length ; i++) {
                         tipos[i] = tipoList.get(i).getNombre();
                     }
                     final int[] id = new int[1];
                     Spinner spinner = view.findViewById(R.id.sListaPlatos);
                     spinner.setAdapter(new ArrayAdapter<>(getActivity(),R.layout.spinner_item_geekipedia, tipos));
-                    EditText nombre = view.findViewById(R.id.etValorCategoria);
+                    EditText nombre = view.findViewById(R.id.etValorNombre);
                     EditText descripcion = view.findViewById(R.id.etDescripcionModificada);
                     ImageView imagen = view.findViewById(R.id.imageViewModificar);
                     Button btModificar = view.findViewById(R.id.btnModificarPlato);
