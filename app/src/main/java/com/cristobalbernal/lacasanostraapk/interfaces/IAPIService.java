@@ -53,4 +53,7 @@ public interface IAPIService {
 
     @POST("tipo/add")
     Call<Boolean> addTipo(@Body Tipo tipo);
+
+    @PUT("tipo/update/{id}")
+    Call<Tipo> modificarTipo(@Path("id") int[] id, @Body Tipo tipo);
 }
