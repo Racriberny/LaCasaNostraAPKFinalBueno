@@ -46,6 +46,20 @@ public class Fragment_Modificar_Plato extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         apiService = RestClient.getInstance();
         List<Tipo> tipoList = new ArrayList<>();
+        ImageView imagen = view.findViewById(R.id.imageViewModificar);
+
+
+        pickImage = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
+            if (uri != null) {
+                try {
+                    base64 = EncodingImg.getBase64FromUri(requireContext(),uri);
+                    imagen.setImageBitmap(null);
+                    imagen.setImageBitmap(EncodingImg.decode(base64));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         apiService.getTipo().enqueue(new Callback<List<Tipo>>() {
             @Override
             public void onResponse(@NonNull Call<List<Tipo>> call, @NonNull Response<List<Tipo>> response) {
@@ -61,18 +75,8 @@ public class Fragment_Modificar_Plato extends Fragment {
                     spinner.setAdapter(new ArrayAdapter<>(getActivity(),R.layout.spinner_item_geekipedia, tipos));
                     EditText nombre = view.findViewById(R.id.etValorNombre);
                     EditText descripcion = view.findViewById(R.id.etDescripcionModificada);
-                    ImageView imagen = view.findViewById(R.id.imageViewModificar);
                     Button btModificar = view.findViewById(R.id.btnModificarPlato);
-                    pickImage = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
-                        if (uri != null) {
-                            try {
-                                base64 = EncodingImg.getBase64FromUri(requireContext(),uri);
-                                imagen.setImageBitmap(EncodingImg.decode(base64));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+
 
                     imagen.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -105,16 +109,15 @@ public class Fragment_Modificar_Plato extends Fragment {
                                     tipo1 = tipoTipo;
                                 }
                             }
-                            assert tipo1 != null;
-                            id[0] = tipo1.getId();
-                            tipo1.setNombre(name);
+
 
 
                             if (base64 == null){
                                 Toast.makeText(getContext(),"Tiene que seleccionar una image",Toast.LENGTH_SHORT).show();
                             }else {
                                 Log.i("Modificando","Modificando categoria...");
-                                apiService.modificarTipo(id,new Tipo(name,description,base64)).enqueue(new Callback<Tipo>() {
+                                assert tipo1 != null;
+                                apiService.modificarTipo(tipo1.getId(),new Tipo(name,description,base64)).enqueue(new Callback<Tipo>() {
                                     @Override
                                     public void onResponse(Call<Tipo> call, Response<Tipo> response) {
                                         Log.i("Bien",response.toString());
