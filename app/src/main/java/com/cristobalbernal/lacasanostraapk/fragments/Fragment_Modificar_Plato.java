@@ -100,9 +100,9 @@ public class Fragment_Modificar_Plato extends Fragment {
 
 
                             Tipo tipo1 = null;
-                            for (Tipo categoria : tipoList) {
-                                if (tipo.equals(categoria.getNombre())) {
-                                    tipo1 = categoria;
+                            for (Tipo tipoTipo : tipoList) {
+                                if (tipo.equals(tipoTipo.getNombre())) {
+                                    tipo1 = tipoTipo;
                                 }
                             }
                             assert tipo1 != null;
