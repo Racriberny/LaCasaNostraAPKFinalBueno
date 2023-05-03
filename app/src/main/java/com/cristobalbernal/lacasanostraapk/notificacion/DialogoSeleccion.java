@@ -33,6 +33,7 @@ public class DialogoSeleccion extends DialogFragment {
         final String[] items = {"Español", "Inglés"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
         builder.setTitle(R.string.seleccionar)
                 .setItems(items, new DialogInterface.OnClickListener() {
                     @Override
