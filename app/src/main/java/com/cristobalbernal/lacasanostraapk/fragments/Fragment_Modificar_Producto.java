@@ -1,12 +1,15 @@
 package com.cristobalbernal.lacasanostraapk.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
@@ -14,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
@@ -98,6 +102,7 @@ public class Fragment_Modificar_Producto extends Fragment {
                         EditText precio = view.findViewById(R.id.pricemodificado);
                         EditText calorias = view.findViewById(R.id.caloriasmodificada);
                         EditText ingredientes = view.findViewById(R.id.ingredienteModificadas);
+                        Button modificarProducto = view.findViewById(R.id.modificarProducto);
                         final String[] productoSeleccionado = new String[1];
                         spinnerProductos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
@@ -111,7 +116,7 @@ public class Fragment_Modificar_Producto extends Fragment {
                                 calorias.setText(productoSeleccionado.getCalorias());
                                 ingredientes.setText(productoSeleccionado.getIngredientes());
                                 imageView.setImageBitmap(EncodingImg.decode(productoSeleccionado.getUrl_imagen()));
-
+                                base64 = productoSeleccionado.getUrl_imagen();
                                 // Buscar el tipo correspondiente al producto seleccionado
                                 Tipo tipoSeleccionado = null;
                                 for (Tipo tipo : tipoList) {
@@ -130,6 +135,78 @@ public class Fragment_Modificar_Producto extends Fragment {
 
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+
+                        modificarProducto.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String productoSeleccionado = spinnerProductos.getSelectedItem().toString();
+                                String name = nombre.getText().toString();
+                                String price = precio.getText().toString();
+                                String calories = calorias.getText().toString();
+                                String ingrediente = ingredientes.getText().toString();
+                                String tipoSeleccionado = spinnerTipo.getSelectedItem().toString();
+
+                                if (name.isEmpty()){
+                                    nombre.setError("Debes de escribir un nombre.");
+                                    nombre.requestFocus();
+                                    return;
+                                }
+                                if (price.isEmpty()){
+                                    precio.setError("Debes de escribir un precio.");
+                                    precio.requestFocus();
+                                    return;
+                                }
+                                if (calories.isEmpty()){
+                                    calorias.setError("Debes de escribir calorias.");
+                                    calorias.requestFocus();
+                                    return;
+                                }
+                                if (ingrediente.isEmpty()){
+                                    ingredientes.setError("Debes de escribir los ingredientes.");
+                                    ingredientes.requestFocus();
+                                    return;
+                                }
+
+                                Tipo tipo1 = null;
+                                for (Tipo tipoTipo : tipoList) {
+                                    if (tipoSeleccionado.equals(tipoTipo.getNombre())) {
+                                        tipo1 = tipoTipo;
+                                    }
+                                }
+                                Producto producto = null;
+                                for (Producto producto1: productoList){
+                                    if (productoSeleccionado.equals(producto1.getNombre())){
+                                        producto = producto1;
+                                    }
+                                }
+                                if (base64 == null){
+                                    Toast.makeText(getContext(), "Debes de seleccionar una imagen", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    assert producto != null;
+                                    assert tipo1 != null;
+                                    iapiService.modificarProducto(producto.getId(),new Producto(name,price,ingrediente,calories,tipo1.getId(),base64)).enqueue(new Callback<Producto>() {
+                                        @Override
+                                        public void onResponse(Call<Producto> call, Response<Producto> response) {
+                                            Log.i("Modificando","Modificando producto...");
+                                            Toast.makeText(getContext(), "Producto modificado", Toast.LENGTH_SHORT).show();
+                                            FragmentManager manager = getParentFragmentManager();
+                                            manager.beginTransaction()
+                                                    .setReorderingAllowed(true)
+                                                    .addToBackStack(null)
+                                                    .replace(R.id.content_frame,Fragment_Home.class,null)
+                                                    .commit();
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<Producto> call, Throwable t) {
+
+                                        }
+                                    });
+
+                                }
 
                             }
                         });

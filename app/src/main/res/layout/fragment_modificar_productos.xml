@@ -3,18 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp">
 
     <!-- Titulo -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:textStyle="bold"
         android:textAlignment="center"
-        android:text="Seleccione un producto" />
+        android:text="@string/seleccione_un_producto" />
 
     <!-- Spinner -->
     <Spinner
+        android:layout_marginTop="10dp"
         android:id="@+id/my_spinner_producto"
         android:padding="16dp"
         android:layout_width="match_parent"
@@ -25,8 +27,8 @@
     <ImageView
         android:id="@+id/imagenModificar"
         android:layout_marginTop="20dp"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/fotopredeterminada"
         android:layout_gravity="center"
         android:adjustViewBounds="true" />
@@ -37,7 +39,8 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:text="Seleccione el plato" />
+        android:textStyle="bold"
+        android:text="@string/indique_el_plato" />
 
     <Spinner
         android:id="@+id/my_spinner_tipos"
@@ -52,25 +55,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="16dp">
+        android:paddingTop="8dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Texto 1" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/introduce_nombre" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Texto 2" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/introduce_el_precio" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Texto 3" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/introduce_las_calorias" />
 
     </LinearLayout>
 
@@ -88,7 +100,7 @@
             android:layout_weight="1"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:hint="Editar texto 1" />
+            android:hint="@string/nombre" />
 
         <EditText
             android:id="@+id/pricemodificado"
@@ -97,7 +109,7 @@
             android:layout_weight="1"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:hint="Editar texto 2" />
+            android:hint="@string/precio" />
 
         <EditText
             android:id="@+id/caloriasmodificada"
@@ -106,7 +118,7 @@
             android:layout_weight="1"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:hint="Editar texto 3" />
+            android:hint="@string/calorias" />
 
     </LinearLayout>
 
@@ -117,15 +129,28 @@
         android:paddingTop="1dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:layout_marginTop="15dp"
         android:textStyle="bold"
-        android:text="Ingredientes" />
+        android:text="@string/introduce_los_ingredientes" />
 
     <EditText
         android:id="@+id/ingredienteModificadas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
         android:textColorHint="@color/black"
-        android:hint="Escribir aquí" />
+        android:hint="@string/ingredientes" />
+
+    <Button
+        android:id="@+id/modificarProducto"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/botones"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:hint="@string/modificar"/>
 
 </LinearLayout>

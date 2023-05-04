@@ -59,4 +59,6 @@ public interface IAPIService {
 
     @PUT("tipo/update/{id}")
     Call<Tipo> modificarTipo(@Path("id") int id, @Body Tipo tipo);
+    @PUT("producto/update/{id}")
+    Call<Producto> modificarProducto(@Path("id") int id, @Body Producto producto);
 }

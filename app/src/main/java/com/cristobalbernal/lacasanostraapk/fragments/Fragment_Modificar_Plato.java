@@ -113,12 +113,13 @@ public class Fragment_Modificar_Plato extends Fragment {
                             if (base64 == null){
                                 Toast.makeText(getContext(),"Tiene que seleccionar una image",Toast.LENGTH_SHORT).show();
                             }else {
-                                Log.i("Modificando","Modificando categoria...");
+                                Log.i("Modificando","Modificando plato...");
                                 assert tipo1 != null;
                                 apiService.modificarTipo(tipo1.getId(),new Tipo(name,description,base64)).enqueue(new Callback<Tipo>() {
                                     @Override
                                     public void onResponse(Call<Tipo> call, Response<Tipo> response) {
                                         Log.i("Bien",response.toString());
+                                        Toast.makeText(getContext(), "Plato modificado", Toast.LENGTH_SHORT).show();
                                         FragmentManager manager = getParentFragmentManager();
                                         manager.beginTransaction()
                                                 .setReorderingAllowed(true)
