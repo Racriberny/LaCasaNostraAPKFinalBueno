@@ -67,4 +67,5 @@
     <string name="introduce_el_precio">Enter the price</string>
     <string name="introduce_los_ingredientes">Enter the ingredients</string>
     <string name="indique_el_plato">Indicate the dish</string>
+    <string name="introduce_las_calorias">Enter the calories</string>
 </resources>

@@ -280,17 +280,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public Tipo getTipoSelecionadoo() {
-        return tipoSeleccionadoProducto;
-    }
-
-    @Override
     public int ipProducto() {
         return productoSeleccionado;
     }
     @Override
     public void IComidaSeleccionada(int idTipo, int idProducto) {
-        tipoSeleccionadoProducto = tipos.get(idTipo -1);
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
             public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {

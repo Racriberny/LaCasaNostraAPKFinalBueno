@@ -19,6 +19,15 @@ public class Producto {
         this.urlImagen = url_imagen;
     }
 
+    public Producto(String nombre, String precio, String ingredientees, String calorias, int tipoIdtipo, String urlImagen) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.ingredientees = ingredientees;
+        this.calorias = calorias;
+        this.tipoIdtipo = tipoIdtipo;
+        this.urlImagen = urlImagen;
+    }
+
     public int getId() {
         return id;
     }

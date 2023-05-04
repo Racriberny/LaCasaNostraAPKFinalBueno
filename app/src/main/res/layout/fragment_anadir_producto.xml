@@ -15,18 +15,19 @@
 
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/imgProducto"
         android:layout_width="120dp"
         android:layout_marginTop="15dp"
         android:layout_height="120dp"
         android:src="@drawable/fotopredeterminada"
-        android:padding="16dp" />
+        android:padding="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:layout_marginTop="10dp"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/textview1"
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:text="@string/introduce_nombre" />
 
@@ -43,10 +44,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:text="@string/introduce_el_precio" />
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/introduce_las_calorias" />
 
     </LinearLayout>
 
@@ -54,10 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="1dp">
 
         <EditText
-            android:id="@+id/name_edittext"
+            android:id="@+id/name_producto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,7 +76,7 @@
             android:hint="@string/nombre" />
 
         <EditText
-            android:id="@+id/price_edittext"
+            android:id="@+id/price_producto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -74,6 +84,15 @@
             android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:hint="@string/precio" />
+        <EditText
+            android:id="@+id/calories_producto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:inputType="numberDecimal"
+            android:hint="@string/calorias" />
 
     </LinearLayout>
 
@@ -92,7 +111,7 @@
             android:text="@string/introduce_los_ingredientes" />
 
         <EditText
-            android:id="@+id/edittext1"
+            android:id="@+id/ingrediente_productos"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:textColor="@color/black"
@@ -109,11 +128,19 @@
             android:text="@string/indique_el_plato" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinnerProductos"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/anadirProducto"
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/a_adir_producto"/>
 
 </LinearLayout>

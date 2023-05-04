@@ -58,6 +58,16 @@ public class Fragment_Admin extends Fragment {
                         .commit();
             }
         });
+        btModificarProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame,Fragment_Modificar_Producto.class,null)
+                        .commit();
+            }
+        });
 
 
 

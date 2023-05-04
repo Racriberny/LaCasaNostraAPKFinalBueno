@@ -36,6 +36,9 @@ public interface IAPIService {
     @POST("reserva/add")
     Call<Boolean> addReserva(@Body Reservas reservas);
 
+    @POST("producto/add")
+    Call<Boolean> addProducto(@Body Producto producto);
+
 
     @POST("usuario/login")
     Call<Usuario> logUsuario (

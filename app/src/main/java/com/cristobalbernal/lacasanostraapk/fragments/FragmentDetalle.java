@@ -25,10 +25,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentDetalle extends Fragment {
-    private Tipo tipo;
     private int idProducto;
     private IAPIService iapiService;
-    private Producto producto;
     private List<Producto> productos;
     private ImageView imagen;
     private TextView nombre;
@@ -37,7 +35,6 @@ public class FragmentDetalle extends Fragment {
     private TextView precio;
 
     public interface IOnAttachListenerDetalle{
-        Tipo getTipoSelecionadoo();
         int ipProducto();
     }
 
@@ -87,7 +84,6 @@ public class FragmentDetalle extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         IOnAttachListenerDetalle iOnAttachListenerDetalle = (IOnAttachListenerDetalle) context;
-        tipo = iOnAttachListenerDetalle.getTipoSelecionadoo();
         idProducto = iOnAttachListenerDetalle.ipProducto();
     }
 }
