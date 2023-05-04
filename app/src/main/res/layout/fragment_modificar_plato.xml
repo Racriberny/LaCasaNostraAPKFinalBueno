@@ -23,18 +23,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="@string/elige_el_plato"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-    <Spinner
+    <android.widget.Spinner
         android:id="@+id/sListaPlatos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
+        android:spinnerStyle="@style/SpinnerStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -56,7 +58,8 @@
         android:layout_width="80dp"
         android:layout_marginTop="10dp"
         android:layout_height="80dp"
-        android:background="@drawable/plato"
+        android:src="@drawable/plato"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20"/>
@@ -82,6 +85,7 @@
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="@string/nombre"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,8 +112,10 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:textColor="@color/black"
         android:hint="@string/descripcion"
         android:inputType="text"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />

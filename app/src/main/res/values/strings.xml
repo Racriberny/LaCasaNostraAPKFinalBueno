@@ -64,6 +64,10 @@
     <string name="a_adir_producto">Añadir Producto</string>
     <string name="lista_reservas_lista">Lista Reservas</string>
     <string name="necesario_escribir">Se requiere un correo electronico</string>
+    <string name="introduce_nombre">Introduce el nombre</string>
+    <string name="introduce_el_precio">Introduce el Precio</string>
+    <string name="introduce_los_ingredientes">Introduce los ingredientes</string>
+    <string name="indique_el_plato">Indique el plato</string>
 
 
 </resources>

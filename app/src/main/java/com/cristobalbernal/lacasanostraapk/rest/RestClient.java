@@ -9,8 +9,8 @@ public class RestClient {
 
     public static final String CASA = "192.168.1.141";
     public static final String INSTI = "192.168.21.47";
-    public static final String DASS = "192.168.5.14";
-    private static final String BASE_URL = "http://" + CASA + ":" +  PORT + "/";
+    public static final String DASS = "192.168.5.7";
+    private static final String BASE_URL = "http://" + DASS + ":" +  PORT + "/";
 
     /* Lo hacemos privado para evitar que se puedan crear instancias de esta forma */
     private RestClient() {

@@ -63,4 +63,8 @@
     <string name="a_adir_producto">Add Product</string>
     <string name="lista_reservas_lista">Reservation List</string>
     <string name="necesario_escribir">An email is required</string>
+    <string name="introduce_nombre">Enter the name</string>
+    <string name="introduce_el_precio">Enter the price</string>
+    <string name="introduce_los_ingredientes">Enter the ingredients</string>
+    <string name="indique_el_plato">Indicate the dish</string>
 </resources>

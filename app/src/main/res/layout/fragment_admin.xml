@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/btAdminCategoria"
+        android:id="@+id/btAdminProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btAdminPlato" />
 
     <Button
-        android:id="@+id/btModificarCategorias"
+        android:id="@+id/btModificarProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -80,6 +80,6 @@
         android:text="@string/modificar_producto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btAdminCategoria" />
+        app:layout_constraintTop_toBottomOf="@+id/btAdminProducto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
