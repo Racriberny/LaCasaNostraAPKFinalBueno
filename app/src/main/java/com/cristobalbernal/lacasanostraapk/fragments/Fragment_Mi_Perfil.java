@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.cristobalbernal.lacasanostraapk.MainActivity;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.Utils.HashGenerator;
@@ -219,6 +220,7 @@ public class Fragment_Mi_Perfil extends Fragment {
                             Log.i("Bien",response.toString());
                             editor.putString("nombreDeUsuario", email);
                             editor.apply();
+                            MainActivity.cambiarHeaderNavigationView(requireContext());
                             Toast.makeText(getContext(),R.string.cambiado,Toast.LENGTH_SHORT).show();
                             FragmentManager manager = getParentFragmentManager();
                             manager.beginTransaction()

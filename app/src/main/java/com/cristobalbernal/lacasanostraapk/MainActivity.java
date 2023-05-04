@@ -49,10 +49,10 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ITipoComida, IProductoSeleccionado,Fragment_Tipo_Producto.IOnAttachListener,FragmentDetalle.IOnAttachListenerDetalle{
-    private IAPIService iapiService;
+    private static IAPIService iapiService;
     private List<Tipo> tipos;
     private List<Producto> productos;
-    private List<Usuario> usuarios;
+    private static List<Usuario> usuarios;
 
     private Tipo tipoSeleccionado;
     private Tipo tipoSeleccionadoProducto;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences sharedPreferences;
     private static NavigationView navigationView;
     private static View headerView;
-    private String userNombre;
+    private static String userNombre;
     private static DrawerLayout drawer;
 
     @Override
@@ -108,15 +108,15 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         }else {
-            cambiarHeaderNavigationView();
+            cambiarHeaderNavigationView(this);
         }
 
 
     }
 
-    private void cambiarHeaderNavigationView() {
+    public static void cambiarHeaderNavigationView(Context context) {
         // Inflar el nuevo layout del header de navegación
-        View nuevoHeaderView = LayoutInflater.from(this).inflate(R.layout.nav_header_main_login, null);
+        View nuevoHeaderView = LayoutInflater.from(context).inflate(R.layout.nav_header_main_login, null);
         // Actualizar el header del NavigationView con el nuevo View de header
         navigationView.removeHeaderView(headerView);
         navigationView.addHeaderView(nuevoHeaderView);
