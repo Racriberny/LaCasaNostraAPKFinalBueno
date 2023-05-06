@@ -3,6 +3,7 @@ package com.cristobalbernal.lacasanostraapk.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -81,7 +82,21 @@ public class Fragment_Modificar_Plato extends Fragment {
                     EditText nombre = view.findViewById(R.id.etValorNombre);
                     EditText descripcion = view.findViewById(R.id.etDescripcionModificada);
                     Button btModificar = view.findViewById(R.id.btnModificarPlato);
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            Tipo tipoSeleccionado = tipoList.get(position);
+                            nombre.setText(tipoSeleccionado.getNombre());
+                            descripcion.setText(tipoSeleccionado.getDescripcion());
+                            imagen.setImageBitmap(EncodingImg.decode(tipoSeleccionado.getImagen()));
+                            base64 = tipoSeleccionado.getImagen();
+                        }
 
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
 
                     btModificar.setOnClickListener(new View.OnClickListener() {
                         @Override

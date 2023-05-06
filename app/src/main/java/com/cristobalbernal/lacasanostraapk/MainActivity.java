@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ITipoComida, IProductoSeleccionado,Fragment_Tipo_Producto.IOnAttachListener,FragmentDetalle.IOnAttachListenerDetalle{
     private static IAPIService iapiService;
-    private static List<Tipo> tipos;
+    private List<Tipo> tipos;
     private List<Producto> productos;
     private static List<Usuario> usuarios;
 
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar,
@@ -84,7 +86,6 @@ public class MainActivity extends AppCompatActivity
                 R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView = findViewById(R.id.nav_view);
         headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);

@@ -25,6 +25,7 @@ import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.notificacion.DialogoSeleccion;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,7 @@ import retrofit2.Response;
 public class Fragment_Home extends Fragment {
     private IAPIService iapiService;
     private List<Usuario> usuarios;
+
     private SharedPreferences sharedPreferences;
     private String user;
     private Button admin;
@@ -47,6 +49,8 @@ public class Fragment_Home extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         iapiService = RestClient.getInstance();
         usuarios = new ArrayList<>();
+
+
         Button carta = view.findViewById(R.id.btCartaHome);
         Button paginaWeb= view.findViewById(R.id.btPaginaWeb);
         Button idioma= view.findViewById(R.id.btCambioIdioma);
@@ -99,28 +103,7 @@ public class Fragment_Home extends Fragment {
             }
         });
     }
-
-
-    private void getTipos(){
-        iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<Tipo>> call, @NonNull Response<List<Tipo>> response) {
-                if(response.isSuccessful()) {
-                    assert response.body() != null;
-                    for(Tipo Tipo: response.body()) {
-                        Log.i("Tipo", Tipo.toString());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<List<Tipo>> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-     */
+    */
 
     private void abrirPaginaWeb(String url){
         Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
