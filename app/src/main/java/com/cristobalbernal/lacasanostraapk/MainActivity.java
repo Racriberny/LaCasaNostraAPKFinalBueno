@@ -255,6 +255,7 @@ public class MainActivity extends AppCompatActivity
             public void onResponse(Call<List<Tipo>> call, Response<List<Tipo>> response) {
                 if (response.isSuccessful()){
                     assert response.body() != null;
+                    tipos.clear();
                     tipos.addAll(response.body());
                     tipoSeleccionado = tipos.get(id);
                     FragmentManager manager = getSupportFragmentManager();
