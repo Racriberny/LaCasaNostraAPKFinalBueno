@@ -60,9 +60,6 @@ public class Fragment_Carta extends Fragment {
                 if (response.isSuccessful()){
                     assert response.body() != null;
                     tipos.addAll(response.body());
-                    for (int i = 0; i <tipos.size() ; i++) {
-                        System.out.println(tipos.get(i).getNombre());
-                    }
                     AdaptadorTipo adaptadorTipo = new AdaptadorTipo(tipos, listener);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(adaptadorTipo);

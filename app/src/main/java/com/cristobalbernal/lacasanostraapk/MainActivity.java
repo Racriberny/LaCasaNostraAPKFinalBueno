@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ITipoComida, IProductoSeleccionado,Fragment_Tipo_Producto.IOnAttachListener,FragmentDetalle.IOnAttachListenerDetalle{
     private static IAPIService iapiService;
-    private List<Tipo> tipos;
+    private static List<Tipo> tipos;
     private List<Producto> productos;
     private static List<Usuario> usuarios;
 
@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity
         }else {
             cambiarHeaderNavigationView(this);
         }
-
-
     }
 
     public static void cambiarHeaderNavigationView(Context context) {
@@ -264,6 +262,7 @@ public class MainActivity extends AppCompatActivity
                             .addToBackStack(null)
                             .replace(R.id.content_frame, Fragment_Tipo_Producto.class, null)
                             .commit();
+
                 }
 
             }
@@ -306,4 +305,5 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
 }
