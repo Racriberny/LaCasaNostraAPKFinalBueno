@@ -50,7 +50,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
         List<Producto> productos = new ArrayList<>();
         List<Producto> tiposProducto = new ArrayList<>();
         titulo = view.findViewById(R.id.tvTitulo);
-        titulo.setText(tipo.getNombre());
+
 
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override
@@ -58,14 +58,13 @@ public class Fragment_Tipo_Producto  extends Fragment {
                 if (response.isSuccessful()){
                     assert response.body() !=null;
                     productos.addAll(response.body());
+                    titulo.setText(tipo.getNombre());
                     for (Producto producto: productos){
-
                         if (producto.getTipoIdtipo() == tipo.getId()){
                             tiposProducto.add(producto);
 
                         }
                     }
-
                     AdaptadorTipoProducto adaptadorTipoProducto =  new AdaptadorTipoProducto(tiposProducto,iProductoSeleccionado);
                     rvLista.setHasFixedSize(true);
                     rvLista.setAdapter(adaptadorTipoProducto);

@@ -3,6 +3,7 @@ package com.cristobalbernal.lacasanostraapk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,7 +74,6 @@ public class MainActivity extends AppCompatActivity
         usuarios = new ArrayList<>();
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         userNombre = sharedPreferences.getString("nombreDeUsuario", "");
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
