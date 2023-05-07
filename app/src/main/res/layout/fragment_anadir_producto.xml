@@ -73,8 +73,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
             android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:hint="@string/nombre" />
 
         <EditText
@@ -82,16 +83,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
             android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:hint="@string/precio" />
         <EditText
             android:id="@+id/calories_producto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
             android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:hint="@string/calorias" />
 
     </LinearLayout>
@@ -114,8 +117,9 @@
             android:id="@+id/ingrediente_productos"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
             android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:hint="@string/ingredientes" />
 

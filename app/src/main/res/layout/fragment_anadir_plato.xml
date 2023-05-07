@@ -30,23 +30,25 @@
             android:clickable="true"
             android:src="@drawable/plato"
             android:focusable="true" />
-        <android.widget.EditText
+        <EditText
             android:id="@+id/nombreTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:hint="@string/nombre"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/black"
             android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:autofillHints="" />
-        <android.widget.EditText
+        <EditText
             android:id="@+id/descripcionTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textColor="@color/black"
             android:hint="@string/descripcion"
+            android:backgroundTint="@color/black"
             android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:autofillHints="" />
         <Button
             android:id="@+id/guardarPlatos"
