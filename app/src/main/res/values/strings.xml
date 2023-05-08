@@ -70,6 +70,7 @@
     <string name="indique_el_plato">Indique el plato</string>
     <string name="introduce_las_calorias">Introduce las calorias</string>
     <string name="seleccione_un_producto">Seleccione un producto</string>
+    <string name="eliminar_producto">Eliminar Producto</string>
 
 
 </resources>

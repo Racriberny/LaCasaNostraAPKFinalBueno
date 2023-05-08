@@ -69,4 +69,5 @@
     <string name="indique_el_plato">Indicate the dish</string>
     <string name="introduce_las_calorias">Enter the calories</string>
     <string name="seleccione_un_producto">Select a product</string>
+    <string name="eliminar_producto">Delete Product</string>
 </resources>

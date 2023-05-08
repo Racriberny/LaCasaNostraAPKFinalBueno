@@ -27,6 +27,7 @@ public class Fragment_Admin extends Fragment {
         Button btModificarPlato = view.findViewById(R.id.btModificarPlatoAdmin);
         Button btAdminProducto = view.findViewById(R.id.btAdminProducto);
         Button btModificarProducto = view.findViewById(R.id.btModificarProducto);
+        Button btEliminarProductos = view.findViewById(R.id.btEliminarProductos);
 
         btAnadirPlato.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +66,16 @@ public class Fragment_Admin extends Fragment {
                         .setReorderingAllowed(true)
                         .addToBackStack(null)
                         .replace(R.id.content_frame,Fragment_Modificar_Producto.class,null)
+                        .commit();
+            }
+        });
+        btEliminarProductos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manager.beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame,Fragment_Eliminar_Productos.class,null)
                         .commit();
             }
         });
