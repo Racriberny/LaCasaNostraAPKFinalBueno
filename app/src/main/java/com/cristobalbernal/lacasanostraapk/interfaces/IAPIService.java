@@ -50,6 +50,8 @@ public interface IAPIService {
 
     @DELETE("producto/{id}")
     Call<Boolean> deleteProducto(@Path("id") int id);
+    @DELETE("tipo/{id}")
+    Call<Boolean> deleteTipo(@Path("id") int id);
     @PUT("usuario/update/{id}")
     Call<Usuario> modificarUser(@Path("id") int id, @Body Usuario usuario);
 
