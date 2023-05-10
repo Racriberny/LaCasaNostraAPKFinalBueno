@@ -72,6 +72,7 @@
     <string name="seleccione_un_producto">Seleccione un producto</string>
     <string name="eliminar_producto">Eliminar Producto</string>
     <string name="eliminar_plato">Eliminar Plato</string>
+    <string name="numero_de_comensales">Numero de comensales</string>
 
 
 </resources>

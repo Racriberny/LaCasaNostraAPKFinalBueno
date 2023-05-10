@@ -70,4 +70,6 @@
     <string name="introduce_las_calorias">Enter the calories</string>
     <string name="seleccione_un_producto">Select a product</string>
     <string name="eliminar_producto">Delete Product</string>
+    <string name="eliminar_plato">Delete dish</string>
+    <string name="numero_de_comensales">Number of diners</string>
 </resources>
