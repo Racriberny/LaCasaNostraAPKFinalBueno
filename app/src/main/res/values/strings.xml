@@ -50,28 +50,28 @@
     <string name="ingredientes">Ingredientes</string>
     <string name="calorias">Calorias</string>
     <string name="precio">Precio</string>
-    <string name="a_adir_plato">Añadir Plato</string>
+    <string name="a_adir_plato">Añadir Categoria</string>
     <string name="descripcion">Descripcion</string>
-    <string name="modificar_plato">Modificar Plato</string>
-    <string name="elige_el_plato">Elige el plato</string>
+    <string name="modificar_plato">Modificar Categoria</string>
+    <string name="elige_el_plato">Elige la categoria</string>
     <string name="selecciona_imagen">Selecciona Imagen</string>
     <string name="indica_el_nuevo_nombre">Indica el nuevo nombre</string>
     <string name="indica_la_nueva_descripcion">Indica la nueva descripcion</string>
     <string name="modificar">MODIFICAR</string>
     <string name="productos">Productos</string>
     <string name="modificar_producto">Modificar Producto</string>
-    <string name="platos">Platos</string>
+    <string name="platos">Categoria</string>
     <string name="a_adir_producto">Añadir Producto</string>
     <string name="lista_reservas_lista">Lista Reservas</string>
     <string name="necesario_escribir">Se requiere un correo electronico</string>
     <string name="introduce_nombre">Introduce el nombre</string>
     <string name="introduce_el_precio">Introduce el Precio</string>
     <string name="introduce_los_ingredientes">Introduce los ingredientes</string>
-    <string name="indique_el_plato">Indique el plato</string>
+    <string name="indique_el_plato">Indique la categoria</string>
     <string name="introduce_las_calorias">Introduce las calorias</string>
     <string name="seleccione_un_producto">Seleccione un producto</string>
     <string name="eliminar_producto">Eliminar Producto</string>
-    <string name="eliminar_plato">Eliminar Plato</string>
+    <string name="eliminar_plato">Eliminar Categoria</string>
     <string name="numero_de_comensales">Numero de comensales</string>
 
 

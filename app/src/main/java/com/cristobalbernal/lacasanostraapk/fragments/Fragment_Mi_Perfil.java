@@ -207,6 +207,10 @@ public class Fragment_Mi_Perfil extends Fragment {
                 String name_nam = partes[0];
                 String apellido = partes[1];
 
+
+
+
+
                 if (!nueva.equals(nuevaConfirmacion)){
                     confirmarPasswordNew.setError("Las contraseñas deben de coincidir.");
                     confirmarPasswordNew.requestFocus();

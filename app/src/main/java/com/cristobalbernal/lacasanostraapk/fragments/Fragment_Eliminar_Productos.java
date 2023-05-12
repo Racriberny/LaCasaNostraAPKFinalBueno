@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.cristobalbernal.lacasanostraapk.R;
+import com.cristobalbernal.lacasanostraapk.Utils.EncodingImg;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Producto;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
@@ -54,11 +56,12 @@ public class Fragment_Eliminar_Productos extends Fragment {
                     Spinner spinnerProductos = view.findViewById(R.id.spinnerEliminar);
                     spinnerProductos.setAdapter(new ArrayAdapter<>(getActivity(),R.layout.spinner_item_geekipedia,productos));
                     Button btEliminar = view.findViewById(R.id.btELimnar);
+                    ImageView imageView = view.findViewById(R.id.imEliminarProducto);
                     spinnerProductos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             Producto productoSeleccionado = productoList.get(position);
-
+                            imageView.setImageBitmap(EncodingImg.decode(productoSeleccionado.getUrl_imagen()));
                             btEliminar.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
