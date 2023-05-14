@@ -29,6 +29,7 @@ import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Promociones;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Terminos;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Tipo_Producto;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.interfaces.IProductoSeleccionado;
@@ -241,6 +242,12 @@ public class MainActivity extends AppCompatActivity
                         .replace(R.id.content_frame, Fragment_Setting.class,null)
                         .commit();
             }
+        } else if (id == R.id.terminos) {
+            manager.beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
+                    .replace(R.id.content_frame, Fragment_Terminos.class,null)
+                    .commit();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
