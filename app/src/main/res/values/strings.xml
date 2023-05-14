@@ -74,32 +74,35 @@
     <string name="eliminar_plato">Eliminar Categoria</string>
     <string name="numero_de_comensales">Numero de comensales</string>
     <string name="terminos_y_condiciones">Terminos y Condiciones</string>
-    <string name="texto">Términos y Condiciones de "La Casa Nostra"
+    <string name="texto">
+    <![CDATA[
+       Términos y Condiciones de "La Casa Nostra"\n\n
 
-Bienvenido a "La Casa Nostra", una aplicación móvil para Android que te permite acceder a la carta de nuestro restaurante, realizar reservas, obtener promociones y más. Al utilizar nuestra aplicación, aceptas los siguientes términos y condiciones:
+        Bienvenido a "La Casa Nostra", una aplicación móvil para Android que te permite acceder a la carta de nuestro restaurante, realizar reservas, obtener promociones y más. Al utilizar nuestra aplicación, aceptas los siguientes términos y condiciones:\n\n
 
-Propiedad de la aplicación
-"La Casa Nostra" es propiedad de Cristobal Bernal, y se proporciona como una herramienta para facilitar la interacción con nuestro restaurante. Nos reservamos el derecho de actualizar o cambiar la aplicación en cualquier momento.
+        Propiedad de la aplicación: \n\n
+        "La Casa Nostra" es propiedad de Cristobal Bernal, y se proporciona como una herramienta para facilitar la interacción con nuestro restaurante. Nos reservamos el derecho de actualizar o cambiar la aplicación en cualquier momento.\n\n
 
-Uso de la aplicación
-El uso de "La Casa Nostra" es gratuito, pero al usar la aplicación aceptas que no la utilizarás para ningún propósito ilegal o fraudulento. También aceptas que no intentarás acceder a áreas protegidas de la aplicación ni a información confidencial sin nuestra autorización.
+        Uso de la aplicación: \n\n
+        El uso de "La Casa Nostra" es gratuito, pero al usar la aplicación aceptas que no la utilizarás para ningún propósito ilegal o fraudulento. También aceptas que no intentarás acceder a áreas protegidas de la aplicación ni a información confidencial sin nuestra autorización.\n\n
 
-Registro de cuenta
-Para acceder a ciertas funciones de "La Casa Nostra", puedes necesitar registrarte para crear una cuenta de usuario. Al hacerlo, aceptas proporcionar información precisa y completa. Eres responsable de proteger la confidencialidad de tus credenciales de inicio de sesión y de notificarnos de inmediato si sospechas que alguien ha utilizado tu cuenta sin autorización.
+        Registro de cuenta: \n\n
+        Para acceder a ciertas funciones de "La Casa Nostra", puedes necesitar registrarte para crear una cuenta de usuario. Al hacerlo, aceptas proporcionar información precisa y completa. Eres responsable de proteger la confidencialidad de tus credenciales de inicio de sesión y de notificarnos de inmediato si sospechas que alguien ha utilizado tu cuenta sin autorización. \n\n
 
-Privacidad
-Respetamos tu privacidad y estamos comprometidos con la protección de tus datos personales. Por favor, consulta nuestra Política de Privacidad para obtener más información sobre cómo recopilamos, utilizamos y protegemos tus datos.
+        Privacidad: \n\n
+        Respetamos tu privacidad y estamos comprometidos con la protección de tus datos personales. Por favor, consulta nuestra Política de Privacidad para obtener más información sobre cómo recopilamos, utilizamos y protegemos tus datos. \n\n
 
-Promociones
-De vez en cuando, podemos ofrecer promociones exclusivas a través de "La Casa Nostra". Las promociones estarán sujetas a términos y condiciones adicionales que se proporcionarán en el momento de la oferta.
+        Promociones: \n\n
+        De vez en cuando, podemos ofrecer promociones exclusivas a través de "La Casa Nostra". Las promociones estarán sujetas a términos y condiciones adicionales que se proporcionarán en el momento de la oferta.\n\n
 
-Responsabilidad
-"La Casa Nostra" se proporciona "tal cual", sin garantía de ningún tipo. No nos hacemos responsables de ninguna pérdida o daño directo o indirecto que pueda resultar del uso de la aplicación.
+        Responsabilidad: \n\n
+        "La Casa Nostra" se proporciona "tal cual", sin garantía de ningún tipo. No nos hacemos responsables de ninguna pérdida o daño directo o indirecto que pueda resultar del uso de la aplicación. \n\n
 
-Cambios en los términos y condiciones
-Nos reservamos el derecho de actualizar o cambiar estos Términos y Condiciones en cualquier momento. Cualquier cambio se publicará en esta página. El uso continuado de "La Casa Nostra" después de cualquier cambio constituye tu aceptación de los nuevos términos y condiciones.
+        Cambios en los términos y condiciones: \n\n
+        Nos reservamos el derecho de actualizar o cambiar estos Términos y Condiciones en cualquier momento. Cualquier cambio se publicará en esta página. El uso continuado de "La Casa Nostra" después de cualquier cambio constituye tu aceptación de los nuevos términos y condiciones. \n\n
 
-Al utilizar "La Casa Nostra", aceptas estos Términos y Condiciones. Si tienes alguna pregunta o inquietud, no dudes en ponerte en contacto con nosotros. Gracias por usar nuestra aplicación.</string>
-
+        Al utilizar "La Casa Nostra", aceptas estos Términos y Condiciones. Si tienes alguna pregunta o inquietud, no dudes en ponerte en contacto con nosotros. Gracias por usar nuestra aplicación.
+    ]]>
+</string>
 
 </resources>
