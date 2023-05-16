@@ -36,7 +36,7 @@
         <item
             android:id="@+id/terminos"
             android:checked="false"
-            android:icon="@drawable/setting"
+            android:icon="@drawable/terminos"
             android:title="@string/terminos_y_condiciones"
             />
 

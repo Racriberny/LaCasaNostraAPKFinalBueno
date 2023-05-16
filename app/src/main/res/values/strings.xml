@@ -73,7 +73,8 @@
     <string name="eliminar_producto">Eliminar Producto</string>
     <string name="eliminar_plato">Eliminar Categoria</string>
     <string name="numero_de_comensales">Numero de comensales</string>
-    <string name="terminos_y_condiciones">Terminos y Condiciones</string>
+    <string name="terminos_y_condiciones">Términos y Condiciones</string>
+
     <string name="texto">
     <![CDATA[
        Términos y Condiciones de "La Casa Nostra"\n\n
@@ -104,5 +105,7 @@
         Al utilizar "La Casa Nostra", aceptas estos Términos y Condiciones. Si tienes alguna pregunta o inquietud, no dudes en ponerte en contacto con nosotros. Gracias por usar nuestra aplicación.
     ]]>
 </string>
+    <string name="maximo">Maximo 15 personas, LLAME</string>
+    Maximo 15 personas, LLAME
 
 </resources>

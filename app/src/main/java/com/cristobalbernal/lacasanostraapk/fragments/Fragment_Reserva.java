@@ -165,7 +165,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
             }
             int comensales = Integer.parseInt(cantidad.getText().toString());
             if (comensales >= 15){
-                Toast.makeText(getContext(),"Para reservar esa cantidad de comensales tienes que llamar por telefono",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),R.string.maximo,Toast.LENGTH_SHORT).show();
                 return;
             }else {
                 registrar(efecha.getText().toString(),ehora.getText().toString(), String.valueOf(comensales),id);
