@@ -66,15 +66,15 @@ public class Fragment_Eliminar_Plato extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                    builder.setTitle("¿Deseas eliminar el tipo??")
+                                    builder.setTitle(R.string.eliminar_tipo)
                                             .setMessage("Tipo "+ tipoSeleccionado.getNombre())
-                                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                            .setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     iapiService.deleteTipo(tipoSeleccionado.getId()).enqueue(new Callback<Boolean>() {
                                                         @Override
                                                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                                            Toast.makeText(getContext(),"Tipo eliminado",Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(getContext(),R.string.eliminado_tipo,Toast.LENGTH_SHORT).show();
                                                             FragmentManager manager = getParentFragmentManager();
                                                             manager.beginTransaction()
                                                                     .setReorderingAllowed(true)
@@ -90,10 +90,10 @@ public class Fragment_Eliminar_Plato extends Fragment {
                                                     });
                                                 }
                                             })
-                                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                            .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    Toast.makeText(getContext(),"Has cancelado",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getContext(),R.string.hascancelar,Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                     AlertDialog alertDialog = builder.create();

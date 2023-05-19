@@ -66,15 +66,15 @@ public class Fragment_Eliminar_Productos extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                    builder.setTitle("¿Deseas eliminar el producto??")
-                                                    .setMessage(productoSeleccionado.getNombre())
-                                                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    builder.setTitle(R.string.eliminar_producto_delete)
+                                                    .setMessage("Producto: " + productoSeleccionado.getNombre())
+                                                            .setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                                                                 @Override
                                                                 public void onClick(DialogInterface dialog, int which) {
                                                                     iapiService.deleteProducto(productoSeleccionado.getId()).enqueue(new Callback<Boolean>() {
                                                                         @Override
                                                                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                                                            Toast.makeText(getContext(),"Producto eliminado",Toast.LENGTH_SHORT).show();
+                                                                            Toast.makeText(getContext(),R.string.eliminado_prducto,Toast.LENGTH_SHORT).show();
                                                                             FragmentManager manager = getParentFragmentManager();
                                                                             manager.beginTransaction()
                                                                                     .setReorderingAllowed(true)
@@ -90,10 +90,10 @@ public class Fragment_Eliminar_Productos extends Fragment {
                                                                     });
                                                                 }
                                                             })
-                                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                            .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    Toast.makeText(getContext(),"Has cancelado",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getContext(),R.string.hascancelar,Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                     AlertDialog alertDialog = builder.create();

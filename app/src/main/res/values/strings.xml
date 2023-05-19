@@ -74,6 +74,13 @@
     <string name="eliminar_producto">Eliminar Producto</string>
     <string name="eliminar_plato">Eliminar Categoria</string>
     <string name="numero_de_comensales">Numero de comensales</string>
+    <string name="eliminar_tipo">¿Deseas eliminar el tipo?</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="hascancelar">Has cancelado</string>
+    <string name="eliminado_prducto">Producto eliminado</string>
+    <string name="eliminado_tipo">Tipo eliminado</string>
+    <string name="eliminar_producto_delete">¿Deseas eliminar el producto?</string>
     <string name="terminos_y_condiciones">Términos y Condiciones</string>
 
     <string name="texto">
@@ -107,6 +114,11 @@
     ]]>
 </string>
     <string name="maximo">Maximo 15 personas, LLAME</string>
+    <string name="anadido">Se ha añadido correctamente</string>
+    <string name="categoria">Categoria modificado</string>
+    <string name="producto">Producto modificado</string>
+    <string name="registrar" >Te has registrado correctamente</string>
+    <string name="no_has_iniciado" >No has inicion sesión</string>
     Maximo 15 personas, LLAME
 
 </resources>

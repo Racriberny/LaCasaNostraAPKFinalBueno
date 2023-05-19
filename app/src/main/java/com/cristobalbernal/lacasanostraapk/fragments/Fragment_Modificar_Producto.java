@@ -191,7 +191,7 @@ public class Fragment_Modificar_Producto extends Fragment {
                                         @Override
                                         public void onResponse(Call<Producto> call, Response<Producto> response) {
                                             Log.i("Modificando","Modificando producto...");
-                                            Toast.makeText(getContext(), "Producto modificado", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), R.string.producto, Toast.LENGTH_SHORT).show();
                                             FragmentManager manager = getParentFragmentManager();
                                             manager.beginTransaction()
                                                     .setReorderingAllowed(true)

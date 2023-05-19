@@ -56,7 +56,7 @@ public class Fragment_Anadir_Plato extends Fragment {
         pickImage = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
             if (uri != null) {
                 try {
-                    base64 = getBase64FromUri(uri);
+                    base64 = EncodingImg.getBase64FromUri(requireContext(),uri);
                     photo.setImageBitmap(EncodingImg.decode(base64));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -93,7 +93,7 @@ public class Fragment_Anadir_Plato extends Fragment {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                             if (Boolean.TRUE.equals(response.body())){
-                                Toast.makeText(getContext(),"Se ha añadido correctamente",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),R.string.anadido,Toast.LENGTH_SHORT).show();
                                 FragmentManager manager = getParentFragmentManager();
                                 manager.beginTransaction()
                                         .setReorderingAllowed(true)
@@ -112,20 +112,5 @@ public class Fragment_Anadir_Plato extends Fragment {
             }
         });
 
-    }
-
-    private String getBase64FromUri(Uri uri) throws IOException {
-        @SuppressLint("Recycle")
-        InputStream inputStream = requireActivity().getContentResolver().openInputStream(uri);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-        byte[] buffer = new byte[100000];
-        int length;
-        while ((length = inputStream.read(buffer)) != -1) {
-            outputStream.write(buffer, 0, length);
-        }
-
-        byte[] imageBytes = outputStream.toByteArray();
-        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 }

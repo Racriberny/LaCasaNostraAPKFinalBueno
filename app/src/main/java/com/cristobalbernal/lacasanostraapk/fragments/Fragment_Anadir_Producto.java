@@ -131,7 +131,7 @@ public class Fragment_Anadir_Producto extends Fragment {
                                     @Override
                                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                                         Log.i("Bien",response.toString());
-                                        Toast.makeText(getContext(),"Producto añadido correctamente",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(),R.string.anadido,Toast.LENGTH_SHORT).show();
                                         FragmentManager manager = getParentFragmentManager();
                                         manager.beginTransaction()
                                                 .setReorderingAllowed(true)

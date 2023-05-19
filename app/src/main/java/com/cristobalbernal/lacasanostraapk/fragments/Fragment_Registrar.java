@@ -85,7 +85,7 @@ public class Fragment_Registrar extends Fragment {
             @Override
             public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
                 if (Boolean.TRUE.equals(response.body())){
-                    Toast.makeText(getContext(), "Te has registrado  " + nombre + " en La Casa Nostra!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.registrar, Toast.LENGTH_SHORT).show();
                     FragmentManager manager = getParentFragmentManager();
                     manager.beginTransaction()
                             .setReorderingAllowed(true)

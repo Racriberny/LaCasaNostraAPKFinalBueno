@@ -134,7 +134,7 @@ public class Fragment_Modificar_Plato extends Fragment {
                                     @Override
                                     public void onResponse(Call<Tipo> call, Response<Tipo> response) {
                                         Log.i("Bien",response.toString());
-                                        Toast.makeText(getContext(), "Plato modificado", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), R.string.categoria, Toast.LENGTH_SHORT).show();
                                         FragmentManager manager = getParentFragmentManager();
                                         manager.beginTransaction()
                                                 .setReorderingAllowed(true)

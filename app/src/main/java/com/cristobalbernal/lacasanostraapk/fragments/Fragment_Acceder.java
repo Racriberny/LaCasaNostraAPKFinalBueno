@@ -89,7 +89,7 @@ public class Fragment_Acceder extends Fragment {
                             Intent intent = new Intent(getActivity(), MainActivity.class);
                             requireActivity().startActivity(intent);
                         } else {
-                            Toast.makeText(getContext(), "No has inicion sesion", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.no_has_iniciado, Toast.LENGTH_SHORT).show();
                         }
                     }
 
