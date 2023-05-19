@@ -9,7 +9,8 @@
     <string name="home">Home</string>
     <string name="acceder">Acceder</string>
     <string name="cambio_de_idioma">Idioma</string>
-    <string name="configuracion">Configuracion</string>
+    <string name="configuracion">Configuración</string>
+    <string name="bienvenido">Bienvenido</string>
     <string name="pagina_web">Pagina web</string>
     <string name="nombre_de_usuario">Nombre de usuario</string>
     <string name="contrase_a">Contraseña</string>
