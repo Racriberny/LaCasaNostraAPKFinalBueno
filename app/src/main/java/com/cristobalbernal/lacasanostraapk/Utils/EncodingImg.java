@@ -31,4 +31,5 @@ public class EncodingImg {
         byte[] imageBytes = outputStream.toByteArray();
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
+
 }

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.HashGenerator;
+import com.cristobalbernal.lacasanostraapk.Utils.Lib;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
@@ -76,6 +77,11 @@ public class Fragment_Registrar extends Fragment {
         if (password.isEmpty()){
             contrasena.setError("Tienes que escribir una contraseña!!");
             contrasena.requestFocus();
+            return;
+        }
+        if (!Lib.validarEmail(corre_eletronico)){
+            correo.setError("Es necesario escribir un correo electonico!!");
+            correo.requestFocus();
             return;
         }
 

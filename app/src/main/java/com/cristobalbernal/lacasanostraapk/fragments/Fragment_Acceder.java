@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import androidx.preference.PreferenceManager;
 import com.cristobalbernal.lacasanostraapk.MainActivity;
 import com.cristobalbernal.lacasanostraapk.R;
 import com.cristobalbernal.lacasanostraapk.Utils.HashGenerator;
+import com.cristobalbernal.lacasanostraapk.Utils.Lib;
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import com.cristobalbernal.lacasanostraapk.modelos.Usuario;
 import com.cristobalbernal.lacasanostraapk.rest.RestClient;
@@ -28,6 +30,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,7 +78,12 @@ public class Fragment_Acceder extends Fragment {
                     contrasena.setError("Se requiere una contraseña");
                     contrasena.requestFocus();
                     return;
+                } else if (!Lib.validarEmail(correoElectronico)) {
+                    correo.setError("Se requiere un correo electronico");
+                    correo.requestFocus();
+                    return;
                 }
+
 
                 Usuario usuarioIniciado = new Usuario(correoElectronico,password);
                 Call<Usuario> booleanCall = iapiService.logUsuario(usuarioIniciado);
