@@ -69,7 +69,7 @@ public class Fragment_Carta extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<Tipo>> call, @NonNull Throwable t) {
-                Toast.makeText(requireActivity().getApplicationContext(), "No se han podido obtener las categorias", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireActivity().getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
