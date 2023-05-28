@@ -8,7 +8,7 @@ public class RestClient {
     public static final int PORT = 8080;
 
     public static final String CASA = "192.168.1.147";
-    public static final String INSTI = "192.168.21.219";
+    public static final String INSTI = "192.168.20.38";
     public static final String DASS = "192.168.143.182";
     private static final String BASE_URL = "http://" + CASA + ":" +  PORT + "/";
 
