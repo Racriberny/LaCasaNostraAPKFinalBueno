@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(this);
         tipos = new ArrayList<>();
         productos = new ArrayList<>();
         usuarios = new ArrayList<>();

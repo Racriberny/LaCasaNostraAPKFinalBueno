@@ -48,7 +48,7 @@ public class Fragment_Anadir_Plato extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         añadirPlato = view.findViewById(R.id.nombreTipo);
         descripcion = view.findViewById(R.id.descripcionTipo);
         photo = view.findViewById(R.id.imagenPlato);

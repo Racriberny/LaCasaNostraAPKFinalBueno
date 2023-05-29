@@ -1,4 +1,7 @@
 package com.cristobalbernal.lacasanostraapk.rest;
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.cristobalbernal.lacasanostraapk.interfaces.IAPIService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -7,22 +10,27 @@ public class RestClient {
     private static IAPIService instance;
     public static final int PORT = 8080;
 
-    public static final String CASA = "192.168.1.147";
-    public static final String INSTI = "192.168.20.38";
-    public static final String DASS = "192.168.143.182";
-    private static final String BASE_URL = "http://" + CASA + ":" +  PORT + "/";
+    private static final String PREFS_NAME = "MyPrefs";
+    private static final String IP_KEY = "ip";
 
-    /* Lo hacemos privado para evitar que se puedan crear instancias de esta forma */
+    public static final String DEFAULT_IP = "192.168.1.147";
+    private static final String BASE_URL = "http://%s:" + PORT + "/";
+
     private RestClient() {
-
+        // Constructor privado para evitar instancias directas
     }
 
-    public static synchronized IAPIService getInstance() {
-        if(instance == null) {
+    public static synchronized IAPIService getInstance(Context context) {
+        if (instance == null) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            String ip = sharedPreferences.getString(IP_KEY, DEFAULT_IP);
+            String baseUrl = String.format(BASE_URL, ip);
+
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
+
             instance = retrofit.create(IAPIService.class);
         }
         return instance;

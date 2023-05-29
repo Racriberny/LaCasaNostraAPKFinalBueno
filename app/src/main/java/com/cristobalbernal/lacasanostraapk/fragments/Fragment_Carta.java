@@ -46,7 +46,7 @@ public class Fragment_Carta extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         RecyclerView recyclerView = view.findViewById(R.id.rvLista);
         tipos = new ArrayList<>();
         vistaList = new ArrayList<>();
@@ -69,7 +69,7 @@ public class Fragment_Carta extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<Tipo>> call, @NonNull Throwable t) {
-                Toast.makeText(requireActivity().getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(), t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });

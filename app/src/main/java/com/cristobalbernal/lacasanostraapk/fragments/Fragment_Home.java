@@ -47,7 +47,7 @@ public class Fragment_Home extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         usuarios = new ArrayList<>();
 
 

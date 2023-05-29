@@ -45,7 +45,7 @@ public class Fragment_Modificar_Plato extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        apiService = RestClient.getInstance();
+        apiService = RestClient.getInstance(requireContext());
         List<Tipo> tipoList = new ArrayList<>();
         ImageView imagen = view.findViewById(R.id.imageViewModificar);
 

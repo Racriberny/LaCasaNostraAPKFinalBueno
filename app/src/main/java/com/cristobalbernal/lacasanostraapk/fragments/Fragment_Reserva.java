@@ -57,7 +57,7 @@ public class Fragment_Reserva extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         usuarios = new ArrayList<>();
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");

@@ -51,7 +51,7 @@ public class FragmentDetalle extends Fragment {
         ingredientes = view.findViewById(R.id.ingredientesDetalle);
         calorias = view.findViewById(R.id.calorias);
         precio = view.findViewById(R.id.precioDetalle);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         productos = new ArrayList<>();
 
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {

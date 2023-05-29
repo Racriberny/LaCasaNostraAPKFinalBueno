@@ -55,7 +55,7 @@ public class Fragment_Modificar_Producto extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         tipoList = new ArrayList<>();
         productoList = new ArrayList<>();
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         ImageView imageView = view.findViewById(R.id.imagenModificar);
         pickImage = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
             if (uri != null) {

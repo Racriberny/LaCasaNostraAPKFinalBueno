@@ -34,7 +34,7 @@ public class Fragment_Registrar extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         name = view.findViewById(R.id.etNombreRegister);
         surname = view.findViewById(R.id.etApellidosRegister);
         correo = view.findViewById(R.id.etEmailRegister);

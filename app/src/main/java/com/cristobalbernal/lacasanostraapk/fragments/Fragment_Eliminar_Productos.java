@@ -41,7 +41,7 @@ public class Fragment_Eliminar_Productos extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         productoList = new ArrayList<>();
         iapiService.getProductos().enqueue(new Callback<List<Producto>>() {
             @Override

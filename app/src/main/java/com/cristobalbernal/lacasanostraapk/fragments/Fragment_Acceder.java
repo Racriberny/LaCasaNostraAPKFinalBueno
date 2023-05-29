@@ -52,7 +52,7 @@ public class Fragment_Acceder extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireActivity());
         correo = view.findViewById(R.id.etEmailLogin);
         contrasena = view.findViewById(R.id.etContrasenyaLogin);
         Button login = view.findViewById(R.id.btnLogin);

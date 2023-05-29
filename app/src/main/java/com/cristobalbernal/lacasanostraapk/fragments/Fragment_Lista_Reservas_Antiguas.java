@@ -45,7 +45,7 @@ public class Fragment_Lista_Reservas_Antiguas extends Fragment {
         user = sharedPreferences.getString("nombreDeUsuario","");
         usuarios = new ArrayList<>();
         RecyclerView recyclerView = view.findViewById(R.id.rvListaReservas);
-        IAPIService iapiService = RestClient.getInstance();
+        IAPIService iapiService = RestClient.getInstance(requireContext());
         List<Reservas> reservas = new ArrayList<>();
         List<Reservas> usuarioReservas = new ArrayList<>();
 

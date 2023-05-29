@@ -46,7 +46,7 @@ public class Fragment_Tipo_Producto  extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView rvLista = view.findViewById(R.id.rvLista);
-        IAPIService iapiService= RestClient.getInstance();
+        IAPIService iapiService= RestClient.getInstance(requireContext());
         List<Producto> productos = new ArrayList<>();
         List<Producto> tiposProducto = new ArrayList<>();
         titulo = view.findViewById(R.id.tvTitulo);

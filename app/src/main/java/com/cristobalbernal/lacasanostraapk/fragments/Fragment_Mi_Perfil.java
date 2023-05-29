@@ -82,7 +82,7 @@ public class Fragment_Mi_Perfil extends Fragment {
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         user = sharedPreferences.getString("nombreDeUsuario","");
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         usuarios = new ArrayList<>();
 
         iapiService.getUsuario().enqueue(new Callback<List<Usuario>>() {

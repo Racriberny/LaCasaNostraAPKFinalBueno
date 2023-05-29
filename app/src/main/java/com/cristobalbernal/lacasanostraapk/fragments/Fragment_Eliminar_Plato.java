@@ -41,7 +41,7 @@ public class Fragment_Eliminar_Plato extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iapiService = RestClient.getInstance();
+        iapiService = RestClient.getInstance(requireContext());
         tipoList = new ArrayList<>();
         iapiService.getTipo().enqueue(new Callback<List<Tipo>>() {
             @Override
