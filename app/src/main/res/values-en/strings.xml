@@ -115,4 +115,8 @@
     <string name="producto">Modified product</string>
     <string name="registrar">You have successfully registered</string>
     <string name="no_has_iniciado">You have not logged in</string>
+    <string name="obtener">Obtain</string>
+    <string name="cambiar">Change</string>
+    <string name="cambio_de_ip">IP Change</string>
+    <string name="ip">IP</string>
 </resources>

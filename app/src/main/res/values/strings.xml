@@ -119,6 +119,10 @@
     <string name="producto">Producto modificado</string>
     <string name="registrar" >Te has registrado correctamente</string>
     <string name="no_has_iniciado" >No has inicion sesión</string>
+    <string name="obtener">Obtener</string>
+    <string name="cambiar">Cambiar</string>
+    <string name="cambio_de_ip">Cambio de IP</string>
+    <string name="ip">IP</string>
     Maximo 15 personas, LLAME
 
 </resources>
