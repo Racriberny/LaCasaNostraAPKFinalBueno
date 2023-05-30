@@ -30,7 +30,6 @@ import retrofit2.Response;
 public class Fragment_Setting extends Fragment {
     private TextView perfil;
     private TextView admin;
-    private TextView ip;
     private TextView cerrar_session;
     private String user;
     private IAPIService iapiService;
@@ -50,7 +49,6 @@ public class Fragment_Setting extends Fragment {
         getUser();
         perfil = view.findViewById(R.id.tv_settings_option);
         admin =view.findViewById(R.id.admin);
-        ip = view.findViewById(R.id.ip);
         cerrar_session = view.findViewById(R.id.cerrar);
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nombreDeUsuario","");
@@ -84,17 +82,6 @@ public class Fragment_Setting extends Fragment {
                         }
                     }
                 }
-            }
-        });
-        ip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getParentFragmentManager();
-                manager.beginTransaction()
-                        .setReorderingAllowed(true)
-                        .addToBackStack(null)
-                        .replace(R.id.content_frame, Fragment_IP.class, null)
-                        .commit();
             }
         });
 

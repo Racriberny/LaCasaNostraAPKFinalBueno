@@ -26,6 +26,7 @@ import com.cristobalbernal.lacasanostraapk.fragments.FragmentDetalle;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Home;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Carta;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Acceder;
+import com.cristobalbernal.lacasanostraapk.fragments.Fragment_IP;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Promociones;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Reserva;
 import com.cristobalbernal.lacasanostraapk.fragments.Fragment_Setting;
@@ -247,6 +248,12 @@ public class MainActivity extends AppCompatActivity
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .replace(R.id.content_frame, Fragment_Terminos.class,null)
+                    .commit();
+        } else if (id == R.id.ip) {
+            manager.beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
+                    .replace(R.id.content_frame, Fragment_IP.class,null)
                     .commit();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

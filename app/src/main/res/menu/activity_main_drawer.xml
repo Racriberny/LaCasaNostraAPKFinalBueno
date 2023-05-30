@@ -39,6 +39,12 @@
             android:icon="@drawable/terminos"
             android:title="@string/terminos_y_condiciones"
             />
+        <item
+            android:id="@+id/ip"
+            android:checked="false"
+            android:icon="@drawable/baseline_settings_applications_24"
+            android:title="IP"
+            />
 
     </group>
 </menu>
